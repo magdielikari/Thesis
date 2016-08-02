@@ -1,0 +1,54 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {0.1}Introduccion}{3}{section.0.1}
+\contentsline {chapter}{\numberline {1}Sistemas Din\'amicos}{5}{chapter.1}
+\contentsline {section}{\numberline {1.1}Ejemplo ilustrativo}{6}{section.1.1}
+\contentsline {section}{\numberline {1.2}La evoluci\'on de las densidades}{10}{section.1.2}
+\contentsline {chapter}{\numberline {2}Operadores Especiales}{15}{chapter.2}
+\contentsline {section}{\numberline {2.1}Operador de Markov}{15}{section.2.1}
+\contentsline {paragraph}{Propiedades del Operador de Markov}{16}{section*.8}
+\contentsline {subparagraph}{Observaci\'on}{18}{section*.11}
+\contentsline {subparagraph}{Observaci\'on}{21}{section*.12}
+\contentsline {section}{\numberline {2.2}El operador Perron-Frobenius}{21}{section.2.2}
+\contentsline {paragraph}{Propiedades del Operador Perron-Frobenius}{22}{section*.13}
+\contentsline {subparagraph}{Observaci\'on}{23}{section*.14}
+\contentsline {subparagraph}{Observaci\'on}{25}{section*.17}
+\contentsline {subparagraph}{Observaci\'on}{27}{section*.19}
+\contentsline {section}{\numberline {2.3}El operador de Koopman}{30}{section.2.3}
+\contentsline {subparagraph}{Observaci\'on}{30}{section*.20}
+\contentsline {paragraph}{Propiedades del Operador de Koopman}{31}{section*.21}
+\contentsline {subparagraph}{Observaci\'on}{31}{section*.22}
+\contentsline {chapter}{\numberline {3}Estudio el Caos con Densidades}{34}{chapter.3}
+\contentsline {section}{\numberline {3.1}Medidas Invariantes}{34}{section.3.1}
+\contentsline {subparagraph}{Observaci\'on}{35}{section*.23}
+\contentsline {section}{\numberline {3.2}Transformaciones Erg\'odicas}{36}{section.3.2}
+\contentsline {subparagraph}{Observaci\'on}{36}{section*.24}
+\contentsline {section}{\numberline {3.3}Transformaciones Mezclantes y Exactas}{40}{section.3.3}
+\contentsline {subparagraph}{Observaci\'on}{40}{section*.25}
+\contentsline {section}{\numberline {3.4}Taxonom\IeC {\'\i }a de las Transformaciones}{41}{section.3.4}
+\contentsline {subparagraph}{Observaci\'on}{41}{section*.29}
+\contentsline {chapter}{\numberline {4}Resultados Preliminares}{48}{chapter.4}
+\contentsline {section}{\numberline {4.1}Funciones de Variaci\'on Acotada}{48}{section.4.1}
+\contentsline {paragraph}{La Variaci\'on de la Suma}{49}{section*.30}
+\contentsline {paragraph}{Variaci\'on sobre la union de intervalo.}{50}{section*.31}
+\contentsline {paragraph}{Variaci\'on de la composici\'on de funciones}{50}{section*.32}
+\contentsline {paragraph}{Variaci\'on del Producto}{51}{section*.33}
+\contentsline {paragraph}{Desigualdad de Yorke}{52}{section*.34}
+\contentsline {section}{\numberline {4.2}Principio de Selecci\'on de Helly}{53}{section.4.2}
+\contentsline {section}{\numberline {4.3}Teorema de Mazur}{54}{section.4.3}
+\contentsline {section}{\numberline {4.4}Teorema de Kakutani-Yosida}{56}{section.4.4}
+\contentsline {chapter}{\numberline {5}Existencia de Medidas Invariantes}{60}{chapter.5}
+\contentsline {subparagraph}{Un contraejemplo}{68}{section*.35}
+\contentsline {chapter}{\numberline {A}Sistema din\'amicos discretos}{72}{appendix.Alph1}
+\contentsline {subparagraph}{Observaci\'on}{72}{section*.36}
+\contentsline {chapter}{\numberline {B}Teor\IeC {\'\i }a de la Medida}{75}{appendix.Alph2}
+\contentsline {section}{\numberline {B.1}Espacios Medibles y Medidas}{75}{section.Alph2.1}
+\contentsline {subsection}{\numberline {B.1.1}Espacios Medible}{76}{subsection.Alph2.1.1}
+\contentsline {paragraph}{Propiedades de $\sigma $-Algebra}{76}{section*.38}
+\contentsline {subsection}{\numberline {B.1.2}Espacios de Media}{79}{subsection.Alph2.1.2}
+\contentsline {paragraph}{Propiedades de la Medida}{79}{section*.42}
+\contentsline {section}{\numberline {B.2}Integraci\'on}{80}{section.Alph2.2}
+\contentsline {paragraph}{Propiedades de la integral de Lebesgue}{81}{section*.43}
+\contentsline {section}{\numberline {B.3}Derivaci\'on}{83}{section.Alph2.3}
+\contentsline {section}{\numberline {B.4}Espacios $L^p$}{84}{section.Alph2.4}
+\contentsline {paragraph}{Propiedades de la Norma}{84}{section*.44}
+\contentsline {section}{\numberline {B.5}Convergencia de sucesiones de funciones}{86}{section.Alph2.5}

@@ -1,0 +1,80 @@
+\section{Espacios \texorpdfstring{$L^p$}{Lp}}
+
+\begin{dfn}[Espacios $L^p$, $L^p(\X,\A,\mu)$ o $L^p$]La familia de todas la posible funciones reales medible $f:\X\rightarrow\R$
+    que satisface $$\int_\X{ | f(x)|^p\mu(dx)}<\infty$$
+    Siendo $(\X,\A,\mu)$ un espacio de medida y p un numero real tal que $1\leq p<\infty$
+\end{dfn}
+
+\begin{obs} Si $p=1$ es habla del conjunto de todas las funciones integrables.
+\end{obs}
+
+\begin{dfn}[Norma de $f$, $|| f ||_{L^p}$]  Es el funcional
+    \begin{equation}
+        ||f||_{L^p}=\Big[ \int_\X{|f(x)|^p\mu(dx)}\Big]^{\frac{1}{p}}
+    \end{equation}
+\end{dfn}
+
+\paragraph{Propiedades de la Norma}
+    \begin{itemize}
+        \item Dado $f\in L^p$
+        \begin{equation}
+            || f ||_{L ^p}=0\qquad \text{ si y solo si } f(x)=0\;\cs
+        \end{equation}
+        \item Sea $f\in L^p$ y $\alpha\in\R$
+        \begin{equation}
+            || \alpha f ||_{L^p}= | \alpha | \cdot ||_{L^p}f ||_{L^p}\qquad f\in L^{p}, \alpha\in\R
+        \end{equation}
+        \item Siendo $f,g\in L^p$
+        \begin{equation}
+            || f + g ||_{L^p}\leq ||  f ||_{L^p} +||g||_{L^p}\qquad f,g\in L^q
+        \end{equation}
+    \end{itemize}
+
+De la propiedad L3 se deduce que $L^p$ es un espacio vectorial, ya que,
+para $ f,g\in L^p$ y $\alpha\in\R$ entonces $(f+g)\in L^p$ y $\alpha f\in L^p$
+
+\begin{dfn}[Distancia entre $f$ y $g$,$|| f + g ||_{L^p}$] Es el funcional
+    $$|| f + g ||_{L^p}=\Big[\int_\X{|f(x)-g(x)|^p\mu(dx)}\Big]^{\frac{1}{p}}$$
+\end{dfn}
+
+\begin{obs} Es importante observar que el producto $fg$ de dos funciones $f,g\in L^{p}$ no es necesariamente un elemento de $L^p$
+\end{obs}
+
+\begin{dfn}[Espacio adjunto] Es $L^q(\X,\A,\mu)$ donde
+    $$\Big(\frac{1}{p}\Big)+\Big(\frac{1}{q}\Big)=1$$
+    Siendo $(\X,\A,\mu)$ un espacio de medida.
+\end{dfn}
+
+\begin{obs} El operador adjunto de $L_1$ es $L_\infty$, osea, las funciones medibles acotadas salvo en un conjunto de medida cero.
+\end{obs}
+
+\begin{dfn}[Producto escalar, $<f,g>$] De dos funciones de producto integrable se define como
+    $$<f,g>=\int_\X{f(x)g(x)\mu(dx)}$$
+siendo $f\in L^p$ y $g\in L^q$
+\end{dfn}
+
+\begin{dfn}[Inecuación de  Cauchy-Hölder] Si $f\in L^{p}$ y $g\in L^{q}$ entonces
+    $$|<f,g>|\leq ||f||_{L^p}  \cdot ||g||_{L^q}$$
+\end{dfn}
+
+\begin{obs}Par que la inecuación tenga sentido cuando $f\in L^{1}$, $g\in L^{\infty}$, se toma para la norma
+    $L^{\infty}$ la más pequeña constante c tal que
+    $$|g(c) |\leq c$$
+    Para casi todos $x\in\X$. Esto constante es llamada el supremo esencial de g. También es una forma alternativa
+    para definir las funciones de $L_{p\infty}$.
+\end{obs}
+
+\begin{obs} Se trabajará la mayoría de la veces en $L^1$; se indicara en caso que la norma a usar sea contraria  a la de $L^1$.
+    En otras palabras, $||f||=||f||_{L^1}$ . Observe que la desigualdad triangular en la norma $L^1$ es algunas veces una igualdad.
+    Partiendo de la propiedad tenemos
+    $$||f+g||=||f||+||g||\qquad f\geq 0, g\geq 0; f,g\in L^1$$
+\end{obs}
+
+Y para finalizar utilizaremos el concepto de $L^1$ para simplificar el teorema de Radon-Nikodym mostrado en el siguiente corolario 2
+
+\begin{pro}Si $f_1$ y $f_2$ son funciones integrable tal que
+$$\int_A{f_1(x)\mu(dx)}=\int_A{f_2(x)\mu(dx)}\qquad A\in\A$$
+Entonces $f_1=f_2\;\cs$.
+\end{pro}
+
+\input{medida/convergencia/convergencia}

@@ -1,0 +1,51 @@
+\section{Objetivos}
+
+\subsection{Objetivo General}
+    Estudiar condiciones para la existencia de medidas invariantes de sistemas dinámicos reales.
+\subsection{Objetivos Específicos}
+    \begin{itemize}
+        \item Estudiar algunos elementos del operador de Markov.
+        \item Estudiar el operador de Frobenius-Perron.
+        \item Demostrar la existencia de medidas invariantes absolutamente continuas.
+        \item Experimentar en el computador algunos ejemplos de densidades invariantes para sistema dinámicos reales.
+    \end{itemize}
+
+\section{Cronograma de Actividades}
+    En esta sección, expondremos brevemente las actividades que se ejecutarán para la realización del Trabajo Especial de Grado, así como el cronograma de actividades para la elaboración del mismo.
+\subsection{Actividades a realizar}
+    \begin{enumerate}
+        \item Revisión de las notas ``Notas para un curso de teoria ergódica'' de Fernando J. Sánchez S.
+        \item Revisión del libro ``Probabilistic properties of deterministic systems''  de A. Lasota \& Michael C. Mackey
+        \item Realización de los resultados del artículo ``On the existence of invariant measures for piecewise monotonic transformations'',
+         de A. Lasota y James A. Yorke.
+        \item Realización de ejemplos sobre densidades invariantes para sistema dinámicos reales.
+        \item Redacción del Trabajo Especial de Grado.
+    \end{enumerate}
+
+
+\begin{table}
+\begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|}
+             \hline
+             \backslashbox{Act}{Sem}     & 1 & 2 & 3 & 4 & 5 \\
+             \hline
+             \backslashbox{13-08}{17-08} & X &   &   &   & X \\
+             \hline
+             \backslashbox{20-08}{24-08} & X &   &   &   & X \\
+             \hline
+             \backslashbox{27-08}{31-08} &   & X &   &   & X \\
+             \hline
+             \backslashbox{03-09}{07-09} &   & X &   &   & X \\
+             \hline
+             \backslashbox{10-09}{14-09} &   &   & X &   & X \\
+             \hline
+             \backslashbox{17-09}{21-09} &   &   & X &   & X \\
+             \hline
+             \backslashbox{24-09}{28-09} &   &   &   & X & X \\
+             \hline
+             \backslashbox{01-10}{05-10} &   &   &   & X & X \\
+             \hline
+        \end{tabular}
+\end{center}
+\caption{Diagrama de Grantt}
+\end{table}

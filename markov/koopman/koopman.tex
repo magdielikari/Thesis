@@ -1,0 +1,117 @@
+\section{El operador de Koopman}
+
+Se asume que $\mu$ es una medida. Se conoce que el siguiente diagrama conmuta
+
+$$\begin{matrix}A\xrightarrow{\mu\circ S^{-1}}\mathbb{R}\\ S^{-1}\;{\searrow{\;\;}}\nearrow{\mu}\\  A\end{matrix}$$
+
+Es decir $\nu=\mu\circ S^{-1}$ define una medida.  Si $\mu(A)=0$ entonces $\nu(A)=0$, entonces $\mu<<\nu$.La definición del
+siguiente operador se basa en esta idea. Recuérdese que $S:\X\cir$ y es suficiente tomar a $S$
+
+\begin{dfn}[Operador de Koopman con respecto a S, $U$] El operador $U:L^{\infty}\rightarrow L^{\infty}$ se define como
+    \begin{equation}
+        Uf(x)=f(S(x)) \label{c2n3}
+    \end{equation}
+    Siendo $(\X,\A,\mu)$ un espacio de medida, $S:\X\cir$ una transformacion no-singular y $f\in L^{\infty}$.
+\end{dfn}
+
+\subparagraph{Observación} $f_1(x)=f_2(x)\;\cs\Rightarrow f_1(S(x))=f_2(S(x))\;\cs $. En otras palabras,
+$\mu(\{x:f_1(x)\neq f_2(x)\})=0$ entonces$\mu(\{x:f_1(S(x))\neq f_2(S(x))\})=0$ debido a
+$\mu(\{ y:S(x)\in\{f_1(x)\neq f_2(x)\}\})= S\circ\mu(\{x:\{f_1(x)\neq f_2(x)\}\})=0$ por hipótesis.
+Por lo tanto el operador de koopman esta bien definido.
+
+\paragraph{Propiedades del Operador de  Koopman}
+    \begin{align}
+        U(\lambda_1f_1+\lambda_2f_2)=\lambda_1Uf_1+\lambda_2Uf_2 && \forall f_1,f_2\in L^{\infty}, \lambda_1,\lambda_2\in\R  \\
+        ||Uf||_{L^{\infty}}\leq ||f||_{L^{\infty}} && \text{Para cada $f\in L^{\infty}$} \\
+        <\Pm f,g>=<f,U g> && \text{Para cada } f\in L^{\infty},g\in L^{\infty}
+    \end{align}
+
+
+\subparagraph{Observación} La proposición expresa que $U$ es una contracción en $L^\infty$. De forma análoga
+que $U$ es el operador autoadjunto de $\Pm$ del operador de Perron-Frobenius.
+
+\begin{proof} Para se tiene
+    \begin{align*}
+        U(\lambda_1f_1+\lambda_2f_2)(x)&=S(x)\circ(\lambda_1f_1+\lambda_2f_2)\\
+                                       &=\lambda_1f_1(S(x))+\lambda_2f_2(S(x))\\
+                                       &=\lambda_1Uf_1+\lambda_2Uf_2
+    \end{align*}
+    En el caso de se tiene
+    $$|f(x)|\leq\sup_x\in\X|f(x)|=||f(x)||_{L^\infty}\cs$$
+    por lo tanto $|f(S(x))|\leq||f||_{L^\infty}$
+    Finalmente, para se asume que $g(x)=\car_A$ asi, en la primera parte de la ecuación
+    \begin{align*}
+        <\Pm f,g>&=\int_\X{\Pm f(x)\car_A(x)\mu(dx)} \\
+                 &=\int_X{\Pm f(x)\mu(dx)}
+                   \begin{cases}
+                    1 & \text{si $x\in A)$}\\
+				    0 & \text{en otro caso}
+                   \end{cases}\\
+                 &=\int_A{\Pm f(x)\mu(dx)}
+    \intertext{Ahora para el lado derecho de}
+        <f,Ug>&=\int_X{f(x)U\car_A(x)\mu(dx)}\\
+              &=\int_X{f(x)\car_A(S(x))\mu(dx)}\\
+              &=\int_X{ f(x)\mu(dx)}
+                   \begin{cases}
+                    1 & \text{si $S(x)\in(A))$}\\
+				    0 & \text{en otro caso}
+                   \end{cases}\\
+              &=\int_X{ f(x)\mu(dx)}
+                   \begin{cases}
+                    1 & \text{si $x\in S^{-1}(A))$}\\
+				    0 & \text{en otro caso}
+                   \end{cases}\\
+              &=\int_{S^{-1}(A)}{ f(x)\mu(dx)}\\
+    \intertext{Por lo tanto es equivalente a}
+       \int_A{\Pm f(x)\mu(dx)}&=\int_{S^{-1}(A)}{ f(x)\mu(dx)}
+    \intertext{La definición del operador de Perron-Frobenius.}
+    \end{align*}
+    Con lo cual para la función característica. Supongamos $g(x)=\sum_{i=1}^n{\lambda_i\car_{A_i}(x)}$ asi,
+     en la primera parte de la ecuación
+    \begin{align*}
+        <\Pm f,g>&=\int_\X{\Pm f(x)\sum_{i=1}^n{\lambda_i\car_A(x)}\mu(dx)} \\
+                 &=\sum_{i=1}^n{\lambda_i}\int_X{\Pm f(x)\mu(dx)}
+                   \begin{cases}
+                    1 & \text{si $x\in A_i$}\\
+				    0 & \text{en otro caso}
+                   \end{cases}\\
+                 &=\sum_{i=1}^n{\lambda_i}\int_{A_i}{\Pm f(x)\mu(dx)}
+    \intertext{Ahora para el lado derecho de }
+        <f,Ug>&=\int_X{f(x)U\Big(\sum_{i=1}^n{\lambda_i\car_{A_i}(x)}\Big)\mu(dx)}\\
+              &=\sum_{i=1}^n{\lambda_i}\int_X{f(x)\car_{A_i}(S(x))\mu(dx)}\\
+              &=\sum_{i=1}^n{\lambda_i}\int_X{ f(x)\mu(dx)}
+                   \begin{cases}
+                    1 & \text{si $S(x)\in A_i$}\\
+				    0 & \text{en otro caso}
+                   \end{cases}\\
+              &=\sum_{i=1}^n{\lambda_i}\int_X{ f(x)\mu(dx)}
+                   \begin{cases}
+                    1 & \text{si $x\in S^{-1}(A_i)$}\\
+				    0 & \text{en otro caso}
+                   \end{cases}\\
+              &=\sum_{i=1}^n{\lambda_i}\int_{S^{-1}(A_i)}{ f(x)\mu(dx)}
+    \end{align*}
+    Con lo cual  para la una función simple. Sea un sucesión $g=\{f_n\}$  que converge uniformemente a $f$. Entonces podemos evaluar el límite
+    \begin{align*}
+    \limi_{n\rightarrow\infty}<\Pm f,g_n>&=\limi_{n\rightarrow\infty}\int_\X{\Pm f(x) g_n\mu(dx)} \\
+                 &=\int_A{\Pm f(x)\mu(dx)}
+    \intertext{Ahora para el lado derecho de }
+    \limi_{n\rightarrow\infty}<f,Ug_n>&=\limi_{n\rightarrow\infty}\int_X{f(x)U g_n\mu(dx)}\\
+              &=\int_{S^{-1}(A)}{ f(x)\mu(dx)}
+    \end{align*}
+    Con lo que queda probado $ <\Pm f,g>=<f,U g>$.
+\end{proof}
+
+\begin{dfn}[Operador débilmente continúo] Para cada sucesión $\{f_n\}$ contenida $L^{1}$ la condición $f_n\rightarrow f$
+débilmente, implica $\Pm f_n\rightarrow \Pm f$ débilmente.
+\end{dfn}
+
+Con el operador de Koopman es fácil probar el siguiente resultado
+
+\begin{teo} El operador de Perron-Frobenius es débilmente continuo
+\end{teo}
+
+\begin{proof}Usando la propiedad  se puede mostrar que $<\Pm,g>=<f_n,g>$ para $g\in L\infty$. Como $<f_n,Ug>$
+converge débilmente a $<f,Ug>$. Ahora  como $<f,Ug>=<\Pm,g>$ entonces   $<f_n,Ug>$ converge débilmente a $<\Pm,g>$. En consecuencia,
+el operador de Perron-Frobenius es débilmente continúo.
+\end{proof}

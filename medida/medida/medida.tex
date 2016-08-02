@@ -1,0 +1,187 @@
+\chapter{Teoría de la Medida}
+
+En esta sección expondremos las nociones básicas de Teoría de la Medida que necesitaremos en los capítulos posteriores.
+Con la intención de tener un marco de referencia  en el cual se pueda apoyar las ideas a desarrollar.
+En consecuencias, se comentarán superficialmente algunos resultados de teoría de la medida.% Para profundizar los detalles se sugiere revisar (REFERENCIAS!)
+
+
+\section{Espacios Medibles y Medidas}
+
+Hace más de 5000 años, el hombre primitivo percibe la necesidad de medir.
+Interrogantes como ¿Qué tan lejos? , ¿Qué tan grande es?, ¿Cual es la capacidad? son naturales en actividad cotidianas.
+De esta forma surge el manejo de longitudes, áreas y volúmenes con la necesidad de su cálculo.
+El papiro de Moscú considerado del 1800 A.C. es uno de los documentos egipcios con problemas matemáticos más antiguos que se conoce.
+
+A Eudoxo (408 a.C. al 355 a.C.) se le atribuye la demostración del volumen de un cilindro.
+No obstante, es en el libro de Euclides (325 a.C. al 265 a.C) ``Los Elementos'' en que aparecen las primeras demostraciones
+satisfactorias junto al método científico sistemático. No se define la longitud, área o volumen; se les considera
+características que se puede medir de las figuras que define como línea, superficie y solido.
+
+La palabra medir se utiliza indistintamente para estas magnitudes como para los números.
+Por lo que medir, para Euclides,  es un proceso de comparación entre la figura y el segmento, cuadrado o cubo unitario.
+Un proceso similar al usado aun actualmente en la física para medir cantidades físicas.
+En el cual se elige un patrón \footnote{El segundo es 9,192,631,770 ciclos de radiación del cesio.} y el objeto a medir se compara con este patrón.
+
+Arquímedes (287 a. C. al 212 a. C.) descubrió el área del círculo mediante el método de exclusión.
+Método del cual se baso Newton (1642-1727) para del descubrimiento de la integral la cual permitió el cálculo de longitudes,
+área o superficies curvilíneas. Descubrimiento que permite ampliar las posibilidades de objetos a medir y minimiza el
+esfuerzo de su cálculo. Observe que aunque la técnica de medir cambió la medida seguía siendo la misma.
+En otras palabras, la regla se hizo elástica o flexible para poder medir objetos de intrincado perfil pero se continúa usando la misma regla.
+
+\subsection{Espacios Medible}
+
+En 1883, G. Cantor (1845-1918) proporciona la primera definición de medida $\mu(A)$ de un conjunto arbitrario (acotado) $A\subset\R$.
+Otros autores como Stoloz en 1884 y Harnack en 1885 dan definiciones equivalentes en $\R$.Estas definiciones consideraban la
+propiedad adictiva $m[A\cup B]=m[A]+m[B]$ para un par de conjuntos disjuntos.
+
+Sin embargo, fallaban ya que en general  un conjunto y su adherencia medía lo mismo y por tanto los racionales y los irracionales
+median $1$ ambos, sobre $[0,1]$. Contradiciendo el concepto de cardinal desarrollado y propuesto por el mismo Cantor 9 años atrás.
+En el cual los irracionales son mayores en  cardinalidad $\aleph_1$ que la cardinalidad de los racionales $\aleph_0$.
+La definición moderna de conjunto medible, se presenta a continuación, se basa en la idea $\sigma$-algebra;
+En la cual no presenta dicho inconveniente.
+
+\begin{dfn}[$\sigma$-Algebra,$\A$] Es una familia $\A\subset\Pm(\X)$ de subconjuntos
+de $\X$ que verifican las siguientes condiciones
+	\begin{enumerate}
+		\item $\X \in \A$
+		\item Si $A\in\A$ entonces $A^c \in \A$,
+		\item Si $\{A_n\}$ es una sucesión de conjuntos en $X$, entonces la unión $\cup_{n=1}^\infty\in\A$
+	\end{enumerate}
+	Siendo $\X$ un conjunto no vacío.
+\end{dfn}
+
+\paragraph{Propiedades de $\sigma$-Algebra} De la definición se deducen las siguientes propiedades
+\begin{alignat}{2}
+    \X^c=\emptyset\in\A     && \text{\qquad debido a  (a) y (b)} \nonumber\\
+    A\cup(\X\backslash B)=A\backslash B\in\A && \text{\qquad por (b) y (c)} \nonumber\\
+    (\cap_k{(A_k)^c})^c=\cap_k{A_k}\in\A   && \text{\qquad gracias a (c) y (b)} \nonumber
+\end{alignat}
+
+\begin{dfn}[Espacio Medible, $(X,\X)$] Es el par $(X,\X)$ donde $X$ es  un conjuntos y $\X$ una $\sigma$-Algebra.
+\end{dfn}
+
+\begin{ejm} Sea $\X$ cualquier conjunto entonces $(X,\Pm (\X))$ es un espacio medible. Por otro lado $(\X,\{\X,\emptyset\})$ también es un espacio medible.
+\end{ejm}
+
+El concepto de función es fundamental en la matemática. Este concepto nace en el análisis, pero se extiende en otras áreas como el Algebra, Topología,  Geometría Diferencial entre otras. Estimuladas por la definición general, que no depende de entes numéricos, aportes el trabajo de Teoría de Conjuntos de Cantor.  Una función que preserve la estructura a estudio, es un tema recurrentes en dichas áreas, lo cual trae asociadas definiciones como Homomorfismo o la Continuidad. En nuestro caso se habla de función medible.
+
+\begin{dfn}[Función Medible,$f$] Si el conjunto $$f^{-1}=\{ x\in\X:f(x)\in E\}$$
+pertenece a $\X$ para cada conjunto E que pertenesca a $\Y$. Siendo $f:(X,\X)\rightarrow(Y,\Y)$ una función entre
+un para de espacios medibles.
+\end{dfn}
+
+\begin{obs}Una función $f:\X\rightarrow\R$ es medible si para cada cualquier números real $\alpha$  el conjunto
+$$\{ x\in\X: f(x)>\alpha\}$$
+  Pertenece  $\A$
+\end{obs}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[angle=-90,scale=0.4]{graficas/fff}
+    \end{center}
+    \caption{$S(x)=4x(1-x)$\quad para $0\leq x\leq 1$. Se observa como la población crece y decrece alrededor de $\alpha$}
+\end{figure}
+
+\begin{dfn}[Parte positiva,$f^+(x)$] Sea $f:\X\rightarrow\R$ la parte positiva es el subconjunto de función definido como:
+$$f^+(x)=\max{(0,f(x))}$$
+\end{dfn}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[angle=-90,scale=0.4]{graficas/fpo}
+    \end{center}
+    \caption{$S(x)=4x(1-x)$\quad para $0\leq x\leq 1$. Se observa como la población crece y decrece alrededor de $\alpha$}
+\end{figure}
+
+\begin{dfn}[Parte negativa,$f^-(x)$] Sea $f:\X\rightarrow\R$ la parte negativa es el subconjunto de función definido como:
+$$f^-(x)=\max{(0,-f(x))}$$
+\end{dfn}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[angle=-90,scale=0.4]{graficas/fne}
+    \end{center}
+    \caption{$S(x)=4x(1-x)$\quad para $0\leq x\leq 1$. Se observa como la población crece y decrece alrededor de $\alpha$}
+\end{figure}
+
+Apartir de las definiciones presendentes se puede deducir las siguiente propiedades
+
+\begin{col} Para cualquier $f:\X\rightarrow\R$ se tiene
+$$f(x)=f^+(x)-f^-(x)\qquad |f(x)|=f^+(x)+f^-(x)$$
+\end{col}
+
+\subsection{Espacios de Media}
+
+Continuando con la evolución historia de la medida, un tratamiento moderno fué proporcionado por Peano (1858-1932),
+el cual consideró cuando un conjunto es medible. Tomando inspiración de las aproximaciones poligonales por exceso
+y defecto. Definió la medida exterior y la medida interior para definir un conjunto medible, en el caso en que ambas
+medidas coinciden. Partiendo de esa definición probo que  la medida era aditiva; es más explicó la relación existente
+entre la medida e integración. Demostrando que una función acotada era Riemann integrable si y solo si el conjunto
+$E$ de $\R^2$ limitado por la gráficas de $f$ y las rectas $x=a$, $x=b$  e $y=0$ era medible, en cuyo caso
+$$\int_a^b{f(x)dx}=m[E]$$
+
+En 1892 Jordan (1838-1922) proporciona una definición más sencilla utilizando una malla de cuadrados de igual lado,
+en lugar de polígonos para aproximar el conjunto.  No obstante, aun se requería refinar la definición de medida debido
+que en ambos casos ejemplo los racionales ya no eran medible.
+
+Se sabía desde la época de Cantor, que todo abierto $A\subset \R$ era unión, $A=\cup{I_n} $  a lo sumo
+numerable de intervalos abiertos $I_n$ disjuntos. Partiendo de ese hecho Borel  (1871-1956) dio, en su doctorado
+de 1894, el importante pasó al considerar la numerabilidad aditiva para la medida. Considerar la numerabilidad
+aditiva fue un paso esencial en teoría de la integral abstracta presentado por Lebesgue(1875-1941) en 1902. El
+paso al límite de la integral se obtiene como consecuencia inmediata esta propiedad.
+Con lo cual, se llega a la definición moderna de medida.
+
+\begin{dfn}[Medida,$\mu$] Es la función $\mu:\Pm(\X)\supset\A\rightarrow \R$
+que cumple las siguientes propiedades:
+	\begin{enumerate}
+		\item $\mu(\emptyset)=0$
+		\item $\mu(A)\geq 0$ para todo $A\in\A$
+		\item $\mu(\bigcup_k{A_k})=\sum_k{A_k}$ donde $\{A_k\}$ es una
+        sucesión de conjuntos disjuntos a pares
+	\end{enumerate}
+\end{dfn}
+
+\paragraph{Propiedades de la Medida} Sea $E$ y $F\in \A$
+\begin{alignat}{4}
+    \text{Si } E\subset F && \text{ entonces } && \mu(E)\leq\mu(F) && \text{ Monótona} \nonumber\\
+    \text{Si } \mu(E)<+\infty && \text{ entonces } &&\mu(F/E)=\mu(F)-\mu(E) && \nonumber
+\end{alignat}
+
+\begin{dfn}[Espacio Medible,$(\X,\A,\mu)$] Si $\A$ es una
+$sigma$-Algebra y $\mu$ es una medida. A los conjuntos que
+pertenece a $\A$ se les llama conjuntos medible.
+\end{dfn}
+
+\begin{ejm}\label{borel} Sea $\X=\R$, $\A$ son lo intervalos de $\R$ y $\mu([a,b])=|b-a|$ define un espacio medible.
+ Este espacio conocido como la medida de Borel.
+\end{ejm}
+
+\begin{obs}Si $X$ e $Y$ son espacios topológicos $\A$, $\B$ sus respectivas $\sigma$-algebras de Borel,
+entonces toda función continua $f:\X\rightarrow\Y$ es medible. Ya que los Borerianos  son la menor $\sigma$-algebra
+que contiene a los abiertos del espacio topológico. En ese caso, la definición de función continua y función medible coinciden.
+\end{obs}
+
+\begin{dfn}[Medida Finita] Si $\mu(x)<\infty$ siendo $(\X,\A,\mu)$ un espacio de medida
+\end{dfn}
+
+\begin{dfn}[Espacio de Probabilidad] Si la medida es finita y $\mu(\X)=1$
+\end{dfn}
+
+\begin{obs}Todo espacio de media finita puede ser de probabilidades. En efecto, se puede definir una medida
+$$\tilde{\mu}(A)=\frac{\mu(A)}{\mu(X)} \qquad \forall A\in\A$$
+Este proceso se le conoce como normalización.
+\end{obs}
+
+\begin{dfn}[Medida $\sigma$-Finita] Si la sucesión $\{ A_k\}$ con $A_k\in\A$ y satisface
+$$X=\bigcup^\infty_{k=1}{A_k}\quad y\quad  \mu(A_k)<\infty\qquad \text{para todo k}$$
+ siendo $(\X,\A,\mu)$ un espacio de medida
+\end{dfn}
+
+\begin{ejm} Sean los reales $\R$, con $\mu$ la medida de Borel es un espacio $\sigma$-finito. Debido que se puede escoger intervalos $A_k$ de la forma $[-k,k] $ con $k\in\N$, donde su unión numerable es $\R$ y la medida para cada $A_k$ es finita.
+\end{ejm}
+
+
+\begin{dfn}[Casi Seguramente, $\cs$] Si alguna propiedad se cumple en todos los subconjuntos de un espacio de medida excepto en los de medida cero.
+\end{dfn}
+
+\input{medida/integracion/integracion}

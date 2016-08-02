@@ -1,0 +1,457 @@
+\documentclass{beamer}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage[spanish]{babel}
+%\usepackage{beamerthemebars}
+\usepackage{beamerthemeshadow}
+\usepackage[ansinew]{inputenc}
+\usepackage{graphicx}
+\def\car{\mbox{\rm{1\hspace{-0.10 cm }I}}}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\title{Revisión sobre la existencia de medidas invariantes para transformaciones monótonas a trozos}
+\author{Br. Magdiel Márquez. Tutor: Dr. Luis-Angel Rodr\'{i}guez}
+\date{\today}
+\DeclareMathOperator{\infi}{inf}
+\DeclareMathOperator{\mini}{mini}
+\DeclareMathOperator{\so}{sop}
+\DeclareMathOperator{\limi}{lim}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\cir}{\circlearrowleft}             % Endomorfismo
+\newcommand{\X}{\mathcal{X}}                    % Espacio de medida
+\newcommand{\Fe}{\mathcal{F}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Pm}{{\mathcal{P}}}                 % Operador de Markov
+\newcommand{\R}{\mathbb{R}}                     % Conjunto de los N\'{u}meros Reales
+\newcommand{\cs}{\mathfrak{c.s}}                % Grupo de accion
+\newcommand{\ov}{\overline}
+\newcommand{\tri}{\bigtriangleup}
+\newtheorem{dfn}{Definición}[section]
+\newtheorem{axi}{Axioma}
+\newtheorem{pro}{Proposición}[section]
+
+\newtheorem{obs}{Observación}
+\newtheorem{lem}{Lema}[section]
+\newtheorem{teo}{Teorema}
+\newtheorem{algo}{Algoritmo}
+\newtheorem{col}{Corolario}
+\newtheorem{lema}{Lema}
+\definecolor{d3}{rgb}{0.3,0.3,0.7}
+
+\begin{document}
+\frame{\titlepage \transdissolve}
+\frame{\transglitter \tableofcontents}
+
+\section{Introduccion}
+\subsection{La Conjetura de Ulam}
+\begin{frame}
+    \begin{block}{La Conjetura de Ulam}{En 1957 S. Ulam propuso el problema de la existencia de medidas invariantes absolutamente continuas
+    para funciones definidas por funciones suficientemente simples donde el gr\'afico no corte la l\'inea $y=x$ con 
+    una pendiente de valor absoluto menor que 1.}
+    \end{block}
+    Definamos:
+    \begin{itemize}
+        \item<1-> Transformación Invariante si no cambia su medida.
+        \item<2-> (Medida Invariante Sobre $S$) Si $\mu(S^{-1}(A))=\mu(A)$ donde $S:\X\cir$ es una transformación 
+        medible y $(\X,\A,\mu)$ un espacio de medida.
+        \item<3-> (Absolutamente continua,$\mu_f$) Sea $\mu_f=\int{S(x)\mu(dx)}$ la medida para $A \in \A$
+              donde $S:\X\cir$ es una transformación medible y $(\X,\A,\mu)$ un espacio de medida.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    La respuesta  literal de esta pregunta es negativa. Se puede ilustrar
+    \begin{equation*}
+        f(x)=\begin{cases}
+		      1-2x     & 0\leq x\leq\frac{5}{12}\\	
+              (2-2x)/7 & \frac{5}{12}< x\leq 1
+            \end{cases}
+    \end{equation*}
+  \pause      
+  \begin{figure}
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{f.jpg}
+        \caption{Transformación $f= 1-2x$ en $0\leq x\leq\frac{5}{12}$ y $f=(2-2x)/7$ en $\frac{5}{12}< x\leq 1$}
+    \end{center}       
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}
+    Muchos resultados en relaci\'on de la existencia de medidas absolutamente contin\'uas para ciertas clases de
+    transformaciones del  intervalo unitario en si mismo han sido proporcionadas (A. R\'enyi, Parry, Krzyzewski/Szlenk).
+    Sin embargo, se puede se\~nalar que el mejor resultado en esta direcci\'on fue obtenido por A. Lasota y J. Yorke
+    \pause
+   \begin{teo}[de Lasota-Yorke] Sea $S:[0,1]\rightarrow[0,1]$ una funci\'on a trozos de clases $C^2$ que satisfaga la condici\'on
+            $$\inf_{x\in[0,1]}\Big|\frac{d}{dx}f(x)\Big|>1$$
+        Entonces existe una medida invariante absolutamente continua sobre $f$
+    \end{teo}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Bozeto de la prueba}
+    \begin{itemize}
+        \item<1-> Se usa el hecho que operador de  Perron-Frobenius, correspondiente a la transformaci\'on,  tiene 
+          la propiedad de contracci\'on en la variaci\'on de la funci\'on.
+        \item<2-> Se construye una sucesi\'on es relativamente compacta, cumpliendo asi la hip\'otesis del teorema de Mazur.
+        \item<3-> Con lo cual, que el promedio de las orbitas convergen fuertemente a una funci\'on limite, debido al de teorema
+          de Kakutani-Yosida
+        \item<4-> Repitiendo este proceso se consigue una familia de funciones que acotan a la variaci\'on del operador
+            de Perron-Frobenius es el promedio de las $n$ estimaciones
+        \item<5-> Usando el principio de selecci\'on de Helly se puede conseguir una sucesi\'on de funciones,
+        que convergen a una funci\'on de variaci\'on finita.
+    \end{itemize}
+\end{block}
+\end{frame}
+
+\subsection{Sistemas Dinámicos}
+
+\begin{frame}
+    La tasa de crecimiento en la población de una especie es proporcional a la población  real en cualquier instante dado. Si $x$ representa
+    la cantidad de especímenes en cualquier instante dado y $t$ las unidades de tiempo, entonces
+    $$\frac{dx}{dt}=\alpha x$$
+    representa la dinámica de una población. Donde $\alpha$ es una contante; si $\alpha>0$ se tiene una ley de crecimiento natural y si $\alpha<0$
+    se tiene una ley de decrecimiento natural.
+    \pause
+    \begin{description}
+        \item<1->[$x(t)>\alpha$,] la tasa sería negativa y la población decrecería acercandose a $\alpha$.
+        \item<2->[$x(t)=\alpha$,] la tasa sería nula y, por lo tanto, la población constante.
+        \item<3->[$x(t)<\alpha$,] la tasa sería positiva, creciendo entonces la población, aunque más lentamente cuando más proxima 
+        esté del valor de $\alpha$.
+    \end{description}
+\end{frame}
+
+\begin{frame}
+    Por consiguiente, podemos considera la siguiente definición
+    \begin{dfn}[Familia Logística] Es la transformación definida como:
+	   \begin{equation*}
+            S(x)=\alpha x(1-x)\qquad para\; 0\leq x\leq 1
+	   \end{equation*}
+    \end{dfn}
+    \pause
+    \begin{figure}
+        \begin{center}
+            \includegraphics[angle=-90,scale=0.20]{log}
+        \end{center}
+        \caption{Gráfica $S(x)=4x(1-x)$\quad para $0\leq x\leq 1$. Se observa como la población crece y decrece alrededor de $\alpha$}
+        \label{Glogistica}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    Al examinar  la población de una especie, se puede considerar  la variable t como las generaciones de la misma. La cantidad de población
+    de la siguiente generación dependerá de la cantidad de población actual mediante la transformación $S$.
+    \pause
+    \begin{dfn}[Trayectoria de $x^0$] Es la sucesión de estado definidos como
+	   \begin{equation*}
+		x^0, S(x^0),\quad  S(S(x^0))=S^2(x^0),\quad S(S(S(x^0)))=S^3(x^0), \ldots
+        \end{equation*}
+        donde $x^0\in[0,1]$  en los  tiempos $1,2,3,\ldots$
+    \end{dfn}
+    Se presenta las gráficas de la trayectorias para los valores $x^0=\pi/10$ y $x^1=\pi/10+0.001$. 
+\end{frame}
+
+\begin{frame}
+\begin{figure}
+    \begin{center}
+    \includegraphics{tesis.2}\\
+    \includegraphics{tesis.3}
+        \begin{picture}(0,0)
+        \end{picture}
+    \end{center}
+    \caption{(Arriba) La trayectoria de $S(x)$ con condición inicial $x^0=\pi/10$.
+     (Abajo) Trayectoria de $S(x)$ con condición inicial $x^1=\pi/10+0.001$ }
+     \label{OClogistica}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+Se calcula la norma 2, osea
+$$||x^0-x^1||=\sqrt{\sum^{n}_{i=0}{x^0(i)-x^1(i)}}=35,909$$
+Por otro lado, considerando el histograma de frecuencia
+\begin{table}
+    \begin{tabular}{cc}
+          \includegraphics[width=35mm]{Fig4.jpeg}
+          &
+          \includegraphics[width=35mm]{Fig5.jpeg}
+    \end{tabular}
+    \caption{ (Izquierda) Histograma de frecuencia para $S(x^0)$ con $x^0=\pi/2$.(Derecha)
+     Histograma de frecuencia para $S(x^0)$ con $x^0=\pi/2+0.001$.}
+    \label{histograma}
+\end{table}
+\end{frame}
+
+\subsection{El Operador de Perron-Frobenius}
+
+\begin{frame}
+    \begin{block}{El Operador de Perron-Frobenius}{
+        $$\int_A{\Pm f(x)\mu(dx)}=\int_{S^{-1}(A)}{f(x)\mu(dx)} \qquad para \; A\in\A$$}
+    \end{block} 
+    \pause
+    \begin{pro} Sea $S\cir$ una una transformación real diferenciable e invertible, con derivada continua y creciente
+    entonces el operador de Perron-Frobenius se expresa como:
+        \begin{equation}\label{perron}
+             \Pm f(x)=f(S^{-1})\Big|\frac{d}{dx}[S^{-1}(x)]\Big|
+        \end{equation}
+    \end{pro}
+\end{frame}
+
+\begin{frame}
+    Invirtiendo la transfomación logistica $x=\frac{2\mp 2\sqrt{(1-y)}}{4}$ nos queda:
+    $$\Pm f(x)F=\frac{1}{4\sqrt{1-x}}\Bigg\{f\Bigg(\frac{1}{2}-\frac{1}{2}\sqrt{1-x}\Bigg)+f\Bigg(\frac{1}{2}+\frac{1}{2}\sqrt{1-x}\Bigg)\Bigg\}$$
+    \pause
+    Supongamos que $f(x)=1$ para $x\in [0,1]$
+    $$\Pm f(x)=\frac{1}{2\sqrt{1-x}}$$
+    \pause
+    Se calcula nuevamente $\Pm$  con el valor de $\Pm f$
+    $$\Pm^2 f(x)=\frac{\sqrt{2}}{8\sqrt{1-x}}\Bigg\{\frac{1}{\sqrt{1+\sqrt{1-x}}}+\frac{1}{\sqrt{1-\sqrt{1-x}}}\Bigg\}$$
+\end{frame}
+
+\begin{frame}
+    Se puede mostra que para este ejemplo en especifico la sucesión de orbitas converge a una densidad limite dada por:
+    $$f_*(x)=\frac{1}{\pi \sqrt{x(1-x)}}$$
+    \pause
+    \begin{figure}
+        \begin{center}
+            \includegraphics[angle=-90,scale=0.2]{log2}
+        \end{center}
+        \caption{Gráfica $f_*(x)=\frac{1}{\pi \sqrt{x(1-x)}}$. Se observa como la función predice la probabilidad empírica 
+        conseguída en los histogramas \ref{histograma}}
+        \label{Glimite}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    $$||\Pm f||\leq ||f||$$
+    A esta propiedad se le conoce con el nombre de contractiva. Se ilustra la importancia de la propiedad
+    $$ |\Pm^{n+1}f||=||\Pm(\Pm^{n}f)||\leq||\Pm^{n}f|| $$
+    Graficando la inecuación
+    \pause
+    \begin{figure}
+        \begin{center}
+            \includegraphics{tesis.7}
+            \put(-90,80){$\Pm^{n+2} f$}
+            \put(-70,97){$\Pm^{n+1} f$}
+            \put(-50,112){$\Pm^{n}  f$}
+    \end{center}
+    \end{figure}
+\end{frame}
+
+\section{Estudio el Caos con Densidades}
+\subsection{Transformaciones Invariante}
+
+\begin{frame}
+    \begin{dfn}[Puntos fijos] Son los puntos $x$ que cumple
+        \begin{equation*}
+            T(x)=x
+        \end{equation*}
+    \end{dfn}
+    \pause
+    \begin{teo} Sea $(\X,\A,\mu)$ un espacio de medida, $S:\X\cir$ una transformación no singular, y $\Pm$ el operador 
+    de Perron-Frobenius asociado con $S$.
+    Considere $f\in L^1$ entonces $\mu_f$ una medida dada por
+    \begin{equation}
+    \mu_f=\int_A{f(x)\mu(dx)}\label{c3n0}
+    \end{equation}
+    Es invariante si y solo si es un punto fijo de $\Pm$
+    \end{teo}
+\end{frame}
+
+\subsection{Transformaciones Ergódicas}
+
+\begin{frame}
+    \begin{dfn}[Transformaciones Ergódicas] Si para cada conjunto invariante $A\in\A$ se cumple $\mu(A)=0$ o $\mu(\X\backslash\A)$
+    \end{dfn}
+    Si $S$ es ergódica se dice que todos los conjuntos invariantes son subconjuntos \emph{triviales} de $\X$.
+    \begin{teo} Sea $(\X,\A,\mu)$ un espacio de medida y $S:\X\cir$ una transfomación no singular. S es ergodico si y solo si, para cada
+    función medible $f:\X\rightarrow\R$,
+    \pause
+    \begin{equation}
+        f(S(x))=f(x)\qquad \text{para casi todos los }x\in\X
+    \end{equation}
+    Implica que f es constante $\cs$
+    \end{teo}
+\end{frame}
+
+\subsection{Transformaciones Mezclantes y Exactas}
+
+\begin{frame}
+    \begin{dfn}[Transformación Mezclante] Si $S$ cumple que
+    \begin{equation}
+    \limi_{n\rightarrow\infty}{\mu(A\cap S^{-n}(B))}=\mu(A)\mu(B)\qquad \text{para todo} A,B\in\A
+    \end{equation}
+    Siendo $(\X,\A,\R)$ es un espacio de medida probabilidad, y $S:\X\cir$ una transformación que preserva la medida.
+    \end{dfn}
+    \pause
+    \begin{dfn}[Transformación Exactas] Si $S$ cumple que
+    \begin{equation}
+    \limi_{n\rightarrow\infty}{\mu(S^n(A))}=1 \qquad \hbox{para cada $A\in\A, \mu(A)>0$}
+    \end{equation}
+    Siendo $(\X,\A,\R)$ es un espacio de medida probabilidad, y $S:\X\cir$ una transformación que preserva la medida.
+    \end{dfn}
+\end{frame}
+
+
+\begin{frame}
+La transformación $S(x,y)=(\sqrt{2}+x,\sqrt{3}+y)\quad (mod\; 1)$
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=.4875\textwidth, height=0.75\textwidth,scale=0.15]{erg}
+    \end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+La transformación $S(x,y)=(x+y,x+2y)\quad (mod \;1)$ 
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=.4875\textwidth, height=.75\textwidth,scale=0.15]{mix}
+    \end{center}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+La transformación $S(x,y)=(3x+y,x+3y)\quad (mod \;1)$
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=.4875\textwidth, height=0.75\textwidth,scale=0.15]{exa}
+   \end{center}
+\end{figure}
+\end{frame}
+
+\section{Existencia de Medidas Invariantes}
+
+\subsection{Preliminares}
+
+\begin{frame}
+\begin{dfn}[Variación acotada,$s_n(f)$]  Se define como
+    $s_n(f)=\sum^n_{i=1}{|f(x_i)-f(x_{i-1})|}$
+    Siendo f una función real definida en el intervalo $\tri\subset\R$ y sea $[a,b]$ un subintervalo de
+    $\tri$. Así mismo, considerando la partición de $[a,b]$ dada por $a=x_0<x_1<\ldots<x_n=b$
+    En donde todas las posibles sumas $s_n(f)$, corresponden a todas la divisiones de $[a,b]$, son acotadas por
+     un número que no depende de la subdivisión.
+    \end{dfn}
+    \pause
+    \begin{dfn}[Variación Total,$\bigvee f(x)$]\label{variacionTotal} Se define como
+    $$\bigvee_a^b{f}=\sup{s_n(f)}$$
+    donde el supremo se toma sobre todas la posibles particiones
+\end{dfn}
+\end{frame}
+
+\begin{frame}
+    \begin{block}{La Variación de la Suma}
+    $$\bigvee_a^b{(f_1+\ldots+f_n)}\leq\bigvee_a^b{f_1}+\ldots+\bigvee_a^b{f_n}$$
+    \end{block}
+    \pause
+    \begin{block}{Variación sobre la union de intervalo}
+    $$\bigvee_{a_0}^{a_1}{f}+\ldots+\bigvee_{a_{n-1}}^{a_n}{f}=\bigvee_{a_0}^{a_n}{f}$$
+    \end{block}
+    \pause
+    \begin{block}{Variación de la composición de funciones}
+    $$s_n(f\circ g)\leq \bigvee_a^b{f}$$
+    \end{block}
+\end{frame}    
+\begin{frame}
+    \begin{block}{Variación del Producto}
+    $$\bigvee_a^b{g}\leq\int_a^b{|g'(x)|dx}$$
+    \end{block}
+    \pause
+    \begin{block}{Desigualdad de Yorke}
+    $$\bigvee_0^1{f\car_{[a,b]}}\leq 2\bigvee_a^b{f}+\frac{2}{b-a}\int_a^b{|f(x)|dx}$$
+    \end{block}
+    \pause
+    \begin{dfn}[Funciones a trozos $\C^2$,$\tau$] Si existe una partición $0=a_0<a_1<...<a_p=1$ del intervalo unitario para cada entero $i=1,\ldots,p$
+    que verifique los $\tau_i$ de $\tau$ para el intervalo abierto $(a_{i-1},a_i)$ es una función $C^2$. La función $\tau$ no tiene que ser continua
+    en los puntos $a_i$
+    \end{dfn}
+\end{frame} 
+ 
+\begin{frame}
+    \begin{lem} Si $f\in C^1[a,b]$ con $|f'(x)|>0$, entonces f es mon\'otona sobre $[a,b]$.
+    \end{lem}\label{lema01}
+    \pause
+    \begin{lem}Sea $f$ un funci\'on diferenciable uno a uno, y sea $g=f^1$. Si $|f'|\geq\alpha$ entonces $|g'|\leq\frac{1}{\alpha}$
+    \end{lem}\label{lema05}
+    \pause
+    \begin{lem} Si $\bigvee_0^1{f}\leq a$ y $||f||\leq b$, donde $||f||=\int_0^1{|f|}$ entonces $|f(x)|\leq a+b$ $\forall x$
+    \end{lem}\label{lema07}
+\end{frame}
+
+\begin{frame}
+    \begin{dfn}[Clausura,$\ov{E}$] Si $\ov{E}=\{x\in\X:\forall B(x,\epsilon)\cap E\neq\emptyset\}$
+    \end{dfn}
+    Equivalentemente la clausura se puede definir mediante $\ov{E}=E\cup E'$ donde $E'$ es el conjunto 
+    de los puntos de acumulaci\'on de E. Tambi\'en, es la intersecci\'on de todos los conjuntos cerrados que contienen a E.
+    \pause
+    \begin{dfn}[Totalmente acotado]  Si  $\forall \epsilon>0,\; \exists x_1,x_2,\ldots,x_n \in \X$ tal que
+    $\cup^n_{i=1}{B(x_i,\epsilon)}\supseteq\X$ siendo $(\X,d)$ un espacio m\'etrico.
+    \end{dfn}
+\end{frame}
+
+\begin{frame}
+    \begin{dfn}[Relativamente compacto] Si toda sucesi\'on de elementos de S tiene una subsucesi\'on que converge en X.
+    Siendo $S$ un subconjunto de un espacio topol\'ogico $\X$
+    \end{dfn}
+    Para espacios métricos tenemos definici\'on equivalente. A es relativamente compacto si y solo si su clausura es un compacto
+    \pause
+    \begin{dfn}[Envolvente Convexa, co(A)] Es el conjunto de todas las combinaciones convexas de elementos de A, es decir, el conjunto de todas las sumas
+    $\sum^n_{i=1}{t_ix_i}$ donde $x_i\in A,\; t_i\geq 0,\; \sum{t_i}=1$ para un $n$ arbitrario.
+    \end{dfn}
+\end{frame}
+
+\subsection{Teoremas Importantes}
+\begin{frame}
+    \begin{teo}[Helly] Sea$\Fe$ una colecci\'on infinita de de funciones de variaci\'on acotada en un intervalo $[a,b]$
+    y supongamos que existe $K>0$ tal que
+    $$|f(x)|\leq K\quad \bigvee_{[a,b]}{f}\leq K\quad \forall f\in \Fe$$
+    entonces existe una sucesi\'on $\{f_n\}\subset\Fe$ que converge a todo punto $x\in[a,b]$ a una funci\'on $f_*$ de variaci\'on acotada,
+    tal que $\bigvee_{[a,b]}{f_*}\leq K$
+    \end{teo}
+    \pause
+    \begin{teo}[Mazur] Sea $\X$ un espacio de banach con $A\subset\X$ es un compacto relativo, entonces $\ov{co}(A)$ es compacto.
+    \end{teo}
+\end{frame}
+
+\begin{frame}
+    Los promedios se define como:
+    $$A_n f=\frac{1}{n}\sum_{k=0}^{n-1}{\Pm f}\qquad f\in L^1$$
+    \pause
+    \begin{teo}[Kakatani-Yosida] Sea $(\X,\A,\mu)$ un espacio de medida y $\Pm:\X\cir$ un operador de Markov. Si para una funcion dada $f\in L^1$
+    la sucesión $\{A_ f\}$ es débilmente precompacta, entonces esta converge fuertemente para algún  $f_*\in L^1$ que es un
+    punto fijo de $\Pm$, a saber, $\Pm f_*=f_*$. Adicionalmente, si $f\in D$, entonces$f_*\in D$, de modo que $f_*$ es una
+    densidad estacionaria.
+    \end{teo}
+\end{frame}
+
+\subsection{Lasota-Yorke}
+
+\begin{frame}
+    \begin{teo} Sea $\tau:[0,1]\cir$ una función a trozos de clase $C^2$ tal que $\infi{|\tau'|}>1$.
+    Entonces para cualquier $f\in L^1$ la sucesión $\frac{1}{n}\sum_{k=0}^{n-1}{\Pm^k_\tau f}$
+    es convergente en norma a la función $f^*\in L^1$. El límite de la función cumple las siguientes propiedades:
+    \begin{enumerate}
+        \item<1-> $f\geq 0\Rightarrow f^*\geq 0$
+        \item<2-> $\int_0^1{f^*dm}=\int_0^1{f dm}$
+        \item<3-> $\Pm_\tau f^*=f^*$ y en consecuencia la medida $d\mu^*=f^*dm$ es invariante bajo $\tau$.
+        \item<4-> La función $f^*$ es de variación acotada, por otra parte, existe una constante $c$ independiente de la elección
+        inicial de $f$ tal que la variación de el limite $f^*$ satisface la inecuación
+        $$\bigvee_0^1{f^*}\leq c||f||$$
+    \end{enumerate}
+    \end{teo}
+\end{frame}
+
+\begin{frame}
+Notese que  Sea $\phi=\tau^N$ una función $C^2$, por lo tanto se tiene:
+\begin{equation}
+    |\phi'_i(x)|\geq S^N \quad x\in[b_{i-1},b_i],\quad i=1,\ldots,q \label{cinco}
+\end{equation}
+Se calcula el operador de Perron Frobenius para $\phi$. Observe que, para cualquier $x\in [0,1]$
+en $\phi^{-1}([0,x])=\bigcup_{i=1}^q{[b_{i-1},\phi^{-1}_i(x)]}$
+$$\Pm_\phi f(x)=\sum_{i=1}^q{f(\psi_i(x))\sigma_i(x)\car_i(x)}$$
+donde $\psi_i=\phi^{-1}_i$, $\sigma_i(x)=|\psi'_i(x)|$ yla función sobre el intervalo $J_i=\phi_i([b_{i-1},b_i])$.
+\end{frame}
+
+\end{document}

@@ -1,0 +1,42 @@
+\section{Principio de Selecci\'on de Helly}
+
+Antes de enunciar el principio de Helly, se probaran unos lemas que ser\'an utiles en la demostraci\'on del teorema de Lasota-Yoker.
+\begin{lem} Si $f\in C^1[a,b]$ con $|f'(x)|>0$, entonces f es mon\'otona sobre $[a,b]$.
+\end{lem}
+
+\begin{proof}Sea $f\in C^1[a,b] \Rightarrow f'\in C[a,b]$. Por hip\'otesis, $f'\in(-\infty,0)$ o $f'\in(0, \infty)$.
+Y como $f'$ es continua, entonces solo es posible  $f'<0\; \forall x\in[a,b]$ o $f'>0\; \forall x\in[a,b]$, en otra palabra que $f'$ sea mon\'otona.
+\end{proof}
+
+
+\begin{lem}Sea $f$ un funci\'on diferenciable uno a uno, y sea $g=f^1$. Si $|f'|\geq\alpha$ entonces $|g'|\leq\frac{1}{\alpha}$
+\end{lem}
+
+\begin{proof}Sea
+\begin{align*}
+    f(g(x))&=x\\
+    f'(g(x))g'(x)&=1\\
+    |f'(g(x))|&=\frac{1}{g'(x)}\\
+              &\geq\alpha\\
+\intertext{por lo tanto $|g'(x)|\leq\frac{1}{\alpha}$}
+\end{align*}
+\end{proof}
+
+\begin{lem} Si $\bigvee_0^1{f}\leq a$ y $||f||\leq b$, donde $||f||=\int_0^1{|f|}$ entonces $|f(x)|\leq a+b$ $\forall x$ 
+\end{lem}
+
+\begin{proof} Si $||f||\leq b\Rightarrow\exists\alpha$ tal que $|f(\alpha)|\leq b$. Si no, entonces $|f(x)|>b\;\forall x\in[0,1]$ 
+y por lo tanto $\int_0^1{|f|}>\int_0^1{b}=b$ y tenemos una contradici\'on. Por lo tanto $|f(x)-f(\alpha)|\leq \bigvee_0^1{f}\leq a$
+por lo tanto
+$$|f(x)|-|f(\alpha)|\leq a$$
+y $$|f(x)|\leq a+|f(\alpha)$$
+$$|f(x)|\leq a+b$$
+\end{proof}
+
+\begin{teo}[Helly] Sea$\Fe$ una colecci\'on infinita de de funciones de variaci\'on acotada en un intervalo $[a,b]$ 
+y supongamos que existe $K>0$ tal que 
+$$|f(x)|\leq K\quad \bigvee_{[a,b]}{f}\leq K\quad \forall f\in \Fe$$
+entonces existe una sucesi\'on $\{f_n\}\subset\Fe$ que converge a todo punto $x\in[a,b]$ a una funci\'on $f_*$ de variaci\'on acotada,
+ tal que $\bigvee_{[a,b]}{f_*}\leq K$
+\end{teo}
+

@@ -1,0 +1,140 @@
+\section{Integración}
+
+\begin{dfn}[Función Simple, $\phi$] Es una función a valores real $\phi:\X\rightarrow\R$ que sólo toma un número finito de valores.
+\end{dfn}
+
+\begin{dfn}[Representación estándar] Una función simple se puede representar de la siguiente forma
+    $$\phi=\sum^n_{i=1}{a_i \car_{E_i}}$$
+    Donde $a_j\in\R$ y $\car_{E_i}$ es una función características de los conjuntos $E_j$.
+    Los $E_i$ son subconjuntos disjuntos de $\X$ tal que $\X=\cup^n_{j=1}{E_j}$
+\end{dfn}
+
+\begin{obs}Se puede probar que la representación estándar no depende  de los representantes, osea, de la escogencia de los $E_j$
+\end{obs}
+
+\begin{dfn}[Integral de Lebesgue, $\int_\X{f(x)\mu(dx)}$]\label{lebesgue} Se define como
+    $$\int_\X{f(x)\mu(dx)}=\limi_{n\rightarrow\infty}{\int_\X{\phi_n(x)\mu(dx)}}$$
+    Siendo $(\X,\A,\mu)$ un espacio de medida, $f:\X\rightarrow\R$ una función acotada, arbitraria, medible, no-negativa.
+     Una sucesión $\{ \phi_n\}$ de funciones simples que convergen uniformente a $f$.
+\end{dfn}
+
+\begin{obs} Se puede mostrar que el límite en la Definición \eqref{lebesgue}  existe y es independiente de la elección de la sucesiones de funciones
+    simples $\{ \phi_n \}$ que convergen uniformemente a $f$.
+\end{obs}
+
+\begin{dfn}[Integral de Lebesgue, $\int_\X{f(x)\mu(dx)}$] Se define como
+    $$\int_\X{f(x)\mu(dx)}=\limi_{M\rightarrow\infty}{\int_\X{f_M(x)\mu(dx)}}$$
+    Siendo $(\X,\A,\mu)$ un espacio de medida, $f:\X\rightarrow\R$ una función acotada,  medible, no-negativa definida de la siguiente forma
+\end{dfn}
+
+\begin{obs} Note como $\int_\X{f(x)\mu(dx)}$ es una función creciente de $M$ de modo que el límite en la definición
+    siempre existe aunque podría ser infinito.
+\end{obs}
+
+\begin{dfn}[La integral de Lebesgue General] Se define como
+ $$\int_\X{f(x)\mu(dx)}= \int_\X{f^+(x)\mu(dx)}- \int_\X{f^-(x)\mu(dx)}$$
+\end{dfn}
+
+\begin{dfn}[Función Integrable] Si los términos ambos
+    $$\int_\X{f^+(x)\mu(dx)} \qquad \int_\X{f^-(x)\mu(dx)}$$
+    Son finitos
+\end{dfn}
+
+\begin{obs} Todas las definiciones de integrales están definidas sobre el espacio $\X$ entero. Para $A\in\A$ se tiene, la siguiente definición
+    $$ \int_\A{f(x)\mu(dx)}= \int_\X{f(x)\car_A(x)\mu(dx)}$$
+\end{obs}
+
+\paragraph{Propiedades de la integral de Lebesgue} Se asume $(\X,\A,\mu)$  el espacio de medida.
+\begin{itemize}
+    \item Si $f,g:\X\rightarrow\R$ son medible, g es integrable y $|f(x)|\leq g(x)$, entonces $f$ es integrable y
+            \begin{equation}
+                \Big|\int_\X{f(x)\mu(dx)}\Big|\leq\int_\X{g(x)\mu(dx)} \label{L1}
+            \end{equation}
+    \item Si $f$ es una función medible
+            \begin{equation}
+                \int_\X{|f(x)|\mu(dx)}=0 si y solo si f(x)=0 \cs \label{L2}	
+            \end{equation}
+
+    \item Sea $f:\X\rightarrow\R$ una función integrable y los conjuntos $A_i\in\A, \;  i=1,2,\ldots,$ disjuntos. Si $A=\cup_i{A_i}$, entonces
+            \begin{equation}
+                \int_\X{[\lambda_1 f_1(x)+\lambda_2 f_2(x)]\mu(dx)}=\int_\X{\lambda_1 f_1(x)\mu(dx)}+\int_\X{\lambda_2 f_2(x)\mu(dx)} \label{L3}
+            \end{equation}
+
+    \item Si $f_1,f_2: \rightarrow\R$ son funciones integrables y$\lambda_1,\lambda_2$ , entonces
+          Sea  $f,g: \rightarrow\R$ son funciones medibles y una sucesión $f_n:\X\rightarrow\R$ de funciones medibles
+          tal que $| f_n(x)|\leq g(x)$  con $f_n(x)\rightarrow f(x)\cs$. Si $g$ es integrable, entonces $f$ y $f_n$ son también integrable y
+            \begin{equation}
+                \limi_{n\rightarrow\infty}{\int_\X{f_n(x)\mu(dx)}}=\int_\X{f(x)\mu(dx)}
+            \end{equation}
+                A esta propiedad se le conoce como el Teorema de Convergencia Dominada.
+
+    \item Sea $f:\X\rightarrow\R$ una función integrable y los conjuntos $A_i\in\A$ con $i=1,2,\ldots$ disjuntos. Si $A=\cup_i{A_i}$ entonces
+            \begin{equation}
+                \sum_i\int_{A_i}{f(x)\mu(dx)}=\int_A{f(x)\mu(dx)}
+            \end{equation}
+
+    \item  Sea  $f: \rightarrow\R$ son funciones medibles y una sucesión $f_n:\X\rightarrow\R$ de funciones medibles tal que
+           $0\leq f_1(x)\leq f f_2\ldots$  con $f_n(x)\rightarrow f(x)\cs$. Entonces $f$ y $f_n$ son también integrable y
+            \begin{equation}
+                \limi_{n\rightarrow\infty}{\int_\X{f_n(x)\mu(dx)}}=\int_\X{f(x)\mu(dx)}
+            \end{equation}
+            A esta propiedad se le conoce como el Teorema de Convergencia Monótona.
+\end{itemize}
+
+\begin{obs} Notese que $f$  es integrable si y solo si $|f|$ es integrable. Esto se puede apreciar fácilmente viendo que $|f|=\int_\X f ^+\mu(dx)+\int_\X f^-\mu(dx)$. Si $f$ es integrable entonces $f^+$ y $f^-$ también es finito.
+\end{obs}
+
+\begin{obs} La integral de Lebesgue está dada en varios pasos. Para cada función integrable $f$ se existe una sucesión de funciones simples
+$$f_n(x)=\sum_i{\lambda_{i,n}\car_{A_{i,n}}(x)}$$
+tal que
+$$\limi_{n\rightarrow\infty}{f_n}=f(x)\qquad \cs \qquad |f_n(x)|\leq |f(x)|$$
+Asi, por el Teorema de Convergencia Dominada, tenemos que
+$$\limi_{n\rightarrow\infty}\int_X{f_n(x)\mu(dx)}=\int_X{f(x)\mu(dx)}$$
+Por lo tanto, usualmente para simplificar la prueba se verifican para funciones simples y luego se para al límite para extenderlo a toda las funciones.
+\end{obs}
+
+\begin{obs}La noción de la integral de Lebesgue es muy importante debido que solo requiere de la definición de un
+espacio de medida $(\X,\A,\mu)$  sin la necesidad de introducir alguna otra estructura. En cálculo la definición de
+la integral de Riemann está íntimamente relacionada con propiedades algebraicas  de la recta real. Es fácil establece
+una conexión entre la integral de Lebesgue y la integral de Riemann. Por ejemplo, si se define $\mu$ como en el ejemplo
+\ref{borel}  entonces
+$$\int_{[a,b]}{f(x)\mu(dx)}=\int^b_a{f(x)dx}$$
+Donde la primera es una la integral de Lebesgue y la segunda es la integral de Riemann. Esta igualdad es cierta para
+cualquier función $f$ Riemman integrable la cual es automáticamente una Lebesgue integrable. Una análogo para dimensiones
+superiores también es cierto.
+\end{obs}
+
+\section{Derivación}
+
+A partir de las propiedades de Lebesgue es fácil probar que si $f:\X\rightarrow\R$ es una no negativa función integrable
+entonces $\mu_f(A)$, definido por
+$$\mu_f(A)=\int_A{f(x)\mu(dx)}$$
+Es una medida.De hecho, por la definición de la integral de Lebesgue claro que $\mu_f(A)$ es no negativo y finita,
+usando la propiedad L5 es también aditiva. Además,  de L2 si $\mu(A)=0$ entonces
+$$\mu_f(A)=\int_A{\car_A(x)f(x)\mu(dx)}=0$$
+Por lo tanto$ \car_A(x)f(x)=0\;\cs$. Asi mismo $\mu_f(A)$ satisface todas las propiedades de la medida y $\mu_f(A)=0$
+donde sea $\mu(A)=0$. Cada función integrable no negativa  define una medida finita puede invertirse las hipótesis. Eso es
+garantizado por el siguiente teorema.
+
+\begin{teo}[Radon-Nikodym] Sea $(\X,\A,\R)$ un espacio de medida y sea $v$ una segunda medida finita con la propiedad que $\nu(A)$
+     para todo $A\in\A$ tal que $\mu(A)=0$. Entonces existe una función no negativa integrable $f:\X\rightarrow\R$ tal que
+     $$\nu(A)=\int_A{f(x)\mu(dx)}\qquad \forall A\in\A$$
+\end{teo}
+
+El teorema de Radon-Nikodym será fundamental en el estudio del operador de Perron-Forbenius.
+
+\begin{col} Si $(\X,\A,\mu)$ es un espacio de medida y $\nu$ es una medida finita sobre $\A$ tal que $\nu(\A)=0$
+(mmmm no se) $\mu(A)=0$, entonces existe un unico elemento $f\in L^1$ tal que:
+$$\nu(A)=\int_A{f(x)\mu(dx)}\qquad para \; A\in\A$$
+\end{col}
+
+\begin{dfn}[Absolutamente continua,$\mu_f$] Sea la densidad
+$$\mu_f=\int {f(x)\mu(dx)} \hbox{para } A \in \A$$
+donde $f\in D(\X,\A,\mu)$ . En este caso $f$ es llamada la densidad de $\mu_ f(A)$
+\end{dfn}
+
+\begin{obs}Si $f$ es integrable si y solo si |f(x) | es integrable.
+\end{obs}
+
+
+\input{medida/lp/lp}

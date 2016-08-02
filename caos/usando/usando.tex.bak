@@ -1,0 +1,105 @@
+\section{Taxonomía de las Transformaciones}
+
+Los conceptos desarrollados en las secciones previas para clasificar varios niveles de irregularidad en el comportamiento
+están escritos en términos de comportamiento de sucesiones de conjuntos. La pruebas de ergodicidad, mezclante o exacta
+usando las definiciones son difíciles. En efecto los ejemplos presentados hasta ahora ilustran estos conceptos, no son rigurosas pruebas.
+
+En esta sección se reformulará los conceptos de ergodicidad, mezclante y exacta en término del comportamiento de
+sucesiones de iteraciones de los operadores de Perron-Forbenius y Koopman. Para mostrar cómo pueden ser usadas para
+determinar si una transformación $S$ junto con una medida invariante es ergódica, mezclante o exacta. Se requerirá
+nociones sobre convergencia Cesaro, Débil y Fuerte.
+
+\begin{teo}Sea $(\X,\A,\R)$ una espacio de medida, $S:\X\cir$ una medida que preserva la transformación y P el
+    operador de Perron-Frobenius correspondiente a S. Entonces:
+    \begin{description}
+        \item[La transfomación $S$ es ergódica] si y solo si la sucesión converge Cesaro a 1 para todo $f\in D$.
+        \item[La transfomación $S$ es mezclante] si y solo si la sucesión converge débilmente a 1 para todo $f\in D$.
+        \item[La transfomación $S$  es exacto] si y solo si la sucesión converge fuertemente  a 1 para todo $f\in D$.
+    \end{description}
+\end{teo}
+
+\subparagraph{Observación} Note que como el operador $\Pm$ es lineal, la convergencia de la sucesión $\{\Pm^n f\}$ a 1 para
+    $f\in D$ es equivalente a la convergencia de $\{\Pm^n f\}$ a $<f,1>$ para cada $f\in L^1$. Esta observación es
+    validad para todos los tipos de convergencia: Cesaro, Débil, Fuerte. Por lo tanto,se reescribe el teorema.
+
+\begin{teo}Sea $(\X,\A,\R)$ una espacio de medida, $S:\X\cir$ una medida que preserva la transformación y $\Pm$
+    el operador de Perron-Frobenius correspondiente a S. Entonces:
+    \begin{description}
+        \item[La transfomación $S$ es ergódica] si y solo si
+        $$\limi_{n\rightarrow\infty}{\frac{1}{n}\sum_{k=0}^{n-1}{<\Pm^k f,g>=<f,1><1,g>}}\qquad f\in L^1,g\in L^\infty$$
+        \item[La transfomación $S$ es mezclante] si y solo si
+        $$\limi_{n\rightarrow\infty}{<\Pm^k f,g>=<f,1><1,g>}\qquad f\in L^1,g\in L^\infty$$
+        \item[La transfomación $S$  es exacto] si y solo si
+        $$\limi_{n\rightarrow\infty}{||\Pm^k f -<f,1>||>=0}\qquad f\in L^1$$
+    \end{description}
+\end{teo}
+
+\begin{proof} Se probará unicamente la condición de mezclante. Se asume la condición de
+transformación $S$ mezclante entonces por definición
+\begin{align*}
+    \limi_{n\rightarrow\infty}\mu(A\cap S^{B})&=\mu(A)\mu(B)  \\
+\intertext{Reescribiendola en su forma integral}
+    \limi_{n\rightarrow\infty}\int_\X\car_A(x)\car_B(x)(S^n(x))\mu(dx)&=\int_X\car_A(x)\mu(dx)\int_X\car_B(x)\mu(dx)\\
+\intertext{Aplicando la definición del operador de Koopman}
+    \limi_{n\rightarrow\infty}\int_\X\car_A(x)U^n\car_B(x)\mu(dx)&=\int_X\car_A(x)\mu(dx)\int_X\car_B(x)\mu(dx)\\
+\intertext{Aplicando la defunción de producto escalar}
+    \limi_{n\rightarrow\infty}<\car_A,U^n\car_B>&=<\car_A,1><1,\car_B>\\
+\intertext{Usando la propiedad REFE el operador de Perron-Frobenius es adjunto del operador de Koopman}
+    \limi_{n\rightarrow\infty}<\Pm^n \car_A,\car_B>&=<\car_A,1><1,\car_B>\\
+\intertext{Con lo que queda demostrado para $f=\car_A$ y $g=\car_B$.}
+\end{align*}
+
+Supongamos que $\tilde{A}=\cup_{i=1}^n{A_i}$, $\tilde{B}=\cup_{j=1}^m{B_j}$ y $\nu(A_i)=\lambda_k\delta_{ki}\mu(A_i)$
+donde $\delta_{ik}$ es la delta de kronecker. Nótese que $\nu$ define una medida; supongase que S es mezclante, en consecuencia.
+
+\begin{align*}
+    \limi_{n\rightarrow\infty}\nu(\tilde{A}\cap S^{-1}(\tilde{B}))
+     &=\limi_{n\rightarrow\infty}\nu(\cup_{i=1}^l{A_i}\cap S^{-1}(\cup_{j=1}^m{B_j})) \\
+\intertext{Sustituyendo la definición de $\nu$}
+     &=\limi_{n\rightarrow\infty}\lambda_h\delta_{hi}\lambda_k\delta_{kj}\sum_{i=1}^l{\sum_{j=1}^m{\mu(A_i\cap S^{-1}(B_j))}} \\
+\intertext{Propiedades de la medida}
+     &=\limi_{n\rightarrow\infty}\sum_{i=1}^l{\sum_{j=1}^m{\lambda_h\delta_{hi}\lambda_k\delta_{kj}\mu(A_i\cap S{-1}(B_j))}}\\
+\intertext{Por linealidad}
+     &=\limi_{n\rightarrow\infty}\sum_{i=1}^l{\sum_{j=1}^m{\lambda_i\lambda_j\mu(A_i\cap S{-1}(B_j))}} \\
+\intertext{Evaluando las deltas de kronecker}
+     &=\limi_{n\rightarrow\infty}\sum_{i=1}^l{\sum_{j=1}^m{\lambda_i\lambda_j\int_X{\car_{A_i}(x)\car_{B_j}(x)(S^n(x))\mu(dx)}}}\\
+     &=\limi_{n\rightarrow\infty}\int_\X{\sum_{i=1}^l{\car_{A_i}(x)}\sum_{j=1}^m{U^n \car_{B_j}(x)\mu(dx)}}\\
+     &=\limi_{n\rightarrow\infty}<\sum_{i=1}^l{\lambda_i\car_{A_i}(x)},\sum_{j=1}^m{U^n\lambda_j \car_{B_j}(x)}>\\
+     &=\limi_{n\rightarrow\infty}<\sum_{i=1}^l{\Pm^n\lambda_i\car_{A_i}(x)},\sum_{j=1}^m{\lambda_j\car_{B_j}(x)}>\\
+\intertext{Por otro lado, como $\nu$ es mezclante se tiene}
+ \nu(A)\nu(B)&=\nu(\cup_{i=1}^l{A_i})\nu(\cup_{j=1}^m{B_j})  \\
+             &=\lambda_h\delta_{hi}\sum_{i=1}^l{\mu(A_i)}\lambda_k\delta_{kj}\sum_{j=1}^m{\mu(B_j)}\\
+             &=\sum_{i=1}^l{\lambda_i\mu(A_i)}\sum_{j=1}^m{\lambda_j\mu(B_j)}\\
+             &=\sum_{i=1}^l{\lambda_i\int_\X\car_A(x)\mu(dx)}\sum_{j=1}^m{\lambda_j\int_X{\car_B(x)\mu(dx)}}\\
+             &=\int_\X{\sum_{i=1}^l{\lambda_i\car_A(x)\mu(dx)}}\int_\X{\sum_{j=1}^m{\lambda_j\car_B(x)\mu(dx)}}\\
+             &=<\sum_{i=1}^l{\lambda_i\car_{A_i}},1><1,\sum_{j=1}^m{\lambda_j\car_{B_i}}>
+\end{align*}
+Y por lo tanto se cumple para funciones simples. Adicionalmente, para cada $g\in L\infty$ es convergente a un limite de funciones simples en 
+$g_k\in\infty$ y para cada función $f\in L^1$ tiene convergencia fuertemente a la sucesión de funciones simples $f_h\in L^1$. Se tiene la siguiente relación
+\begin{align*}
+|<\Pm^n f, g>-<f,1><1,g>|&\leq|<\Pm f,g>-<\Pm^n f_k,g_k>|\\
+                         &+|<\Pm^n f_k,g_k>-<f_k,1><1,g_k>|\\
+                         &+|<f_k,1><1,g_k>-<f,1><1,g>|   
+\end{align*}  
+
+Si $||f_k-f||\leq\epsilon$ y $||g_k-g||\leq\epsilon$ entonces se satisface 
+\begin{align*}
+|<\Pm f,g>-<\Pm^n f_k,g_k>|&\leq|<\Pm^n f,g>-<\Pm^n f_k,g>|\\
+                           &+|<\Pm^n f_k,g>-<\Pm^n f_k,g_k>|\\
+                           &\leq\epsilon ||g||_{L^\infty}+\epsilon||f_k||\\
+                           &\leq\epsilon(||g||_{L^\infty}+||f||+\epsilon)
+\end{align*}
+
+Se forma analoga se prueba 
+
+$$|<f_k,1><1,g_k>-<f,1><1,g>|\leq\epsilon(||g||_{L\infty}+||f||+\epsilon)$$
+
+Como estos términos son arbitrariamente pequeños para $\epsilon$. Finalmente, el término
+
+$$|<\Pm^n f_k,g_k>-<f_k,1><1,g_k>|$$ 
+
+Converge a cero para $n\rightarrow\infty$. Esto completa la prueba de que es mezclante implica $<\Pm^n f,g>$ a $<f,1><1,g>$ para todo 
+$f\in L^1$ y $g\in L^\infty$. La implicación opuesta se demuestra tomando el conjunto $f=\car_A$ y $g=\car_B$.
+
+\end{proof}
+

@@ -1,0 +1,169 @@
+\section{Funciones de Variación Acotada}
+
+\begin{dfn}[Valor medio de $f$, $m(f)$] Se define como
+$$m(f)=\frac{1}{b-a}\int^b_a{f(x)dx}$$
+De una función $f:[a,b]\rightarrow\R$ real.
+\end{dfn}
+
+\begin{dfn}[Varianza, $D^2(f)$] Se define como
+$$D^2(f)=m\Big((f-m(f))^2\Big)$$
+\end{dfn}
+
+%Ahora analicemos los inconvenientes de las definiciones precedentes. Considérese una sucesión %de funciones
+%$\{ f_n\}$ definida como $f_n(x)=\sin{2n\pi x}\quad n=1,2,\ldots$.
+
+\begin{dfn}[Variación acotada,$s_n(f)$]  Se define como
+    \begin{equation}
+        s_n(f)=\sum^n_{i=1}{|f(x_i)-f(x_{i-1})|}
+    \end{equation}
+    Siendo f una función real definida en el intervalo $\tri\subset\R$ y sea $[a,b]$ un subintervalo de
+    $\tri$. Así mismo, considerando la partición de $[a,b]$ dada por
+    \begin{equation}
+        a=x_0<x_1<\ldots<x_n=b
+    \end{equation}
+    En donde todas las posibles sumas $s_n(f)$, corresponden a todas la divisiones de $[a,b]$, son acotadas por
+     un número que no depende de la subdivisión.
+\end{dfn}
+
+\begin{dfn}[Variación Total,$\bigvee f(x)$]\label{variacionTotal} Se define como
+    \begin{equation}
+        \bigvee_a^b{f}=\sup{s_n(f)}
+    \end{equation}
+    donde el supremo se toma sobre todas la posibles particiones de la forma
+\end{dfn}
+
+\begin{ejm}Se asume que $f$ es una función monotona, osea, creciente o decreciente. Entonces
+$$|f(x_i)-f(x_{i-1})|=\theta[f(x_i)-f(x_{i-1})]$$
+donde
+\begin{equation*}
+    \theta=\begin{cases}
+                1 & \text{para $f$ creciente.}\\
+               -1 & \text{para $f$ decreciente.}
+           \end{cases}
+\end{equation*}
+    y, en consecuencia
+    \begin{align*}
+    s_n(f)&=\sum_{i=1}^n\theta[f(x_i)-f(x_{i-1})]\\
+          &=\theta\sum_{i=1}^n[f(x_i)-f(x_{i-1})]\\
+          &=\theta[f(x_n)-f(x_0)]\\
+          &=|f(b)-f(a)|
+    \end{align*}
+    por lo tanto, cualquier función se define y monótona en un intervalo cerrado es de variación acotada.
+\end{ejm}
+
+\paragraph{La Variación de la Suma}
+
+Sea $f$ y $g$ sea una variación acotada sobre $[a,b]$. Entonces
+
+\begin{align*}
+    s_n(f+g)&=\sum_{i=1}^n{{|f(x_i)+g(x_i)-[f(x_{i-1})+g(x_{i-1})]|}}                  \\
+            &=\sum_{i=1}^n{|[f(x_i)-f(x_{i-1})]+[g(x_i)+g(x_{i-1})]|}                  \\
+            &\leq\sum_{i=1}^n{\leq |f(x_i)-f(x_{i-1})|}+\sum_{i=1}^n{|g(x_i)-g(x_{i-1})|}  \\
+            &  = s_n(f)+s_n(g)                                           \\
+            &\leq \bigvee_a^b{f}+\bigvee_a^b{g}
+\intertext{Y, en consecuencia}
+\bigvee_a^b{(f+g)}&\leq\bigvee_a^b{f}+\bigvee_a^b{g}
+\intertext{Si $f_1,\ldots,f_n$ es una variacion acotada sobre $[a,b]$, entonces por inducción argumento}
+\end{align*}
+\begin{equation}
+    \bigvee_a^b{(f_1+\ldots+f_n)}\leq\bigvee_a^b{f_1}+\ldots+\bigvee_a^b{f_n}
+\end{equation}
+de deduce inmediatamente.
+\paragraph{Variación sobre la union de intervalo.}Se asume que $a<b<c$ y que la función $f$ es una variación
+acotada sobre $[a,b]$ como también sobre $[b,c]$. Considere un porción de los intervalos
+$[a,b]$ y $[b,c]$.
+\begin{equation}
+    a=x_0<x_1<\ldots<x_n=b=y_0<y_1<\ldots<y_m=c
+\end{equation}
+y las correspodientes sumas
+
+$$\substack{s_n\\ [a,b]}(f)=\sum_{i=1}^n{|f(x_i)-f(x_{i-1})|}$$
+$$\substack{s_n\\ [b,c]}(f)=\sum_{i=1}^m{|f(y_i)-f(y_{i-1})|}$$
+
+Es evidente que la unión de la partición del intervalo de $[a,b]$. Entonces
+
+\begin{equation}
+    \substack{s_n\\ [a,b]}(f)+\substack{s_n\\ [b,c]}(f)=\substack{s_n\\ [a,c]}(f)
+\end{equation}
+
+Donde la parte del lado derecho de denota la suma correspondiente a la variación de $f$ sobre
+$[a,b]$. Observe que esta partición contiene un punto adicional, a saber b. Sin embargo, cualquier punto adicional
+en la suma $s_n$ sólo puede aumentar $s_n$, ya que estamos interesados en el supremo, esto es irrelevante.
+De la ecuación, se tiene
+
+$$\bigvee_a^b{f}+\bigvee_b^c{f}=\bigvee_a^c{f}$$
+
+Nuevamente usando inducción sobre el argumento en la última fórmula se tiene
+
+\begin{equation}
+    \bigvee_{a_0}^{a_1}{f}+\ldots+\bigvee_{a_{n-1}}^{a_n}{f}=\bigvee_{a_0}^{a_n}{f}
+\end{equation}
+
+donde $a_0<a_1<\ldots<a_n$ y $f$ es una variación acotada sobre $[a_{i-1},a_i],\; i=1,\ldots,n$
+
+\paragraph{Variación de la composición de funciones} Sea $g:[\alpha,\beta]\rightarrow[a,b]$ es monotoma
+creciente o monotoma decreciente sobre el intervalo $[\alpha,\beta]$ y sea $f:[a,b]\rightarrow\R$
+ una función dada. La composición $f\circ g$ esta bien definidad  para cualquier partición de $[\alpha, \beta]$
+\begin{equation}
+    \alpha=\sigma_0<\sigma_1<\ldots<\sigma_n=\beta
+\end{equation}
+la correspiente suma es
+
+$$s_n(f\circ g)=\sum_{i=1}^n{|f(g(\sigma_i))-f(g(\sigma_i))|}$$
+
+Observe que, debido a la monotonía de $g$, la puntos $g(\sigma)$ definen una partición de $[a, b]$. Así
+$s_n (f \circ g)$ es una suma determinada por la variación de $f$ y, por lo tanto,
+
+$$s_n(f\circ g)\leq \bigvee_a^b{f}$$
+
+para cualquier partición. Consecuencia,
+
+\begin{equation}
+    \bigvee_\alpha^\beta{f\circ g}\leq\bigvee_a^b{f}.
+\end{equation}
+
+\paragraph{Variación del Producto}Sea $f$ una variación acotada sobre $[a,b]$ y sea la función $g$ de clase $C^1$ sobre $[a,b]$. Entonces,
+
+\begin{align*}
+    s_n(fg)&=\sum_{i=1}^n{|f(x_i)g(x_i)-f(x_{i-1})g(x_{i-1})|} \\
+           &=\sum_{i=1}^n{|f(x_i)g(x_i)-f(x_{i-1})g(x_{i-1})+f(x_i)g(x_{i-1})-f(x_i)g(x_{i-1})|}\\
+           &=\sum_{i=1}^n{|f(x_i)g(x_i)-f(x_{i-1})g(x_{i-1})+f(x_{i-1})g(x_i)-f(x_{i-1})g(x_i)|}\\
+           &=\sum_{i=1}^n{|g(x_i)\big(f(x_i)-f(x_{i-1})\big)+f(x_{i-1})\big(g(x_i)-g(x_{i-1})\big)|}\\
+           &=\sum_{i=1}^n{|g(x_i)||f(x_i)-f(x_{i-1})|+|f(x_{i-1})||g(x_i)-g(x_{i-1}|}\\
+\intertext{Aplicando el teorema del valor medio, se tiene}
+           &\leq(\sup|g|)s_n(f)+\sum_{i=1}^n{|f(x_{i-1})g'(\tilde{x}_i)|(x_i-x_{i-1})} \\
+           &\leq(\sup|g|)\bigvee_a^b f+\sum_{i=1}^n{|f(x_{i-1})g'(\tilde{x}_i)|(x_i-x_{i-1})}
+\end{align*}
+
+Con $\tilde{x}_i\in(x_{i-1}-x_i)$. Observe que el último término que se suma es una aproximación de la integral de Riemann del producto $|f(x)g'(x)|$. Así, la variación del producto $f(x)g(x)$ viene dada por la expresión
+\begin{equation}
+    \bigvee_a^b{fg}\leq(\sup|g|)\bigvee_a^b{f}+\int_a^b{|f(x)g'(x)|dx}
+\end{equation}
+
+En particular si $f=1$,
+
+\begin{equation}
+    \bigvee_a^b{g}\leq\int_a^b{|g'(x)|dx}
+\end{equation}
+
+Sin embargo, en el caso de $s_n$  entonces la igualdad es estricta  a la integral de Riemann de la integral de $g'$.
+
+\paragraph{Desigualdad de Yorke} Sea $f$ definido en $[0,1]$ y sea de variación acotada en $[a,b]\subset [0,1]$.
+Se quiere evaluar la variación del producto de $f$ y la función característica $\car_[a,b]$. Sin pérdida  de
+generalidad, se asume que la partición del intervalo  $[0,1]$ siempre contiene los puntos $a$ y $b$. Entonces
+\begin{align}
+\substack{s_n\\ [0,1]}(f_n\car_{[a,b]})&\leq \substack{s_n\\ [a,b]}(f)+|f(a)|+|f(b)|\label{yorke1}\\
+\intertext{Sea $c$ un arbitrario punto en $[a,b]$. Entonces, de la inecuación anterior}
+                                       &= \substack{s_n\\ [a,b]}(f)+|\big(f(b)-f(c)\big)+f(c)|+|\big(f(c)+f(a)\big)-f(c)|\nonumber\\
+                                       &\leq \substack{s_n\\ [a,b]}(f)+|f(b)-f(c)|+|f(c)-f(a)|+2|f(c)|\nonumber\\
+                                       &\leq 2\bigvee_a^b{f}+2|f(c)|\nonumber\\
+\intertext{Siempre es posible elegir un punto $c$ tal que}
+|f(c)|&\leq \frac{1}{b-a}\int_a^b{|f(x)|dx}\nonumber\\
+\intertext{De modo que}
+\substack{s_n\\ [a,b]}(f_n\car_{[a,b]})&\leq 2\bigvee_a^b{f}+\frac{2}{b-a}\int_a^b{|f(x)|dx}\nonumber
+\end{align}
+Entonces queda
+\begin{equation}
+    \bigvee_0^1{f\car_{[a,b]}}\leq 2\bigvee_a^b{f}+\frac{2}{b-a}\int_a^b{|f(x)|dx}
+\end{equation}
+\newpage

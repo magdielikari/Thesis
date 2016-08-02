@@ -1,0 +1,138 @@
+\section{Transformaciones Ergódicas}
+
+Que el operador de Frobenius-Perron $\Pm$ asociado a $S$ tenga una órbita estacionaria. O equivalentemente, Que una transformación $S$ tenga una medida invariante, no implica que $S$ tenga propiedades estadísticas interesantes. Por ejemplo, si $S$ es la identidad sobre $\X$, ósea, $S(x)=x$ para todo $x\in \X$ entonces
+
+Para todo $A\subset\X$, y, en consecuencia, $\Pm f=f$ para todo $f\in L^1$. Y claramente, estas transformación no es interesante.
+Sin embargo, si se mantiene para un subconjunto A de  $\X$, entonces la transfomación puede ser estudiada separadamente sobre los conjuntos A o su complemento. Considerando las orbitas de $x^0$ la ecuación implica que los elementos de A son mapeados en sí mismo y que ningún elemento del complemento son mapeados en A. Un conjunto invariante que cumpla la condición anterior  necesariamente modulo cero,  motiva la siguiente definición.
+
+\begin{dfn}[Transformaciones Ergódicas] Si para cada conjunto invariante $A\in\A$ se cumple $\mu(A)=0$ o $\mu(\X\backslash\A)$
+\end{dfn}
+
+\subparagraph{Observación} Si $S$ es ergódica se dice que todos los conjuntos invariantes son subconjuntos \emph{triviales} de $\X$.
+
+\begin{teo} Sea $(\X,\A,\mu)$ un espacio de medida y $S:\X\cir$ una transfomación no singular. S es ergodico si y solo si, para cada
+función medible $f:\X\rightarrow\R$,
+    \begin{equation}
+        f(S(x))=f(x)\qquad \text{para casi todos los }x\in\X
+    \end{equation}
+Implica que f es constante $\cs$
+\end{teo}
+
+\begin{proof} Probemos que ergodicidad implica $f$ es constante. Se asume que $f$ no es una función contante. Sea un numero real $r$ tal que
+$r\in[a,b]$ donde $a$ y $b$ son el minimo y maximo de $S$. Entonces, existe algun r tal que
+$$A=\{ x:f(x)\leq r\}\quad\text{y}\quad B=\{x:f(x)>\}$$
+que tiene medida positiva. Observese que $\X=A\cup B$ y que los conjuntos son invariantes debido a
+    \begin{align*}
+        S^{A}&=\{x:S(x)\in A\}\\
+             &=\{x:f(S(x))\leq r\}\\
+             &=\{x:f(x)\leq r\}\\
+             &=A\\
+         \intertext{De modo similar para B}
+         S^{B}&=\{x:S(x)\in B\}\\
+             &=\{x:f(S(x))> r\}\\
+             &=\{x:f(x)> r\}\\
+             &=B\\
+    \end{align*}
+    Como los conjuntos $A$ y $B$ son invariantes y tiene medida positiva ambos conjuntos, $S$ no es ergódico. Por lo tanto se tiene una contradición
+    derivada de suponer que $f$ no es constante.
+    Se probara la implicación inversa. Se asume que S no es ergódico, por lo tanto debe de existir un conjunto no-trivial que sea invariante. Siendo $f=\car_A$ y como A es no-trivial entonces f no es un función constante. Sin embargo, como $A=S^{-1}(A)$ se tiene
+    \begin{align*}
+        f(S(x))&=1_A(S(x))\\
+               &=\begin{cases}
+                    1 & \text{si $A\in S(x)$}\\
+                    0 & \text{si no}
+                 \end{cases}\\
+               &=\begin{cases}
+                    1 & \text{si $S^{-1}(A)\in x$}\\
+                    0 & \text{si no}
+                 \end{cases}\\
+               &=1_{S^{-1}(A)}(x)\\
+               &=1_A(x)\\
+               &=f(x)\;\cs
+    \end{align*}
+\end{proof}
+
+\begin{teo} Sea $(\X,\A,\mu)$ un espacio de medida, $S:\cir$ una transformación no sigunlar y $\Pm$ el operador de Perron-Frobenius asociado a $S$.
+Si $S$ es ergódico, entonces existe a lo sumo una densidad estacionaria $f_*$ de $\Pm$ y $f_*(x)>0\;\cs$ entonces $S$ es ergódico. Adicionalmente,
+Si existe una unica densidad estacionaria $f_*$ de $\Pm$ y $f(x)>0\;\cs$ entonces $S$ es ergodico.
+\end{teo}
+
+\begin{proof} Asuminos que $S$ es ergódico y que $f_1$ y $f_2$ son 2 diferentes densidades estacionaria de $\Pm$. Si $g=f_1-f_2$ entonces
+por la linealidad de $\Pm$ se tiene $\Pm g=g$. Por lo tanto, el teorema \ref{teopro} $g^+$ y $g^-$ ambas son densidades estacionarias de $\Pm$
+    \begin{equation}
+        \Pm g^+=g^+\qquad y \qquad \Pm g^-=g^-\label{elteopro}
+    \end{equation}
+  Por hipótesis, $f_1$ y $f_2$ no solo son diferentes también son densidades por lo tanto
+  $$g^+\neq 0\quad y \quad g^-\neq 0$$
+  Los conjuntos
+  $$A=\so g^+=\{x:g^+(x)>0\}$$
+  y
+  $$B=\so g^+=\{x:g^-(x)>0\}$$
+  Dado que $A$ es el soporte de la parte positiva de $g$ y $B$ el soporte de la parte negativa entonces su intercesión es vacía. Por lo tanto, son conjuntos disjuntos y de medida positiva. Por la proposición \eqref{elteopro} se tiene.
+    $$A\subset S^{-1}(A)\qquad y \qquad B\subset S^{-1}(B)$$
+    Como $A$ y $B$ son conjuntos disjuntos entonces $S^{-1}(A)$ y $S^{-1}(B)$ son disjuntos también. Por lo tanto aplicando sucesivamente REFE se tiene
+    $$A\subset S^{-1}(A)\subset S^{-2}(A)\ldots\subset S^{-n}(A)$$
+    Y
+    $$B\subset S^{-1}(B)\subset S^{-2}(B)\ldots\subset S^{-n}(B)$$
+    Entonces, $S^{-n}(A)$ y $S^{-n}(B)$ son disjuntos para todo n. Ahora definimos dos conjuntos como
+    $$\bar{A}=\cap_{n=0}^\infty(S^{-n}(A))\qquad y \qquad \bar{B}=\cap_{n=0}^\infty{S^{-n}(B)}$$
+    Estos dos conjuntos $\bar(A)$ y $\bar(B)$ son disjuntos tambien. Además son invariantes ya que
+    $$S^{-1}(\bar{A})=\cap_{n=0}^\infty(S^{-n}(A))=\cap_{n=1}^\infty{S^{-n}(A)}=\bar{A}$$
+    y
+    $$S^{-1}(\bar{B})=\cap_{n=0}^\infty(S^{-n}(B))=\cap_{n=1}^\infty{S^{-n}(B)}=\bar{B}$$
+    Ni $\bar{A}$ ni $\bar{B}$ son conjuntos de media cero ya que ni $A$ ni $B$ son de media cero. Por lo tanto $\bar{A}$ y $\bar{B}$ son conjuntos no-triviales; contradiciendo la ergodicidad de S. Así la primera parte de teorema queda probada.
+    Se demostrará la segunda porción del teorema, por hipótesis $f_*>0$ es la única densidad que satisface $\Pm f_*=f_*$, pero como S no es ergódico,
+    entonces existe conjuntos no triviales tal que
+    $$S^{-1}(A)=A$$
+    y junto a $\X-A$
+    $$S^{-1}(B)=B$$
+    Con eso dos conjuntos $A$ y $B$ se puede escribir $f_*=\car_A f_*+\car_B f_*$ entonces
+    $$\car_A f_*+\car_B f_*=\Pm(\car_A f_*)+\Pm(\car_B f_*)$$
+    La función $\car_B f_*$ es igual a cero en el conjunto $\X-B=A=S^{-1}(A)$. Entonces, por la proposición \eqref{c2n00} $\Pm(\car_B f_*)$ 
+    es igual a cero en $B=\X-A$. Entonces la igualdad?? implica que
+    $$\car_A f_*=\Pm(\car_A f_*) \quad y\quad \car_B f_*=\Pm(\car_B f_*)$$
+    Así como $f_*$ es positivo en $A$ y en $B$, se puede reemplazar $\car_A f_*$ por $f_A=\car_A/||\car_A f_*||$ y 
+    $\car_B f_*$ por $f_B=\car_A/||\car_B f_*||$ en el último para de ecuaciones obteniendo
+    $$f_A=\Pm(f_A) \quad y\quad f_B*=\Pm(f_B)$$
+    Esto implica que existen dos densidades estacionarias de $\Pm$, contradiciendo la hipótesis por lo tanto si hay una única densidad 
+    estacionaria $f_*$ de $\Pm$ entonces es ergódica.       
+\end{proof}
+
+\begin{teo}[Teorema Birkhoff] Sea $(\X,\A,\mu)$ un espacio de medida, $S:\X\cir$ una tranformación y $f:\X\rightarrow\R$ una función integrable. Si la medida $\mu$ es invariante, entonces existe una función integrable $f^*$ tal que
+    \begin{equation}
+        f^*(x)=\limi_{n\rightarrow\infty}{\frac{1}{n}\sum^{n-1}_{k=0}{f(S^(x))}}\qquad \text{para la mayoría $x\in\X$}\label{c3n3}
+    \end{equation}
+\end{teo}
+
+\begin{teo} Sea $(\X,\A,\mu)$ un espacio de medida finito y $S:\X\cir$ una transformación invariante y ergódica. Entonces, para cualquier $f$,
+el promedio de $f$ sobre la trayectoria es igual al promedio de $f$ sobre todo el espacio casi seguramente. Eso es,
+    \begin{equation}
+        \limi_{n\rightarrow\infty}{\frac{1}{n}\sum_{k=0}^{n-1}{f(S^k(x))}}=\frac{1}{\mu(\X)}\int_\X{f(x)mu(dx)} \quad \cs\label{c3n4}
+    \end{equation}
+\end{teo}
+
+\begin{proof} Del teorema \eqref{c3n3} que dice que $f^*$ es constante casi seguramente. Entonces, se tiene
+\begin{align*}
+    \int_\X{f^*(x)\mu(dx)}&=f^*\int_\X{\mu(dx)}\\
+                          &=f^*\mu(\X)\\
+                          &=\int_\X{f(x)\mu(dx)}
+\end{align*}
+ Despejando
+ $$f^*(x)=\frac{1}{\mu(\X)}\int_\X{f(x)\mu(dx)}\quad \cs$$
+\end{proof}
+
+Una de la consecuencias más citadas de este teorema, se presenta a continuación
+
+\begin{col} Sea $(\X,\A,\mu)$ un espacio de media finito y una medida $S:\X\cir$ invariante y ergódica. Entonces para cualquier conjunto $A\in \A$
+$\mu>0$ y la mayoría de los puntos $x\in\X$ la fracción de los puntos $\{S^k(x)\}$ en $A$ tal que $k\rightarrow\infty$ viene dado por $\mu(A)/\mu(\X)$
+\end{col}\label{colpro}
+
+\begin{proof} Usando la función característica $\car_A$ de A, sobre la fracción de puntos de $\{S^k(x)\}$ en $A$ es
+$$\limi_{n\rightarrow\infty}\sum_{k=0}^{n-1}{\car_A(S^k(x))}$$
+Sin embargo de \eqref{c3n4} esto implica $\mu(A)/\mu(\X)$
+\end{proof}
+
+\begin{obs} El corolario \ref{colpro} traduce que cada conjunto de medida positiva es visitado una infinidad de veces por las iteraciones para casi todos los puntos $x\in\X$. Es un resultado caso especial del \textbf{Teorema de Recurrencia de Poicaré}
+\end{obs}
+
+\input{caos/exactas/exactas}

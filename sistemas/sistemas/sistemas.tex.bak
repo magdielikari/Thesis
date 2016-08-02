@@ -1,0 +1,85 @@
+\appendix
+
+\chapter{Sistema dinamicos discretos}\label{cha:ApeA}
+
+Se asume que el lector está familiarizado con la definiciones básicas de algebra como: grupo, subgrupo, grupo cociente, etc.  La noción de grupos de acción $(\X,\G,\cdot)$ está estrechamente relacionada con los grupos pero difiere en un par de aspectos interesante; primeramente se tiene una ley de composición externa ósea , sobre las que se cumple la asociatividad y el elemento neutro. La definición se asemeja  a la de espacio vectorial pero más general debido a la ausencia de axiomas.
+
+\begin{dfn}[Grupo de acción,  $( \X, \G, \cdot)$] Se dice que el grupo \footnote{Ley de composicion interna, asociativa, con elemento neuto e inverso} $\G$ actúa sobre el conjunto $\X$ si
+   \begin{align*}
+            \text{Para cada } g \in\G\text{ y }x \in\X:&\quad  g\cdot x\in\X \\
+            \forall g_1,g_2\in\G\text{ y }\forall x\in\X :&\quad  g_1\cdot (g_2\cdot x)=(g_1\cdot g_2)\cdot x\\
+            \forall x\in\X /\exists e\in\G :&\quad  e\cdot x=x\cdot e=x
+   \end{align*}
+   Donde viene determinada por $\cdot:\X\times\G\rightarrow\X$
+\end{dfn}
+
+\subparagraph{Observación}Sea $S:\X\rightarrow \X$ función invertible. Se entenderá $\G=\Z$ y $\cdot$ como la composición iterada de $S$
+consigo misma. Por consiguiente;  la propiedades de grupo de acción se pueden reescribir como
+\begin{align*}
+    \text{Para cada } x\in\X:&\quad S^n(x)\in\X \text{  con $n\in\Z$}\\
+    \forall n,m\in\Z\text{ y }\forall x\in\X :&\quad  S^n(S^m(x))=S^{n+m}(x)\\
+    \forall x\in\X /\exists 0\in\Z :&\quad  S^0(x)=id(x)=x
+\end{align*}
+
+
+Resaltando, los sistemas dinámicos están compuestos principalmente por tres objetos:
+
+\begin{description}
+    \item[Espacio de fases, $\X$] cuyos elementos  o ``puntos '' representas los posibles estados del sistema.
+    \item[Tiempo, $\Z$] o ``reloj'' el cual puede ser discreto o continuo; el cual caracteriza la evolución del estado $x$ en el tiempo $j$ osea el estado $x_j$
+    \item[Ley de evolución temporal, $S$] la describe el cambio del estado $x_i$ al estado $x_j$ estado $\forall i\neq j$.
+\end{description}
+
+\begin{ejm} Sea $\G=\Z_4$ y $\X$ los vertices $A,B,C \& D$ de el siguiente cuadrilatero. Gracias a la siguiente Figura (label) es facil darse cuenta que $(\X ,\G)$ es un grupo de acción.
+\begin{figure}
+    \begin{center}
+        \includegraphics{graficas/tesis.6}
+   \end{center}
+\end{figure}
+\end{ejm}
+
+
+
+\begin{dfn}[Sitema dinamico, $(\X,\G,T)$] Sea $X$ un espacio topologico, $\G$ un grupo topologico y $(\X,\G)$ un grupo de accion donde $T:\X\times\G\rightarrow\X$ que cumple %~(\ref{gAccion}) y T continua.
+\end{dfn}
+
+Una órbita es el conjunto de puntos que definen la evolución de un sistema en el espacio de estados a partir de un estado inicial $x_0$.
+
+\begin{dfn}[Órbitas de $x_0$] Sea un endomorfismo $T:X\cir$ se define los siguientes conjuntos:
+    \begin{enumerate}
+        \item (Órbita del futuro de $x_0$, $\Or^+(x_0)$) $\{ T^n(x_0):n\geq 0\}$
+        \item (Órbita del pasado de $x_0$, $\Or^-(x_0)$) $\{ T^n(x_0):n\leq 0\}$. Si T es invertible.
+        \item (Órbita de $x_0$, $\Or(x_0)$) $\{ T^n(x_0):n \in \Z \}$
+    \end{enumerate}
+\end{dfn}
+
+
+
+% Hace falta hacer los dibujos
+%
+
+El tipo de órbita más simple son los \emph{puntos fijos} o \emph{puntos de equilibrio} los cuales son las raíces del la ecuación $T(x)=x$. Por otro lado se puede tener que un punto sea periódico después de cierto tiempo, en ese caso tenemos un \emph{punto eventualmente fijo} .  El tipo de órbita que sigue en complejidad al equilibrio es el ciclo. Un puntos es cíclico o periódico si se aplicará así mismo después de un tiempo $N$, al mínimo $N$ con esta propiedad se le conoce como el periodo. Similarmente un punto es \emph{eventualmente periódico} si después de cierto tiempo se convierte en punto periódico.
+
+\begin{dfn}[Puntos y conjuntos de interés] Son los puntos $p$ que cumple las siguientes condiciones:
+    \begin{enumerate}
+        \item (Puntos fijos) Si
+            \begin{equation}
+                T(p)=p \label{fijo}
+            \end{equation}
+        \begin{itemize}
+            \item (Órbitas fijas, Fix(T)) El conjuto formado por todos los puntos fijos de T
+        \end{itemize}
+        \item (Puntos eventualmente fijos) Si $\exists N>0/T^n(p)=p,\forall n\geq N$.
+        \item (Puntos periódicos) Si $\exists n>0/T^n(p)=p$. El menor entero negativo con esta propiedad se llama el \emph{período primo de p}.
+        \begin{itemize}
+            \item (Órbitas n-periódicas, $Per_n(T)$) Es el conjunto formado por todas las órbitas periódicas de periodo n
+            \item (Órbitas periodicas, $Per(T)$) $\bigcup_{n\geq 1}{Per_n(T)}$
+        \end{itemize}
+        \item (Puntos eventualmente periódicos) Si $\exists N>0/T^N(p)$ es periódico.
+    \end{enumerate}
+\end{dfn}
+
+Es de mayor interés estudiar haces de orbitas particulares. Esto estimula la siguiente definición
+
+\begin{dfn}[Conjuntos invariantes] Un conjunto $(A\subseteq\X)$ es positivamente invariante si $T(A)\subseteq A$ y negativamente invariante si $T^{-1}(A)\subseteq A$ . Un conjunto es invariante si $T(A)=A$.
+\end{dfn}

@@ -1,0 +1,46 @@
+\documentclass{report}
+\input{preambulo}
+\includeonly{intro,medida/medida/medida,markov/markov/markov,caos/caos/caos,sistemas/logistica/logistica,
+sistemas/sistemas/sistemas,teorema/teorema,asintotico/asintotico,portada/portada}
+%,anteproyecto/objectivos,portada/portada}
+
+\begin{document}
+%Anteproyecto
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{portada/portada}
+%\include{anteproyecto/anteproyecto}
+%\include{anteproyecto/objectivos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+\include{intro}
+\include{sistemas/logistica/logistica}
+\include{markov/markov/markov}
+\include{caos/caos/caos}
+\include{asintotico/asintotico}
+\include{teorema/teorema}
+%Apendix
+\include{sistemas/sistemas/sistemas}
+\include{medida/medida/medida}
+
+
+
+\begin{thebibliography}{a}
+\bibitem{Lasota} \textsc{Lasota, A y Yorke, J.A.},
+\textit{"On the existence of invariant measures for piecewise monotonic transformations"}
+Trans. Amer. Math. Soc. 186 (1973) 481-486.  
+
+\bibitem{Michael} \textsc{Lasota, A y Mackey M.C.},
+\textit{"Probabilistic properties of deterministic systems"}
+Cambridge University Press 1985.
+
+\bibitem{Steve} \textsc{Papadakis S},
+\textit{"The existence of absolutely continuous invariant measures for a class of piecewise monotonic transformations"}
+A thesis. Concordia University 1979.
+ 
+\end{thebibliography}
+\end{document}
+
+
+
+

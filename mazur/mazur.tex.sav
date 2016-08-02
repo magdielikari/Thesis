@@ -1,0 +1,40 @@
+\section{Teorema de Mazur} 
+
+\begin{dfn}[Clausura,$\ov{E}$] Si $\ov{E}=\{x\in\X:\forall B(x,\epsilon)\cap E\neq\emptyset\}$
+\end{dfn}
+
+\begin{obs} Equivalentemente la clausura se puede definir mediante $\ov{E}=E\cup E'$ donde $E'$ es el conjunto de los puntos de acumulaci\'on de E.Tambi\'en, es la intersecci\'on de todos los conjuntos cerrados que contienen a E.
+\end{obs}
+
+\begin{dfn}[Totalmente acotado]  Si  $\forall \epsilon>0,\; \exists x_1,x_2,\ldots,x_n \in \X$ tal que
+$\cup^n_{i=1}{B(x_i,\epsilon)}\supseteq\X$ siendo $(\X,d)$ un espacio m\'etrico.
+\end{dfn}
+
+\begin{obs} Se cumple que todo espacio totalmente acotado es tambi\'en acotado. Adem\'as, todo compacto es totalmente acotado. 
+Esta propiedad es \'util precisamente para demostrar compacidad, pues se tiene que existe equivalencia entre ser compacto
+y ser totalmente acotado y completo.
+\end{obs}
+
+De hecho, para muchas demostraciones es precisamente \'esta caracterizaci\'on de compacidad la que se utiliza.
+
+\begin{dfn}[Relativamente compacto] Si toda sucesi\'on de elementos de S tiene una subsucesi\'on que converge en X.
+ Siendo $S$ un subconjunto de un espacio topol\'ogico $\X$
+\end{dfn}
+
+\begin{obs} Para espacios metricos tenemos definici\'on equivalente. A es relativamente compacto si y solo si su clausura es un compacto 
+\end{obs}
+
+\begin{dfn}[Envolvente Convexa, co(A)] Es el conjunto de todas las combinaciones convexas de elementos de A, es decir, el conjunto de todas las sumas
+$\sum^n_{i=1}{t_in_i}$ donde $x_i\in A,\; t_i\geq 0,\; \sum{t_i}=1$ para un $n$ arbitrario.
+\end{dfn}
+
+\begin{teo}[Mazur] Sea $\X$ un espacio de banach con $A\subset\X$ es un compacto relativo, entonces $\ov{co}(A)$ es compacto.
+\end{teo}
+
+\begin{proof} Por la definici\'on de espacio Banach, $\ov{co}(A)$ es completo asi que $co(A)\subset\X$. Por consiguiente, solo queda probar 
+que $co(A)$ es totalmente acotada.
+
+
+\end{proof}
+
+ \newpage 

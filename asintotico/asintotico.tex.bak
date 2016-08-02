@@ -1,0 +1,169 @@
+\chapter{Resultados Preliminares}
+
+%En el capítulo anterior se dedicó a examinar los grados de "caótica" la conducta (ergodicidad, mezcla y exactitud)
+%que preservan medida de las transformaciones puede mostrar. En particular, hemos visto la utilidad de la koopman y
+%operadores de Frobenius-Perron para responder a estas preguntas.
+
+%Teorem REFE reducido el problema de encontrar una medida invariante a una de hallar soluciones a la ecuación f Pm = f.
+%Tal vez la más obvia, aunque no el más simple, manera de encontrar estas soluciones es tomar un f arbitraria y examinar la secuencia
+%{p} de sucesivas iteraciones de f por parte del operador de Frobenius-Perron. si {p} converge a f *, entonces es claro que {} = {}
+%converge al mismo tiempo para f * y * Pf y ya está. Sin embargo, para probar que {Pf} converge débilmente (o muy) a una función f * es dificil.
+
+%En este capítulo examinaremos en primer lugar la convergencia de la sucesión {AF} de promedios definidos por
+
+%y mostrar cómo esto puede ser usado para demostrar la existencia de una densidad estacionaria de P. A continuación, muestran que bajo
+%condiciones certin {Pf} puede mostrar una propiedad nueva, a saber, la periodicidad asintótica. Por último, se introduce el concepto
+%de estabilidad asintótica para los operadores de Markov, que es una generalización de exactnes de Perron-Frobenius operadores. que la
+%muestran como la tecnica función de límite inferior se puede utilizar de demostrar estabilidad asintótica. esta técnica es el uso en
+%todo el resto del libro
+
+\input{acotada/acotada}
+\input{helly/helly}
+\input{mazur/mazur}
+
+\section{Teorema de Kakutani-Yosida}
+
+En esta sección se revisará algunas propiedades resaltantes de los promedios definidos como
+\begin{equation}
+A_n f=\frac{1}{n}\sum_{k=0}^{n-1}{\Pm f}\qquad f\in L^1
+\end{equation}
+Se asume que un espacio de medida $(\X,\A,\mu)$ y operador $\Pm:L^1\cir$ de Markov.
+\begin{pro} Para todo $f\in L^1$
+\begin{equation}
+\limi_{n\rightarrow\infty}||A_nf-A_n\Pm f||=0\label{c4n1}
+\end{equation}
+\end{pro}
+
+\begin{proof} Por definición del promedio $A_n f$ se tiene
+\begin{align*}
+    A_n f- A_n\Pm f   &=\Big(\frac{1}{n}\Big)\Big(\sum_{k=0}^{n-1}{\Pm f}-\sum_{k=0}^{n-1}{\Pm \Pm^{k_n}} f\Big)\\
+                      &=\Big(\frac{1}{n}\Big)\sum_{k=0}^{n-1}{\Pm}(f -\Pm^{n} f)\\
+\intertext{y por lo tanto}
+    ||A_n f-A_n\Pm f||&=||\Big(\frac{1}{n}\Big)\sum_{k=0}^{n-1}{\Pm}(f -\Pm^{n} f)||\\
+\intertext{es una proposición Markov elemental tal que $||\Pm^n f||\leq ||f||$ se tiene}
+                      &\leq\Big(\frac{1}{n}\Big)||(f -\Pm^{n} f)||\\
+                      &\leq \Big(\frac{1}{n}\Big)(||f||+||\Pm^n f||)\\
+\intertext{usando nuevamente la propiedad contractiva}
+    ||A_n f -A_n\Pm f||&\leq\Big(\frac{2}{n}\Big)||f||\rightarrow 0
+\intertext{cuando $n\rightarrow\infty$, esto completa la prueba.}
+\end{align*}
+
+\end{proof}
+
+Este resultado y el próximo resultado son casos especiales del teorema de teorema abstracto Kakutani-Yosida. Aunque antes
+se debe presentar la siguiente definición dual de convergencia en precompacto.
+
+\begin{dfn} El conjunto $\Fe$ es llamado fuertemente o débilmente precompacto si cada sucesión de funciones
+$\{f_n\},\;f_n\in\Fe$, contiene una subsecesión convergente fuertemente o débilmente $\{f_{\alpha_n}\}$ que converge a un
+ $\overline{f}\in L^p$
+\end{dfn}
+
+\begin{pro} Si para $f\in L^1$ existe una subsucesión  $\{A_{\alpha_n}f\}$ de la sucesión $\{A_n f\}$ que converge
+débilmente a $f_*\in L^1$, entonces $\Pm f_*=f_*$
+\end{pro}\label{c4n2}
+
+\begin{proof} Como $\Pm A_{a_n}f=A_{a_n}\Pm f$ entonces $\{A_{a_n}\Pm f\}$ converge débilmente a $\Pm f_*$.
+Entonces $\{A_{a_n}\Pm f\}$ entonces tiene al mismo limite $\{A_{a_n}f\}$, Se tiene $\Pm f_*=f_*$
+\end{proof}
+
+\begin{teo}[Kakatani-Yosida] Sea $(\X,\A,\mu)$ un espacio de medida y $\Pm:\X\cir$ un operador de Markov. Si para una funcion dada $f\in L^1$
+la sucesión $\{A_ f\}$ es débilmente precompacta, entonces esta converge fuertemente para algún  $f_*\in L^1$ que es un
+punto fijo de $\Pm$, a saber, $\Pm f_*=f_*$. Adicionalmente, si $f\in D$, entonces$f_*\in D$, de modo que $f_*$ es una
+densidad estacionaria.
+\end{teo}
+
+\begin{proof} Como $\{A_n f\}$ es debilmente precompacto, por hipótesis, entonces una subsucesión $\{A_{n_k} f\}$ que converge débilmente
+a algun $f_*\in L^1$. Ademas, por la proposición ?? se tiene que $\Pm f_*=f_*$
+ 
+Se escribe $f\in L^1$ en la siguiente forma
+\begin{align}
+    f&=(f-f_*)+f_*\label{c4n3}\\
+\intertext{Para un tiempo inicial se tiene que  para cualquie $\epsilon>0$ la función $f-f_*$ puede ser escrita en la siguiente forma}
+    f-f_*&=\Pm g-g+r\label{c4n4}\\
+\intertext{donde $g\in L^1$ y $||r||<\epsilon$. Asi de las ecuaciones \eqref{c4n3} y \eqref{c4n4} se tiene}
+    A_n f&=A_n(\Pm g-g)+A_n r+A_n f_*\nonumber\\
+\intertext{Como $\Pm f_*=f_*$, $A_n f_*=f_*$ se obtiene}
+     ||A_n f-f_*||&=||A_n(f-f_*)||\nonumber\\
+                  &\leq||A_n(\Pm g-g)||+||A_n r||\nonumber\\
+\intertext{Por la proposición \eqref{c4n1} se sabe que $||A_n(\Pm g-g)$ converge fuertemente a cero cuando n tiende a infinito
+por hipótesis $||A_n r||\leq||r||<\epsilon$. Entonces para un $n$ lo suficientemente largo se tiene}
+    ||A_n f-f_*||&\leq\epsilon\nonumber
+\end{align*}
+ya que $\epsilon$ es arbitrario, esto prueba que $\{A_n f\}$ converge fuertemente a $f_*$
+
+Esto muestra que $f\in D$, entonces $f_*\in D$. Por efinicion $f\in D$ es $f\geq 0$ y $||f||=1$, entonces $\Pm f\geq 0$ y $||\Pm f||=1$
+y por lo tanto $\Pm^n f \geq 0 y ||\Pm^n f||=1$. Por consecuencia $A_n f\geq 0$ y $||A_n f||=1$, como $\{A_n f\}$ converge 
+fuertemente a $f_*$ se debe tener que $f_*\in D$. Se completo la demostraci\'on bajo la hipótesis de que la representaci\'on \eqref{c4n4} 
+siempre es posible para cualquier $\epsilon$. 
+
+Para verificar esta suposicion, se usara la version simplificada del teorema de Hahn-Banach. Supongase que no existe un r tal que 
+la ecuación \eqref{c4n4} sea cierta. En ese caso entonces, $f-f_*\in ov{(P-I)}L^1(\X)$ y entonces, por el teorema de Hahn-Banach, se tiene que existe
+$g_0\infty$ tal que
+\begin{equation}
+<f-f_*,g_0>\neq 0\label{c4n5}
+\end{equation}
+y
+$$<h,g_0>=0\qquad \hbox{para todo $h\in\ov{(P-I)}L^1(\X)$}$$
+en particular
+$$<(\Pm-I)\Pm^j f, g_0>=0$$
+Entonces 
+$$<\Pm^{j+1}f,g_0>=<\Pm^j,g_0>\qquad j=0,1,\ldots$$
+y por inducción se tiene
+$$<\Pm^j f,g_0>=<f,g_0>$$
+y en consecuencias
+$$\frac{1}{n}\sum_{j=0}^{n-1}{<\Pm^j f,g_0>}=\frac{1}{n}\sum_{j=0}^{n-1}{<f,g_0>}=<f,g_0>$$ 
+o
+\begin{equation}
+<A_n f,g_0>=<f,g_0>\label{c4n6}
+\end{equation}
+Como $\{A_{\alpha_n} f\}$ se asumio que converge débilemente a $f_*$, se tiene
+$$\limi_n<A_{\alpha_n} f,g_0>=<f_*,g>$$
+y por \eqref{c4n6}
+$$<f,g_0>=<f_*,g_0>$$
+es equivalente a 
+$$<f-f_*,g_0>=0$$
+Sin embargo, esto contradice \eqref{c4n5} por lo tanto se puede concluir que la representación \eqref{c4n4} es siempre posible.
+\end{proof}
+
+El teorema anterior reduce el problema de la existencia de una densidad estacionaria $f_*$ para el operador
+$\Pm$, es decir, $\Pm f_*=f_*$, Al problema de demostrar la precompacidad débil de la sucesión $\{A_n f\}$.
+En el caso especial del operador $\Pm$ de Perron-Frobenius es suficiente demostrar la existencia de medidas invariantes.
+
+\begin{col}Sea $(\X,\A,\mu)$ un espacio de medida y $\Pm:L^1\cir$ una operador de Markov. Si para algún $f\in D$ existe un $g\in L^1$ tal que
+    \begin{equation}
+        \Pm^n f\leq g
+    \end{equation}
+    Para toda n, entonces existe un $f_* \in D$ tal que $\Pm f_*=f_*$, es decir, $f_*$ es una densidad estacionaria.
+\end{col}
+
+\begin{proof} Por hipótesis, $\Pm^n f\leq g$ entoces
+$$0\leq A_n f=\frac{1}{n}\sum^{n-1}_{k=0}{\Pm^k f}\leq g$$
+y, entonces, $|A_n f|\leq g$. Por el primer criterio de débilmente precompacto, entonces $\{A_n f\}$ es débilmente precompacto. Con
+lo cual se concluye el argumento.
+\end{proof}
+
+\begin{col} ea $(\X,\A,\mu)$ un espacio de medida y $\Pm:L^1\cir$ un operador de Markov. Si para algún $f\in D$ existe $M>0$ y $p>1$ tal que
+    \begin{equation}
+        ||\Pm^n f||_{L^p}\leq M
+    \end{equation}
+    Para todo n, entonces existe un $f_*\in D$ tal que $\Pm f_*=f_*$
+\end{col}
+
+\begin{proof} Se tiene
+    \begin{align*}
+            ||A_n f||_{L^p}&=\big||\frac{1}{n}\sum^{n-1}_{k=0}{\Pm^k f}\big||_{L^p}\\
+                       &\leq\frac{1}{n}\sum^{n-1}_{k=0}{||\Pm^k f||_{L^p}}\\
+                       &\leq\frac{1}{n}(nM)\\
+                       &=M
+    \end{align*}
+    Se tiene  por el segundo criterio de precompacto, $\{A_n f\}$ es débilmente precompacto.
+\end{proof}
+
+%\begin{teo} Sea $(\X,\A,\mu)$ un espacio de medida y $\Pm:L^1\cir$ un operador de Markov junto a la única densidad estacionaria
+%$f_*$. Si $f_*(x)>0$ para todo $x\in\X$, entonces
+%    \begin{equation}
+%        \limi_{n\rightarrow\infty}{A_n f}=f_*\qquad \forall\; f\in D
+%    \end{equation}
+%\end{teo}
+
+

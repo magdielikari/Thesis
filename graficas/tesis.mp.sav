@@ -1,0 +1,237 @@
+beginfig(1)
+    u1:= 1cm;
+    def compute_curve(suffix f)(expr xmin, xmax, xinc) =
+    ( (xmin,f(xmin))
+    for x=xmin+xinc step xinc until xmax:
+      .. (x,f(x))
+    endfor )
+  enddef;
+  vardef f(expr x) = 4*x-4*x*x enddef;
+  path p;
+  p := compute_curve(f, 0, 1.1 , .1) scaled 3u1;
+  draw p withpen pencircle scaled 1bp;
+  drawarrow (0,-u1) -- (0,3.5u1);
+  drawarrow (-u1,0) -- (3.5u1,0);
+  label.bot(decimal(1),(u1,0)*3);
+  label.lrt(decimal(0),(0,0)*u);
+  label.lft(decimal(1),(0,u1)*3);
+endfig;
+
+
+beginfig(2)
+  m:=175;
+  u2:=3cm;
+  v2:=2bp;
+  k:=0.314159265;
+  pair A,B;
+  A:=(0,k*u2);
+  for i=1 upto m:
+    k:=4*k*(1-k);
+    B:=(i*v2,k*u2);
+    draw A--B withpen pencircle scaled 1bp;
+    A:=B;
+  endfor;
+ label.bot(decimal(0),(0,0));
+ label.bot(decimal(100),(v2,0)*100);
+ label.bot(decimal(175),(v2,0)*175);
+endfig;
+
+beginfig(3)
+  m:=175;
+  u3:=3cm;
+  v3:=2bp;
+  k:=0.315159265;
+  pair A,B;
+  A:=(0,k*u3);
+  for i=1 upto m:
+    k:=4*k*(1-k);
+    B:=(i*v3,k*u3);
+    draw A--B withpen pencircle scaled 1bp;
+    A:=B;
+  endfor;
+ label.bot(decimal(0),(0,0));
+ label.bot(decimal(100),(v3,0)*100);
+ label.bot(decimal(175),(v3,0)*175);
+endfig;
+
+beginfig(4)
+  m:=175;
+  u2:=3cm;
+  v2:=2bp;
+  k:=0.7511111;
+  pair A,B;
+  A:=(0,k*u2);
+  for i=1 upto m:
+    k:=4*k*(1-k);
+    B:=(i*v2,k*u2);
+    draw A--B withpen pencircle scaled 1bp;
+    A:=B;
+  endfor;
+ label.bot(decimal(0),(0,0));
+ label.bot(decimal(100),(v2,0)*100);
+ label.bot(decimal(175),(v2,0)*175);
+endfig;
+
+beginfig(5)
+  m:=175;
+  u2:=3cm;
+  v2:=2bp;
+  k:=0.7498889;
+  pair A,B;
+  A:=(0,k*u2);
+  for i=1 upto m:
+    k:=4*k*(1-k);
+    B:=(i*v2,k*u2);
+    draw A--B withpen pencircle scaled 1bp;
+    A:=B;
+  endfor;
+ label.bot(decimal(0),(0,0));
+ label.bot(decimal(100),(v2,0)*100);
+ label.bot(decimal(175),(v2,0)*175);
+endfig;
+
+
+beginfig(6)
+ u:=1cm; u1:=3.5cm; u2:=0.1cm;
+  pair A[];
+  A[0]:=(-u, -u);
+  A[1]:=( u, -u);
+  A[2]:=( u,  u);
+  A[3]:=(-u,  u);
+  draw A[0]--A[1]--A[2]--A[3]--cycle;
+  drawarrow (0,u+u2){left}..{right}(0,u1/2){right}..{left}(0,-u+u1-u2);
+  pair B[];
+  B[0]:=(-u+u1, -u);
+  B[1]:=( u+u1, -u);
+  B[2]:=( u+u1,  u);
+  B[3]:=(-u+u1,  u);
+  draw B[0]--B[1]--B[2]--B[3]--cycle;
+  drawarrow (-u+u1-u2,0){up}..{down}(u1/2,0){down}..{up}(u+u2,0);
+    pair C[];
+  C[0]:=(-u, -u+u1);
+  C[1]:=( u, -u+u1);
+  C[2]:=( u,  u+u1);
+  C[3]:=(-u,  u+u1);
+  draw C[0]--C[1]--C[2]--C[3]--cycle;
+  drawarrow (u+u2,u1){up}..{down}(u1/2,u1){down}..{up}(-u+u1-u2,u1);
+  pair D[];
+  D[0]:=(-u+u1, -u+u1);
+  D[1]:=( u+u1, -u+u1);
+  D[2]:=( u+u1,  u+u1);
+  D[3]:=(-u+u1,  u+u1);
+  draw D[0]--D[1]--D[2]--D[3]--cycle;
+  drawarrow (u1,-u+u1-u2){left}..{right}(u1,u1/2){right}..{left}(u1,u+u2);
+%Importante recordar
+%  ulft urt
+%      #
+%  llft lrt
+  dotlabel.llft("C", C[0]);
+  dotlabel.lrt("D", C[1]);
+  dotlabel.urt("B", C[2]);
+  dotlabel.ulft("A", C[3]);
+  dotlabel.llft("D", D[0]);
+  dotlabel.lrt("B", D[1]);
+  dotlabel.urt("A", D[2]);
+  dotlabel.ulft("C", D[3]);
+  dotlabel.llft("B", B[0]);
+  dotlabel.lrt("A", B[1]);
+  dotlabel.urt("C", B[2]);
+  dotlabel.ulft("D", B[3]);
+  dotlabel.llft("A", A[0]);
+  dotlabel.lrt("C", A[1]);
+  dotlabel.urt("D", A[2]);
+  dotlabel.ulft("B", A[3]);
+endfig;
+
+beginfig(7);
+pair a,b,c,d,l,m,n,o,t,x,y,z;
+u5:=1cm;
+a:=(0u5,3u5);   b:=(4u5,5u5);
+c:=(8u5,3u5);   d:=(4u5,1u5);
+l:=(1u5,3u5); m:=(4u5,4.333u5);
+n:=(7u5,3u5);   o:=(4u5,1.666u5);
+t:=(2u5,3u5);   x:=(4u5,3.666u5);
+y:=(6u5,3u5);   z:=(4u5,2.333u5);
+drawarrow a{up}..{right}b;
+drawarrow b{right}..{down}c;
+drawarrow c{down}..{left}d;
+drawarrow d{left}..{up}a;
+drawarrow l{up}..{right}m;
+drawarrow m{right}..{down}n;
+drawarrow n{down}..{left}o;
+drawarrow o{left}..{up}l;
+drawarrow t{up}..{right}x;
+drawarrow x{right}..{down}y;
+drawarrow y{down}..{left}z;
+drawarrow z{left}..{up}t;
+endfig;
+
+beginfig(8);
+  pair A[],B[];
+  A[0]:=( 0u, 0u);
+  A[1]:=( 3u, 6u);
+  A[2]:=( 5u, 3u);
+  A[3]:=( 8u, 7u);
+  B[0]:=( 0u, -1u);
+  B[1]:=( 3u,5u);
+  B[2]:=( 5u,2u);
+  B[3]:=( 8u,6u);
+  C[0]:=( 0u, -0.5u);
+  C[1]:=( 3u,5.5u);
+  C[2]:=( 5u,2.5u);
+  C[3]:=( 8u,6.5u);
+  draw A[0]--A[1]--A[2]--A[3] withpen pencircle scaled 2bp withcolor .8white;
+  draw B[0]--B[1]--B[2]--B[3] withpen pencircle scaled 2bp withcolor .4white;
+  draw C[0]--C[1]--C[2]--C[3] withpen pencircle scaled 2bp withcolor .6white;
+endfig;
+
+input graph;
+
+beginfig(9)
+ vardef =
+    path p[];
+    p[0]=3.104;
+    p[1]=1.196;
+    p[2]=0.992;
+    p[3]=0.852;
+    p[4]=0.780;
+    p[5]=0.636;
+    p[6]=0.612;
+    p[7]=0.580;
+    p[8]=0.552;
+    p[9]=0.744;
+    p[10]=0.680;
+    p[11]=0.636;
+    p[12]=0.644;
+    p[13]=0.624;
+    p[14]=0.828;
+    p[15]=0.788;
+    p[16]=0.868;
+    p[17]=0.884;
+    p[18]=1.104;
+    p[19]=2.896;
+    for i=0.00 step 1 until 19;
+        path q;
+        q=p[i][0]--p[][]
+    for i=a step inc until b:
+      (i*1cm, f(i)*1cm) ..
+    endfor (b*1cm, f(b)*1cm)
+  enddef;
+
+  vardef trace_rectangles_left (suffix f)(expr a,b,inc) =
+    save i; numeric i;
+    for i=a step inc until b-inc:
+      path p;
+      p = (i,0)--(i+inc,0)--(i+inc,f(i))--(i,f(i))--cycle;
+      p := p scaled 1cm;
+      fill p withcolor .8*white;
+      draw p;
+    endfor;
+  enddef;
+
+  vardef f(expr x) = 2 ** x enddef;
+
+  trace_rectangles_left(f,-2,2,.5);
+  draw trace(f, -2,2,.1);
+  axes;
+endfig;

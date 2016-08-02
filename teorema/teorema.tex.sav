@@ -1,0 +1,386 @@
+ \chapter{Existencia de Medidas Invariantes}
+
+En este capitulo se demostrara el teorema de Lasota-Yorke para lo cual se desarrollaron previos en los capitulos pasado. 
+Adicionalemente se mostrara un contraejemplo que muestra que la hipotesis  $\infi{|\tau'|}>1$ es esencial.
+
+\begin{dfn}[Funciones a trozos $\C^2$,$\tau$] Si existe una partición $0=a_0<a_1<...<a_p=1$ del intervalo unitario para cada entero $i=1,\ldots,p$
+que verifique los $\tau_i$ de $\tau$ para el intervalo abierto $(a_{i-1},a_i)$ es una función $C^2$. La función $\tau$ no tiene que ser continua
+en los puntos $a_i$
+\end{dfn}
+
+Es siguiente Teorema garantiza que para transformaciones de clase $C^2$ que cumplan que a trozos 
+$\infi{|\tau'|}>1$ admiten un medida invariante absolutamente continua
+
+\begin{teo} Sea $\tau:[0,1]\cir$ una función a trozos de clase $C^2$ tal que $\infi{|\tau'|}>1$.
+ Entonces para cualquier $f\in L^1$ la sucesión
+$$\frac{1}{n}\sum_{k=0}^{n-1}{\Pm^k_\tau f}$$
+Es convergente en norma a la función $f^*\in L^1$. El límite de la función cumple las siguientes propiedades:
+\begin{enumerate}
+\item $f\geq 0\Rightarrow$
+\item $\int_0^1{f^*dm}=\int_0^1{f dm}$
+\item $\Pm_\tau f^*=f^*$ y en consecuencia la medida $d\mu^*=f^*dm$ es invariante bajo $\tau$.
+\item La función $f^*$ es de variación acotada, por otra parte, existe una constante $c$ independiente de la elección
+inicial de $f$ tal que la variación de el limite $f^*$ satisface la inecuación
+$$\bigvee_0^1{f^*}\leq c||f||$$
+\end{enumerate}
+\end{teo}
+
+\begin{proof} Sea $s=\infi{|\tau'|}$ y por hipotesis, $s=\infi{|\tau'|}>1$, se puede elegir un entero $N>1$ tal que $s^N>2$.
+ Denotemos la función $\tau_i$ sobre los intervalos abiertos $(a_{i-1},a_i)$ sobre la partición $0=a_0<a_1<a_2<\ldots<a_p=1$.
+ Como el producto de funciones $C^2$ es $C^2$ entonces $\tau^2_i=\tau_i\times\tau_i$ es $C^2$ en $(a_{i-1},a_i)$.
+ Por lo tanto $\tau^2_i$ es una función a trozos.
+ Así mismo, por un argumento análogo al anterior $\tau_i^{N+1}=\tau_i^N\times\tau_i$  es un función a trozos sobre
+ la partición $0=a_0<a_1<a_2<\ldots<a_p=1$. Sea $\phi=\tau^N$ una función $C^2$ a trozos, $b_0,\ldots,b_q$.
+ Como $s$ es el infimo de $\tau'$ y este es mayor que 1, su producto n-esimo es necesariamente el menor de la partición $\phi'_i$
+ debido que la parábola es monotoma creciente para $x\in (1,\ldots\infty)$. Por lo tanto se tiene:
+
+\begin{equation}
+    |\phi'_i(x)|\geq S^N \quad x\in[b_{i-1},b_i],\quad i=1,\ldots,q \label{cinco}
+\end{equation}
+
+Se calcula el operado de Perron Frobenius para $\phi$. Observe que, para cualquier $x\in [0,1]$
+
+$$\phi^{-1}([0,x])=\bigcup_{i=1}^q{[b_{i-1},\phi^{-1}_i(x)]}$$
+
+aplicando la propiedad  REFE del operador de Perron Frobenius se  tiene
+
+\begin{align}
+\Pm_\phi f(x)&=\frac{d}{dx}\int_{\phi^{-1}([0,x])}{f(u)du} \nonumber\\
+        &=\frac{d}{dx}\int_{\cup_{i=1}^q{[b_{i-1},\phi^{-1}_i(x)]}}{f(u)du}\nonumber\\
+        &=\frac{d}{dx}\sum_{i=1}^{q}\int_{b_{i-1}}^{\phi^{-1}_i(x)}{f(u)du}\nonumber\\
+        &=\sum_{i=1}^{q}\frac{d}{dx}\int_{b_{i-1}}^{\phi^{-1}_i(x)}{f(u)du}\nonumber\\
+        &=\sum_{i=1}^{q}{f(\phi_i^{-1})\Big|\Big(\frac{1}{\phi_i(x)}\Big)'\Big|}\car_i(x)\nonumber\\
+        &=\sum_{i=1}^q{f(\psi_i(x))\sigma_i(x)\car_i(x)} \label{seis}
+\end{align}
+
+donde $\psi_i=\phi^{-1}_i$, $\sigma_i(x)=|\psi'_i(x)|$ y $\car_i$ es una función caracteristica de
+la función sobre el intervalo $J_i=\phi_i([b_{i-1},b_i])$. Por el lema ?? se $\phi_i$ es monotoma.
+Invirtiendo la inecuación \eqref{cinco} se tiene que
+
+\begin{equation}
+    |\sigma_i(x)|\leq s^{-N}\quad x\in J_i\quad i=1,\ldots,q\label{siete}
+\end{equation}
+
+$$donde\qquad \car_i(x)\begin{cases}
+		  1 & x\in J_i=\phi_i([b_{i-1},b_i])\\	
+          0 & en\; otro \; sitio
+        \end{cases}$$
+
+Sea $f$ una función de variación acotada sobre $[0,1]$. De \eqref{seis} se tiene
+
+\begin{align}
+\bigvee^1_0{\Pm_\phi f}&=\bigvee^1_0{\sum_{i=1}^q{f(\phi_i(x))\sigma_i(x)\car_i(x)}}&\nonumber\\
+    &=\sum_{i=1}^q{\bigvee^1_0{f(\phi_i(x))\sigma_i(x)\car_i(x)}}&\nonumber\\
+    &\leq\sum_{i=1}^q{\bigvee_{b_{i-1}}^{b_{i}}{(f\circ\psi_i)}\sigma_i}+\sum_{i=1}^q{(|f(b_{i-1})|+|f(b_i)|)\sigma_i}& \hbox{por \eqref{yorke1}}\nonumber\\
+    &\leq \sum_{i=1}^q{\bigvee_{J_i}{(f\circ\psi_i)}\sigma_i}+s^{-N}\sum_{i=1}^q{(|f(b_{i-1})|+|f(b_i)|)}&\label{ocho}
+\end{align}
+
+Observe que la ecuación anterior se cumple por \eqref{siete}. Evaluando el primer término de \eqref{ocho}
+
+\begin{align*}
+\bigvee_{J_i}{(f\circ\psi_i)\sigma_i} &=\sup \sum_{J_i}{\Big|(f\circ\psi_i)\sigma_i\Big|}&\hbox{definición \eqref{variacionTotal}}\\
+                                      &=\int_{J_i}{|d((f\circ\psi_i)\sigma_i)|}& \hbox{definión REFE}\\
+                                      &\leq \int_{J_i}{|f\circ\psi_i||\sigma'_i|dm+\int_{J_i}{\sigma_i|d(f\circ\psi_i)|}}&\hbox{diferenciando}\\
+                                      &\leq K\int_{J_i}|f\circ\psi_i|\sigma_i dm+s^{-N}\int_{J_i}{|d(f\circ\psi_i)|}&\hbox{por \eqref{siete}}
+\end{align*}
+
+donde $K=\max{|\sigma'_i|/\mini{(\sigma_i)}}$. Haciendo el cambio de variables
+
+\begin{align}
+\bigvee_{J_i}{(f\circ\psi_i)\sigma_i}&\leq K\int_{b_{i-1}}^{b_i}{|f|dm}+s^{-N}\int^{b_i}_{b_{i-1}}{|df|}\nonumber\\
+                                     &\leq K||f||+s^{-N}\int^{b_i}_{b_{i-1}}{|df|}\label{nueve}
+\end{align}
+
+Evaluando el segundo termino de \eqref{ocho}. Sea un c arbitrario entre $[b_{i-1},b_{i}]$
+
+\begin{align}
+|f(b_{i-1})|+|f(b_i)|&=|f(b_{i-1})-f(c)+f(c)|+|f(b_i)-f(c)+f(c)|&\nonumber\\
+                     &=|f(b_{i-1})-f(c)|+|f(b_i)-f(c)|+2|f(c)|&\hbox{por \eqref{variacionTotal}}\nonumber\\
+                     &\leq\bigvee^{b_i}_{b_{i-1}}{f+2d_i}& \label{diez}
+\end{align}
+
+donde $d_i=\infi{\{|f(x)|:x\in[b_{i-1},b_i]\}}$. Por otra parte, se tiene la siguiente inecuación
+
+\begin{align}
+d_i&=d_i(b_{i+1}-b_i)\\  \nonumber
+   &=d_i\int^{b_{i+1}}_{b_i}{dx}\\  \nonumber
+   &\leq h^{-1}\int^{b_i}_{b_{i-1}}{|f|dm}\label{once}
+\end{align}
+
+donde $h=\mini_i{(b_i-b_{i-1})}$. De \eqref{diez}, \eqref{once} se tiene
+
+\begin{equation}
+\sum^{q}_{i=1}{(|f(b_{i-1})|+|f(b_i)|)}\leq\bigvee_0^1{f}+2h^{-1}||f||\label{doce}
+\end{equation}
+
+Sustituyendo \eqref{doce} y \eqref{nueve} en \eqref{ocho} se obtiene $\bigvee_0^1{\Pm_\phi f}\leq\alpha||f||+\beta\bigvee_0^1{f}$
+donde $\alpha=(K+2h^{-1})$ y $\beta=2s^{-N}<1$.
+
+Ahora, para la misma función $f$, sea $f_k=\Pm^k_\tau f$.Ya que $\Pm^N_\tau=\Pm_\phi$ se tiene
+
+\begin{align*}
+\bigvee_0^1{f_{Nk}}&\leq a||f_{N(k-1)}||+\beta\bigvee_0^1{f_{N(k-1)}}&\\
+                   &\leq \alpha||f||+\beta\bigvee_0^1{f_{N(k-1)}}& \hbox{por contración}
+\end{align*}
+
+para la misma $f$, sea $f_k=\Pm_\tau^k f$. Entonces
+\begin{align*}
+f_{Nk}&=\Pm_\tau^{Nk}f\\
+      &=\Pm_\tau^N\Pm_\tau^{N(k-1)}f\\
+      &=\Pm_\phi f_{N(k-1)}
+\end{align*}
+
+por lo tanto
+\begin{align*}
+\bigvee_0^1{f_{Nk}}&=\bigvee_0^1{\Pm_\phi f_{N(k-1)}}\\
+                   &=\alpha||f_{N(k-1)}||+\beta\bigvee_0^1{f_{N(k-1)}}\\
+\intertext{por contración de operador de Perron-Frobenius}
+                   &\leq\alpha||f||+\beta\Big(\alpha||f||+\beta\bigvee_0^1{f_{N(k-2)}}\Big)\\
+                   \vdots\qquad\vdots\qquad\vdots
+                   &\sum_{n=0}^{k-1}{\alpha\beta^n||f||}+\beta^k\bigvee_0^1{f_0}
+\end{align*}
+ 
+y en consecuencia, tomado a $f_0=f$ se tiene
+
+\begin{equation}
+\limi_{k\rightarrow\infty}\sup{\bigvee_0^1{f_{Nk}}}\leq \alpha(1-\beta)^{-1}||f||\label{trece}
+\end{equation}
+
+esta ultima ecuación y con $||f_k||\leq||f||$ por el lema ?? se tiene que $\forall k$
+
+$$|f_{Nk}(x)|\leq\frac{\alpha||\alpha||}{1-\beta}+||f||$$
+
+como la subseccion es monotoma por ?? y tambien acotada prueba que el conjunto $C=\{f_{N_k}\}^\infty_{k=0}$
+cada infinito subconjuto contiene una subsucesióon convergente, osea, $C$ es un compacto relativo en $L_1$.
+ 
+Como $\Pm_\tau$ es continua, $\Pm_\tau^k C$ es tambien un compacto relativo. Entonces
+
+$$\{f_k\}^\infty_{k=0}\subset\cup^{N-1}_{k=0}{\Pm^k_\tau C}$$ 
+
+Se tiene que $\{f_k\}^\infty_{k=0}$ es un compacto relativo, también.
+
+Por el teorema de Mazur 
+
+$$co(C)=\{\sum_{k=0}^{n-1}{a_kf_k}|a_k\geq 0, \sum_{k=0}^{n-1}{a_k=1}\}$$
+
+es un compacto relativo tambien. Y como 
+
+\begin{equation}
+\Big\{\frac{1}{n}\sum^{n-1}_{k=0}{\Pm^k_\tau f}\Big\}^\subset co(C) \label{catorce}
+\end{equation}
+
+Es tambien un compacto relativo. Finalmente, por el Teorema de Kakutani-Yosida 
+
+$$\frac{1}{n}\sum^{n-1}_{k=0}{\Pm^k_\tau f}\rightarrow f_*\in L_1[0,1]$$
+donde 
+$$\Pm_\tau f^*=f^*$$
+
+Las propiedades 1, 2, 3 ya quedaron demostradas. Solo falta probar la propiedad 4. Se sabe que $f^*\in L_1[0,1]$
+Solo hace falta mostar que $f^*<\infty$ y que $\exists c\ni \bigvee_0^1\leq c||f||$
+
+Se define $\alpha_i=\tau_i^{-1}$, $\beta_i=|\alpha'_i|$ se redefine
+$$
+\car_i(x)=\begin{cases}
+		  1 & Si\; x\in I_i=tau([a_{i-1},a_i])\\	
+          0 & en \; otro\; caso
+         \end{cases}
+$$
+calculando nuevamente el operador de Perron-Frobenius
+$$\Pm_\tau f(x)=\sum_{i=1}^p{f(\alpha_i(x))\beta_i(x)\car_i(x)}$$
+Aplicando el mismo procedimiento anterior
+\begin{align*}
+\bigvee_0^1{\Pm_\tau f}&\leq\sum_{i=1}^p{\bigvee_{I_i}{(f\circ\alpha_i)\beta_i}+\frac{1}{s}\sum_{i=1}^{p}{(|f(a_{i-1})|+|f(a_i)|)}}\\
+                    &\leq c_1\bigvee_0^1{f}+c_2||f_2||    
+\end{align*}
+y
+\begin{align*}
+\bigvee_0^1{f_{N(k+1)}}&=\bigvee_0^1{\Pm_\tau f_{Nk}}\\
+                       &\leq c_1\bigvee_0^1{f_{Nk}}+c_2||f|| 
+\end{align*}
+
+Para algun $c_1, c_2>0$. Tambien
+
+\begin{align*}
+\bigvee_0^1{f_{N(k+2)}}&\leq c_1\bigvee_0^1{f_{N(k+1)}}+c_2||f||\\
+                       &\leq c_1(c_1\bigvee_0^1{f_{Nk}}+c_2||f||)+c_2||f||\\
+                       &=c_1^2\bigvee_0^1{f_{Nk}}+(c_1c_2+c_2)||f|| 
+\end{align*}
+
+En consecuencia, para $m=1,2,\ldots,N-1$
+
+\begin{align*}
+\bigvee_0^1{f_{N(k+m)}}&\leq c_1^m\bigvee_0^1{f_{N(k)}}+c_2\sum_{j=0}^{m-1}{c_1^j||f||}\\
+                       &\leq c_1^m\bigvee_0^1{f_{N(k)}}+c_2\frac{1-c_1^N}{1-c_1}||f||}\\
+\intertext{y por lo tanto}
+\limi_{k\rightarrow\infty}\sup\bigvee_0^1{f_{N(k+m)}}&\leq c_1^m\limi_{k\rightarrow\infty}\sup\bigvee_0^1{f_{Nk}}+c_2\frac{1-c_1^N}{1-c_1}||f||\\
+
+\end{align*}
+
+El conjunto de variación acotada es denso en $L_1$. Se demostró que para cualquier función $f$ el conjunto \eqref{catorce} es un compacto
+relativo. Sin embargo, se tiene la hipotesis del teorema de Kakatani-Yosida que dice, para cualquier $f\in L_1$ la sucesión \eqref{catorce}
+converge fuertemente a una función $f^*$ tal que es invariante sobre $\Pm_\tau$. Por la propiedades REFE y REFE se pueba que $f^*$ satisface
+$a)$ y $b)$. Por lo tanto, solo falta probar $d)$. Ya que el operador $\Pm_\tau$ viene dado por una fórmula análoga a \eqref{seis}
+se deriva la inecuación $\bigvee_0^1{\Pm_\tau f}\leq c_1\bigvee_0^1{f}+c_2||f||$ para ciertas constantes $c_1$ y $c_2$. Esto y
+\eqref{trece} implica que la inecuación
+
+$$\limi_{k\rightarrow\infty}\sup{\bigvee_0^1{\Pm^k_\tau f}}\leq c||f||$$
+
+(con una posible constante $c$) que es valido para cualquier $f$ de varianción acotada. En consecuencia para cualquier $f$ se tiene que
+
+$$\limi_{k\rightarrow\infty}\sup\bigvee_0^1\big(\frac{1}{n}\sum_{k=1}^{n-1}{\Pm^k_\tau f}
+\big)\leq c||f||$$
+
+Siendo $Q=\limi_n{(1/n)\sum^{n-1}_{k=1}{\Pm^k_\tau}}$ y usando el teorema de Helly se tiene $\bigvee_0^1{Qf}\leq c||f||$, para $f$ de variación
+acotada. El operador $Q$ es lineal y contrativo. Por lo tanto, se puede aplicar una vez más el teorema de Helly sobre la clausura del conjunto
+de funciones de variación acotada, para extender esta inecuación  sobre todo $L_1$.
+\end{proof}
+\newpage
+\subparagraph{Un contraejemplo} Veamos la razon que la hipotesis $\infi{|\tau'|}>1$
+es esencial. Considere la transformación:
+
+\begin{equation*}
+    \gamma(x)=
+    \begin{cases}
+        \frac{x}{1-x} & \hbox{para $0\leq x < \frac{1}{2}$}\\
+        2x-1          & \hbox{para $\frac{1}{2}\leq x\leq 1$}
+    \end{cases}
+\end{equation*}
+
+Observerse que $|\gamma'(0)|=1$ pero $|\gamma'(x)|>1$ para todo $x\in(0,1]$. Se probará que para cualquier $f\in L^1$
+la sucesion$\Pm^n_\gamma f$ converge en medida cero. Sin embargo, la ecuación $\Pm_\gamma f=f$ $\gamma$ solo tiene soluciones triviales,
+es decir, que no existe una medida invariante absolutamente continua sobre $\gamma$.
+
+La prueba se realizara en varios pasos. Primero, se probar\'a que para $f_0\equiv 1$ la sucesi\'on $g_n(x)=xf_n(x)$
+donde $f_n=\Pm^n_\gamma f_0$ converge a una constante $c_0$. Entonces usando la condici\'on $||f_n||=1$ se deriva $c_0=0$ y
+en consecuencia $f_n\rightarrow 0$. Finalmente, por un argumento similar se extiende este resultado para arbitraria  sucesiones
+$\Pm^n_\gamma f$ con $f\in L_1$.
+
+Sea $\gamma_1(x)=\frac{x}{1-x}$ sobre $0\leq x\leq\frac{1}{2}$ despenjado se tiene $\gamma_1^{-1}(x)=\frac{x}{1+x}$.
+Asi mismo, $\gamma_2(x)=2x-1$ sobre $\frac{1}{2}\leq x\leq 1$ despejado se tiene $\gamma_2^{-1}(x)=\frac{1+x}{2}$.
+
+Derivando $\gamma_1(x)$ se tiene $\frac{1}{(1+x)^2}$. De igual forma, $\gamma_2(x)$ se tiene $\frac{1}{2}$. Usando la formula ??
+el operador de Frobenius-Perron se escribe de la siguiente forma
+
+
+$$\Pm_\gamma f(x)=\frac{1}{(1+x)^2}f(\frac{x}{1+x})+\frac{1}{2}f(\frac{1}{2}+\frac{x}{2})$$
+
+En consecuencia, se tiene
+\begin{align*}
+    g_{n+1}(x)&=xf_{n+1}(x)\\
+              &=x\Pm_\gamma f_n(x)\\
+              &=x\Big[ \frac{1}{(1+x)^2}f_n\Big(\frac{x}{1+x}\Big)+\frac{1}{2}f_n\Big(\frac{x+1}{2}\Big)\Big]\\
+              &=\Big[ \frac{1}{(1+x)}\frac{x}{(1+x)}f_n\Big(\frac{x}{1+x}\Big)+\frac{x}{1+x}\frac{1+x}{2}f_n\Big(\frac{x+1}{2}\Big)\Big]\\
+\intertext{en consecuencia}
+    g_{n+1}(x)&=\frac{1}{1+x}g_n\Big(\frac{x}{1+x}\Big)+\frac{x}{1+x}g_n\Big(\frac{1}{2}+\frac{x}{2}\Big)
+\end{align*}
+
+Para $g_0(x)\equiv x$. Por otro lado, si $g'_n(x)\geq 0$ se tiene
+\begin{align*}
+    g'_{n+1}(x)&=\frac{1}{(1+x)^3}g'_n\Big(\frac{x}{1+x}\Big)+\frac{x}{4(x+1)}g'_n\Big(\frac{x+1}{2}\Big)\\
+               &+\frac{1}{(1+x)^2}\Big[g_n\Big(\frac{x+1}{2}\Big)-g_n\Big(\frac{x}{1+x}\Big)\Big]\\
+\intertext{Note que}
+    (x+1)^2\geq 2x &\Rightarrow \frac{x+1}{2}\geq\frac{x}{1+x}\\
+                   &\Rightarrow g_n\Big(\frac{x+1}{2}\Big)\geq g_n\Big(\frac{x}{1+x}\Big)
+\end{align*}
+
+Asi  $g_n$ no es decreciente. Por lo tanto $\forall x\in[a,b]$ se tiene
+\begin{align*}
+    g'_n(x)\geq 0&\Rightarrow g'_{n+1}(x)\geq 0\\
+    g'_0(x)&=xf_0(x)\\
+           &=x\\
+    g'_0(x)&=1\geq 0
+\end{align*}
+por lo tanto, $\forall n$ se tiene
+$$g'_n(x)\geq 0$$
+
+debido que todas las funciones $g_n$ son positivas y crecientes. Evaluando en ?? se tiene
+\begin{align*}
+    g_{n+1}(1)&=\frac{1}{2}g_n\Big(\frac{1}{2}\Big)+\frac{1}{2}g_n(1)\\
+              &\leq\frac{1}{2}g_n(1)+\frac{1}{2}g_n(1)\\
+              &\leq g_n(1)
+\end{align*}
+
+Esto prueba que la existencia del limite $\limi_n{g_n(1)}= C_0$. Sea $z_0=1$ y $z_{k+1}=\frac{z_k}{1+z_k}$ sustituyendo en ??
+obtenemos
+
+\begin{align*}
+    g_{n+1}(z_0)&=\frac{1}{1+z_k}g_n\Big(\frac{z_k}{1+z_k}\Big)+\frac{z_k}{1+z_k}g_n\Big(\frac{1+z_k}{2}\Big)\\
+                &=\frac{1}{1+z_k}g_n(z_{k+1})+\frac{z_k}{1+z_k}g_n(\frac{1}{2}+\frac{z_k}{2})
+\end{align*}
+
+Se observa que $\frac{1+z_0}{2}\in[x_k,1]$. Sea $z_k\leq \frac{1}{2}+\frac{1}{2}z_k$. Entonces tomando el limite en ambos lados se obtiene
+$k$ $\limi_ng_n(x)=C_0$ $z_k\leq x\leq 1$.$k=0$ $z_k<\frac{1}{2}+\frac{1}{2}z_k$ $n\rightarrow\infty$
+
+$$C_0=\frac{1}{1+z_k} \limi_n g_n(z_{k+1})+\frac{z_k}{1+z_k}C_0$$
+
+En consecuencia $\limi_n g_n(z_{k+1})=C_0$. Ya que $g_n$  es creciente, esto prueba que $\limi_n g_n(x)=C_0$ converge
+uniformemente para $x\in[z_{k+1},1]$. Se tiene  que
+\begin{align*}
+    g_n(x)&\rightarrow C_0\\
+\intertext{por lo tanto, $\forall x\in [0,1]$ se tiene}
+    f_n(x)&\rightarrow\frac{C_0}{x}\\
+\intertext{Se asume que $C_0>0$. Entonces $\exists\epsilon>0$ tal que}
+    \int_\epsilon^1{\frac{C_0}{x}dx}&>1\\
+\intertext{Esto es que}
+    \limi_n \int_\epsilon^1{f_n(x)dx}&>1\\
+\end{align*}
+
+Lo cual es imposible ya que $||f(x)||=1$ para cada n. Debido a que se tiene $f_0\geq 0$ y por lo tanto $f_n\geq 0$. Por lo tanto $C_0$ debe ser 0
+Suponiendo que $f'_n\leq 0$
+\begin{align*}
+    f'_{n+1}(x)&=-\frac{2}{(1+x)^3}f_n\Big(\frac{x}{1+x}\Big)+\frac{1}{(1+x)^4}f'_{n}\Big(\frac{x}{1+x}\Big)\\
+               &+\frac{1}{4}f'_{n}\Big(\frac{x+1}{2}\Big)\\
+               &\leq 0
+\end{align*}
+
+Por lo tanto, $f'_n$ son funciones decrecientes que convergen uniformente a 0 en el intervalo $[\epsilon, 1]$ para un $\epsilon>0 $.
+
+para $f\in L_1[0,1]$ con $f^+=max(f,0)$ y $f^-=max(0, -f)$ y dado un $\epsilon>0$
+$$\int_0^1{(f^--r)^+dm}+\int_0^1{(f^+-r)^+dm}\leq\epsilon$$
+
+Observese que si $\phi$ una función simple acotada tal que $\phi>0$ y sea $M=\max{\phi(x)}$. Entonces $\phi-r\leq M-r$
+\begin{equation*}
+   (\phi-r)^+\leq(M-r)^+=
+       \begin{cases}
+		  M-r & Si\; M>r\\	
+          0   & Si\; M\leq r
+        \end{cases}
+\end{equation*} 
+
+Dado un $\epsilon>0$ se puede definir un $r$ tal que $r\geq M-\epsilon$. Entonces $M-r\leq\epsilon$ por lo tanto, 
+$(M-r)^+\leq\epsilon$ y asi $\int_0^1{(M-r)^+}=(M-r)^+\leq\epsilon$ y como $(M-r)^+\geq(\phi-r)^+$ se tiene 
+$\int_0^1{(\phi-r)^+\leq\epsilon}$ asi se pueba el resultado para funciones simples y acotadas
+
+Como el conjunto de funciones simples es denso en $L_1[0,1]$ para $f\in L_1[0,1]$ y $\epsilon>0$, se puede elegir funciones  
+$\phi$ y $\psi$ simples y acotadas tal que
+
+$$||f^+-\phi||\leq\frac{\epsilon}{4}\qquad y\qquad ||f^--\psi||\leq\frac{\epsilon}{4} \quad \phi,\psi\geq 0$$
+
+Para $\psi$, $\phi$ se probo se que puede elegir $r_1$, $r_2$ tal que 
+
+$$\int_0^1{(\phi-r_1)^+}\leq\frac{\epsilon}{4}\qquad y\qquad\int_0^1{(\psi-r_2)^+}\leq\frac{\epsilon}{4}$$
+
+entonces para $r\geq\max{(r_1,r_2)}$
+
+\begin{align*}
+\int_0^1{(f^+-r)^+}+\int_0^1{(f^--r)^+}&=\int_0^1{(f^+-\phi+\phi-r)^+}+\int_0^1{(f^--\psi+\psi-r)^+}\\
+                                       &\leq\int_0^1{(f^+-\phi)^+}\int_0^1{(\phi-r)^+}+\int_0^1{(f^--\psi)^+}+\int_0^1{(\psi-r)^+}\\
+                                       &\leq\int_0^1{|f^+-\phi|}\int_0^1{(\phi-r)^+}+\int_0^1{|f^--\psi|}+\int_0^1{(\psi-r)^+}\\
+                                       &\leq\frac{\epsilon}{4}+\frac{\epsilon}{4}+\frac{\epsilon}{4}+\frac{\epsilon}{4}=\epsilon
+\end{align*}
+
+Asi se prueba la ecuacion ?? por lo tanto
+
+\begin{align*}
+    \int^1_\epsilon{|\Pm_\gamma^n f|dm}&=\int^1_\epsilon{\Pm_\gamma^n f^+dm}+\int^1_\epsilon{\Pm^n_\epsilon f^- dm}\\
+                                       &=\int^1_\epsilon{\Pm_\gamma^n (f^++r-r)dm}+\int^1_\epsilon{\Pm^n_\epsilon f^-+r-r dm}\\ 
+                                       &\leq 2\int^1_\epsilon{\Pm_\gamma^n r dm}+\int_\epsilon^1{\Pm^n(f^+-r)dm}+\int_\epsilon^1{\Pm^n(f^--r)dm}\\
+                                       &\leq 2r\int_\epsilon^1{\Pm^n_\gamma 1 dm +\epsilon}
+\end{align*}
+
+Como $f_n\rightarrow 0$ uniformente en $[\epsilon,1]$, entonces $\Pm^n_\gamma 1$ converge en $[\epsilon,1]$ uniformente a cero
+por el teorema de convergencia dominada. Asi mismo
+
+$$\limi_n\int^1_\epsilon|\Pm^n_\gamma f|dm\leq 0+\epsilon \qquad \epsilon>0$$
+
+Entonces la sucesi\'on $\Pm^n_\gamma f$ converge en medida a cero.

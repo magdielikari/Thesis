@@ -1,0 +1,153 @@
+\documentclass{beamer}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage[spanish]{babel}
+%\usepackage{beamerthemebars}
+\usepackage{beamerthemeshadow}
+\usepackage[ansinew]{inputenc}
+\title{Revisión sobre la existencia de medidas invariantes para transformaciones monótonas a trozos}
+\author{Br. Magdiel Márquez. Dr. Luis-Angel Rodr\'{i}guez}
+\date{\today}
+\newcommand{\cir}{\circlearrowleft}             % Endomorfismo
+\newcommand{\X}{\mathcal{X}}                    % Espacio de medida
+\newcommand{\A}{\mathcal{A}}
+\newtheorem{axi}{Axioma}
+\newtheorem{pro}{Propiedades}
+\newtheorem{defe}{Definición}
+\newtheorem{obs}{Observación}
+\newtheorem{teo}{Teorema}
+\newtheorem{algo}{Algoritmo}
+\newtheorem{col}{Corolario}
+\newtheorem{lema}{Lema}
+\definecolor{d3}{rgb}{0.3,0.3,0.7}
+
+
+
+\begin{document}
+\frame{\titlepage \transdissolve}
+
+\frame{\transglitter \tableofcontents}
+
+\section{La Conjetura de Ulam}
+\begin{frame}
+    \begin{block}{La Conjetura de Ulam}{En 1957 S. Ulam propuso el problema de la existencia de medidas invariantes absolutamente continuas
+    para funciones definidas por funciones suficientemente simples donde el gr\'afico no corte la l\'inea $y=x$ con 
+    una pendiente de valor absoluto menor que 1.}
+    \end{block}
+Definamos:
+    \begin{itemize}
+        \item<1-> Transformación Invariante si no cambia su medida.
+        \item<2-> (Medida Invariante Sobre $S$) Si $\mu(S^{-1}(A))=\mu(A)$ donde $S:\X\cir$ es una transformación medible y $(\X,\A,\mu)$ un espacio de medida.
+        \item<3-> (Absolutamente continua,$\mu_f$) Sea $\mu_f=\int{S(x)\mu(dx)}$ la medida para $A \in \A$
+              donde $S:\X\cir$ es una transformación medible y $(\X,\A,\mu)$ un espacio de medida.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+La respuesta  literal de esta pregunta es negativa. Se puede ilustrar
+    \begin{equation}
+        f(x)=\begin{cases}
+		      1-2x     & 0\leq x\leq\frac{5}{12}\\	
+              (2-2x)/7 & \frac{5}{12}< x\leq 1
+            \end{cases}
+    \end{equation}
+  \pause      
+  \begin{figure}
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{f.jpg}
+        \caption{Transformación $f= 1-2x$ en $0\leq x\leq\frac{5}{12}$ y $f=(2-2x)/7$ en $\frac{5}{12}< x\leq 1$}
+    \end{center}       
+  \end{figure}
+\end{frame}
+
+
+\begin{frame}
+Muchos resultados en relaci\'on de la existencia de medidas absolutamente contin\'uas para ciertas clases de
+transformaciones del  intervalo unitario en si mismo han sido proporcionadas (A. R\'enyi, Parry, Krzyzewski/Szlenk).
+Sin embargo, se puede se\~nalar que el mejor resultado en esta direcci\'on fue obtenido por A. Lasota ya J. Yorke
+\pause
+   \begin{teo}[de Lasota-Yorke] Sea $S:[0,1]\rightarrow[0,1]$ una funci\'on a trozos de clases $C^2$ que satisfaga la condici\'on
+            $$\inf_{x\in[0,1]}|\frac{d}{dx}f(x)|>1$$
+        Entonces existe una medida invariante absolutamente continua sobre $f$
+    \end{teo}
+\end{frame}
+
+\begin{frame}
+\begin{block}{Bozeto de la prueba}
+    \begin{itemize}
+        \item Se usa el hecho que operador de  Perron-Frobenius, correspondiente a la transformaci\'on,  tiene 
+          la propiedad de contracci\'on en la variaci\'on de la funci\'on.
+        \item Se construye una sucesi\'on es relativamente compacta, cumpliendo asi la hip\'otesis del teorema de Mazur.
+        \item Con lo cual, que el promedio de las orbitas convergen fuertemente a una funci\'on limite, debido al de teorema
+          de Kakutani-Yosida
+        \item Repitiendo este proceso se consigue una familia de funciones que acotan a la variaci\'on del operador
+            de Perron-Frobenius es el promedio de las $n$ estimaciones
+        \item Usando el principio de selecci\'on de Helly se puede conseguir una sucesi\'on de funciones,
+        que convergen a una funci\'on de variaci\'on finita.
+    \end{itemize}
+\end{block}
+\end{frame}
+
+\section{Muestreo con probabilidades diferentes sin reemplazo}
+
+\begin{frame}
+\begin{block}{Definamos:}
+$$\psi_\imath=P(\textrm{elegir la unidad $\imath$ en la primera extracción})$$
+
+$$\psi_\jmath\frac{\psi_\jmath}{1-\psi_\jmath}=P(\textrm{elegir primero la unidad $\jmath$  y luego la unidad $\imath$})$$
+Para $n=2$
+$$P(\textrm{las unidades $\imath$ y $\jmath$ estén en la muestra})=\pi_{\imath\jmath}=\psi_\jmath\frac{\psi_\imath}{1-\psi_\jmath}+\psi_\imath\frac{\psi_\jmath}{1-\psi_\imath}$$
+
+$$P(\textrm{las unidades $\imath$ este en la muestra})=\pi_\imath=\Sigma^N_{\substack{\jmath=1 \\ \jmath\neq\imath}}{\pi_{\imath\jmath}}$$
+\end{block}
+\end{frame}
+
+
+\section{Estimador de Horvitz-Thompson}
+
+\begin{frame}
+Se define como:
+
+$$\hat{t}_{HT}=\frac{1}{n}\Sigma_{\imath\in S}{\frac{\hat{t}_\imath}{\pi_\imath/n}}=\Sigma_{\imath\in S}{\frac{\hat{t}_\imath}{\pi_\imath}}=\Sigma^N_{\imath=1}{Z_\imath\frac{\hat{t}_\imath}{\pi_\imath}}$$
+
+donde $Z_\imath=1$ si la unidad $\imath$ esta en la muestra y $0$ en caso contrario. Observemos que:
+
+\begin{displaymath}
+    Cov(Z_\imath,Z_k) = \left\{ \begin{array}{ll}
+    \pi_\imath(1-\pi_\imath) & si \; \imath=k\\
+    \pi_{\imath k}-\pi_\imath\pi_k & si \; \imath\neq k
+    \end{array} \right.
+\end{displaymath}
+
+Usando $\Sigma^N_{\imath=1}\pi_\imath=n$ y $\Sigma^N_{\substack{k=1 \\k\neq\imath}}{\pi_{\imath k}}=(n-1)\pi_\imath$. Se deduce que:
+
+$$E[\hat{t}_{HT}]=\Sigma^N_{\imath=1}{\pi_\imath\frac{t_\imath}{\pi_\imath}}=t.$$
+
+\end{frame}
+
+\begin{frame}
+
+$$\hat{V}[\hat{t}_{HT}]=\Sigma^N_{\imath=1}{\frac{1-\pi_\imath}{\pi_\imath}t^2_\imath}+\Sigma^N_{\imath=1}\Sigma^N_{k\neq\imath}{\frac{\pi_{\imath k}-\pi_\imath\pi_k}{\pi_\imath\pi_k}t_\imath\pi_k}+\Sigma^N_{\imath=1}{\frac{\hat{V}(\hat{t}_\imath)}{\pi_\imath}}$$
+
+En la forma Sen-Yates-Grundy
+
+$$\hat{V}[\hat{t}_{HT}]=\Sigma^N_{\imath=1}\Sigma^N_{k>1}{(\pi_\imath\pi_k-\pi_{\imath k})\Big(\frac{t_\imath}{\pi-\imath}-\frac{t_k}{\pi_k}\Big)^2}+\Sigma^N_{\imath=1}{\frac{\hat{V}(\hat{t}_\imath)}{\pi_\imath}}$$
+
+\end{frame}
+
+\begin{frame}
+Modificada
+$$\hat{V}_1[\hat{t}_{HT}]=\Sigma_{\imath\in S}{(1-\pi_\imath)\frac{\hat{t}^2_\imath}{\pi^2_\imath}}+\Sigma_{\imath\in S}\Sigma_{\substack{k\in S\\ k>1}}{\frac{\pi_\imath\pi_k-\pi_{\imath k}}{\pi_{\imath k}}\Big(\frac{\hat{t}_\imath}{\pi_\imath}\frac{\hat{t}_k}{\pi_k}\Big)}$$
+
+$$+\Sigma_{\imath\in S}{\frac{\hat{V}(\hat{t}_\imath)}{\pi_\imath}}$$
+
+S-Y-G modificada
+
+$$\hat{V}_2[\hat{t}_{HT}]=\Sigma_{\imath\in S}\Sigma_{\substack{k\in S \\ k>1}}{\frac{\pi_\imath\pi_k-\pi_{\imath k}}{\pi_{\imath k}}\Big(\frac{\hat{t}_\imath}{\pi_\imath}\frac{\hat{t}_k}{\pi_k}\Big)^2}+\Sigma_{\imath\in S}{\frac{\hat{V}(\hat{t}_\imath)}{\pi_\imath}}$$
+\end{frame}
+
+\end{document}

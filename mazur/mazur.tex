@@ -1,0 +1,78 @@
+\section{Teorema de Mazur}
+
+\begin{dfn}[Clausura,$\ov{E}$] Si $\ov{E}=\{x\in\X:\forall B(x,\epsilon)\cap E\neq\emptyset\}$
+\end{dfn}
+
+\begin{obs} Equivalentemente la clausura se puede definir mediante $\ov{E}=E\cup E'$ donde $E'$ es el conjunto de los puntos de acumulaci\'on de E. Tambi\'en, es la intersecci\'on de todos los conjuntos cerrados que contienen a E.
+\end{obs}
+
+\begin{dfn}[Totalmente acotado]  Si  $\forall \epsilon>0,\; \exists x_1,x_2,\ldots,x_n \in \X$ tal que
+$\cup^n_{i=1}{B(x_i,\epsilon)}\supseteq\X$ siendo $(\X,d)$ un espacio m\'etrico.
+\end{dfn}
+
+\begin{obs} Se cumple que todo espacio totalmente acotado es tambi\'en acotado. Adem\'as, todo compacto es totalmente acotado.
+Esta propiedad es \'util precisamente para demostrar compacidad, pues se tiene que existe equivalencia entre ser compacto
+y ser totalmente acotado y completo.
+\end{obs}
+
+De hecho, para muchas demostraciones es precisamente \'esta caracterizaci\'on de compacidad la que se utiliza.
+
+\begin{dfn}[Relativamente compacto] Si toda sucesi\'on de elementos de S tiene una subsucesi\'on que converge en X.
+ Siendo $S$ un subconjunto de un espacio topol\'ogico $\X$
+\end{dfn}
+
+\begin{obs} Para espacios métricos tenemos definici\'on equivalente. A es relativamente compacto si y solo si su clausura es un compacto
+\end{obs}
+
+\begin{dfn}[Envolvente Convexa, co(A)] Es el conjunto de todas las combinaciones convexas de elementos de A, es decir, el conjunto de todas las sumas
+$\sum^n_{i=1}{t_ix_i}$ donde $x_i\in A,\; t_i\geq 0,\; \sum{t_i}=1$ para un $n$ arbitrario.
+\end{dfn}
+
+\begin{teo}[Mazur] Sea $\X$ un espacio de banach con $A\subset\X$ es un compacto relativo, entonces $\ov{co}(A)$ es compacto.
+\end{teo}\label{mazur}
+
+\begin{proof} Por la definici\'on de espacio Banach, $\ov{co}(A)$ es completo asi que $co(A)\subset\X$. Por consiguiente, solo queda probar
+que $co(A)$ es totalmente acotada.
+
+Como $A$ es totalmente acotado entonces $\ov{A}$ es compacto. Adicionalmente, se escoje $\epsilon>0$, por lo tanto existe un subcojunto finito
+$\{x_1,x_2,\ldots,x_n\}\subset A$ tal que
+$$A\subset\cup^n_{i=1}{B(x_i,\frac{\epsilon}{4})}$$
+
+Sea $B=co\{x_1,x_2,\ldots,x_n\}$ y note que (eso no lo entiendo)
+$$\ov{co}(A)\subset\cup^n_{i=1}{B(co(A),\frac{\epsilon}{4})}$$
+
+Sea $\upsilon:A\rightarrow\{1,2,\ldots,n\}$ tal que
+$$g\in A\Rightarrow||g-x_{\upsilon(g)}||<\frac{\epsilon}{4}$$
+
+Para $t\in co(A)$
+$$t=\sum^m_{i=1}{a_it_i}$$
+donde $t_i\in A$, $a_i\geq 0$ y $\sum^m_{i=1}{a_i}=1$
+
+entonces
+\begin{align*}
+    ||t-\sum^m_{i=1}{a_ix_{\upsilon(t_i)}}||&=||\sum^m_{i=1}{a_i(t_i-x_{\upsilon(t_i))}}||\\
+                                            &\leq \sum^m_{i=1}{|a_i| ||x_{\upsilon(t_i)}||}\\
+                                            &\leq\frac{\epsilon}{4}
+\end{align*}
+
+Esto es para $t\in co(A)$
+$$d(x,B)<\frac{\epsilon}{4}$$
+
+En consecuencia, $co(A)\subset \cup^n_{i=1}{B(B,\frac{\epsilon}{4})}$ entonces
+$\cup^n_{i=1}{B(co(A),\frac{\epsilon}{4})}\subset\cup^n_{i=1}{B(B,\frac{\epsilon}{4})}$
+y por lo tanto $\ov{co}(A)\subset\cup^n_{i=1}{B(B,\frac{\epsilon}{2})}$
+
+Ahora, la transformaci\'on
+$$\mu:(a_1,a_2,\ldots,a_n,x_1,x_2,\ldots,x_n)\rightarrow\sum^{n}_{i=1}{a_ix_i}$$
+es una transfomaci\'on continua de un conjunto compacto
+$$[0,1]\times[0,1]\times\ldots\times[0,1]=\prod^n_{i=1}{x_i}\hbox{ sobre B}$$
+
+En consecuencia, B es un compacto y por lo tanto es totalmente acotado. Entonces exiten $b_1,b_2\ldots b_n\in B$ tal que
+$$B\subset \cup^n_{i=1}{B(b_i,\frac{\epsilon}{2})}$$.
+
+Como $\ov{co}(A)\subset\cup^n_{i=1}{B(B,\frac{\epsilon}{2})}\subset\cup^n_{i=1}{B(b_i,\frac{\epsilon}{2})}$.
+$\ov{co}(A)$ es totalmente acotado y por lo tanto es compacto
+
+\end{proof}
+
+ \newpage

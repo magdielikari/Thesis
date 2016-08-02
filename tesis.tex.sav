@@ -1,0 +1,37 @@
+\documentclass{report}
+\input{preambulo}
+\includeonly{intro,medida/medida/medida,markov/markov/markov,caos/caos/caos,sistemas/logistica/logistica,sistemas/sistemas/sistemas,teorema/teorema,asintotico/asintotico}
+%,anteproyecto/objectivos,portada/portada}
+
+\begin{document}
+%Anteproyecto
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\include{portada/portada}
+%\include{anteproyecto/anteproyecto}
+%\include{anteproyecto/objectivos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+\include{intro}
+\include{sistemas/logistica/logistica}
+\include{markov/markov/markov}
+\include{caos/caos/caos}
+\include{asintotico/asintotico}
+\include{teorema/teorema}
+%Apendix
+\include{sistemas/sistemas/sistemas}
+\include{medida/medida/medida}
+\section{
+\begin{thebibliography}{a}
+\bibitem{pradery} \textsc{Montero, J.},
+\textit{Metodos matemáticos aplicados a la ganadería.}
+3ª ed. Sevilla: Ediciones de la pradera, 2007.  
+\bibitem{old} \textsc{Old, L.},
+\textit{Confesiones de una oveja bizca.}
+1ª ed. Madrid: Naturalistic, 2010. 
+\end{thebibliography}
+\end{document}
+
+
+
+

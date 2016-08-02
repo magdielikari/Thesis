@@ -1,0 +1,230 @@
+\chapter{Operadores Especiales}
+
+En este capítulo se formalizará y caracterizar él operador Perron-Frobenius el cual fué presentado en el Capítulo 1.
+En dicho capítulo se mostró su uso en estudio de la evolución de densidades bajo la operación de sistemas determinísticos.
+
+Sin embargo, primeramente se desarrollarán conceptos generales del operador de Markov. El motivo para este desarrollo preliminar se basa en:
+\begin{enumerate}
+    \item Muchos conceptos sobre el comportamiento asintótico de las densidades pueden  ser igualmente formulada por ambos
+        sistemas deterministas y  estocásticos.
+    \item Muchos de los resultados que desarrollamos en los capítulos siguientes sobre el  comportamiento de la densidad de la evolución
+        bajo la influencia de los  sistemas deterministas, son casos especiales de resultado más general para sistemas  estocásticos.
+\end{enumerate}
+
+Para finalizar, se estudiará el operador de Koopman el cual está íntimamente relacionado con el operador de Perron-Frobenius.
+
+\section{Operador de Markov}
+
+\begin{dfn}[Operador de Markov,$\Pm$] Es un operador lineal $\Pm:L^1\cir$ de un espacio de medida $(\X,\A,\mu)$ que satisface:
+    \begin{align*}
+            \Pm f&\geq 0     && \text{para  } f\geq 0,\; f\in L^1 \\
+            ||\Pm f||&=||f|| && \text{para  } f\geq 0,\; f\in L^1
+    \end{align*}
+\end{dfn}
+
+\paragraph{Propiedades del Operador de Markov} Si $(\X,\A,\mu)$ es un espacio de medida y $\Pm$ un operador de Markov entonces,
+para cada $f,g\in L^1$
+    \begin{align}
+        \Pm f(x)&\geq \Pm g(x)\phantom{h}  && \hbox{cuando  $f(x)\geq g(x)$}\\
+        (\Pm f(x))^+&\leq \Pm f^+(x)       && \\
+        (\Pm f(x))^-&\leq \Pm f^-(x)       && \\
+        |\Pm f(x)|&\leq \Pm |f(x)|         && \\
+        ||\Pm f||&\leq ||f|| \phantom{hool}&&
+    \end{align}
+
+\begin{proof} Las demostraciones se deducen directamente de las definciones.
+    \begin{align*}
+            f\geq g &\Rightarrow f-g\geq 0       &&   \hbox{(despejando)}               \\
+                    &\Rightarrow h\geq 0         &&   (h=f-g \in L^1)                   \\
+                    &\Rightarrow \Pm h\geq 0     &&   \hbox{(def. operador de Markov)}  \\
+                    &\Rightarrow \Pm(f-g)\geq 0  &&   \hbox{(sustituyendo h)}           \\
+                    &\Rightarrow \Pm f\geq \Pm g &&   \hbox{(por linealidad)}
+    \end{align*}
+
+    Cuando un operador satisface se dice que es montomo.
+
+    \begin{align*}
+            (\Pm f(x))^+  &= (\Pm (f^+(x)-f^-(x)))^+          && \hbox{(por col. de $f$)}                \\
+                          &= (\Pm f^+(x)-Pf^-(x))^+           && \hbox{(por linealidad)}                 \\
+                          &= \max{\{0,\Pm f^+(x)-\Pm f^-(x)\}}&& \hbox{(def. de $f$ positiva)}           \\
+                          &= \max{\{0,\Pm f^+(x)\}}           && \hbox{(debido a $Pf^-(x)\geq 0$)}    \\
+                          &= \Pm f^+(x)                       && \hbox{(def. de $f$ positiva )}
+    \end{align*}
+
+    Con lo que se demuestra . La propiedad  es similar.
+
+    \begin{align*}
+            (\Pm f(x))^-  &=    (\Pm (f^+(x)-f^-(x)))^-          && \hbox{(por col. de $f$)}                  \\
+                          &=    (\Pm f^+(x)-Pf^-(x))^-           &&\hbox{(por linealida)}                     \\
+                          &=    \max{\{0,\Pm f^-(x)-\Pm f^+(x)\}}&&\hbox{(def. de $f$ negativa)}              \\
+                          &\leq \max{\{0,\Pm f^-(x)\}}           &&\hbox{(debido a $Pf^-(x)\geq 0$)}          \\
+                          &=    \Pm f^-(x)                       &&\hbox{(def. de $f$ negativa)}
+    \end{align*}
+
+    En la propiedad se incluyen los resultados presendentes.
+
+    \begin{align*}
+            |\Pm f(x)| &=   (\Pm f(x))^+ +(\Pm f(x))^- && \hbox{(por col. de $f$)}                         \\
+                       &\leq \Pm f^+(x)+\Pm f^-(x)     && \hbox{(por  y )}   \\
+                       &=    \Pm (f^+(x)+f^-(x))       && \hbox{(por linealidad)}                          \\
+                       &=    \Pm |f(x)|                && \hbox{(por col. de $f$)}
+    \end{align*}
+
+   Y la propiedad de mayor importancia
+
+    \begin{align*}
+            ||\Pm f(x)|| &=    \int_\X |\Pm f(x)|\mu(dx) && \hbox{(por definición de norma)}               \\
+                         &\leq \int_\X \Pm |f(x)|\mu(dx) && \hbox{(por )}                   \\
+                         &=    \int_\X |f(x)|\mu(dx)      && \hbox{(def. Operador de Markov )} \\
+                         &=    ||f(x)||                 && \hbox{(por def. de norma)}
+    \end{align*}
+\end{proof}
+
+Se ilustra la importancia de la propiedad . Note que para cualquier operador $f \in L^1$ se tiene
+
+\begin{align}
+    ||\Pm^{n+1}f||&=||\Pm(\Pm^{n}f)|| && \hbox{debido a } \Pm:\cir\nonumber\\
+                  &\leq||\Pm^{n}f||   &&\hbox{por }
+\end{align}
+
+Graficando la inecuación
+
+\begin{figure}[ht!]
+    \begin{center}
+        \includegraphics{graficas/tesis.7}
+        \put(-90,80){$\Pm^{n+2} f$}
+        \put(-70,97){$\Pm^{n+1} f$}
+        \put(-50,112){$\Pm^{n}  f$}
+   \end{center}
+   \caption{Con cada iteración del operador la órbita el operador decrece o se mantiene.}
+\end{figure}
+
+
+A esta propiedad se le conoce con el nombre de contractiva debido a que reduce la distancia en el proceso de iteración.
+Como se puede observar para cualquier par de funciones distintas de $L^1$.
+
+
+\begin{align}
+||\Pm^{n+1}f_1-\Pm^{n+1}f_2||&=||\Pm^{n+1}(f_1-f_2)||   && \text{linealidad}  \nonumber         \\
+                     &\leq||\Pm^{n}(f_1-f_2)||          && \text{por } \nonumber    \\
+                     &=||\Pm^{n}f_1-\Pm^{n}f_2||        &&
+\end{align}
+
+Graficando la inecuación
+
+\begin{figure}[ht!]
+    \begin{center}
+        \includegraphics{graficas/tesis.8}
+        \put(-255,40){$\Pm^{n}f_1$}
+        \put(-265,25){$\Pm^{n+1}f_1$}
+        \put(-265,10){$\Pm^{n+2}f_1$}
+        \put(-255,-5){$\Pm^{m}f_2$}
+   \end{center}
+   \caption{Sea $\Pm^i f_2=\Pm^m f_2  \quad \forall i\in\N$, ósea un punto fijo. Se aprecia como la norma $ ||\Pm^{i} f_1-\Pm^{i} f_2||$ se reduce con cada iteración, acercándose  $\Pm^{i} f_1$ de $\Pm^{i} f_2$.}
+\end{figure}
+
+De lo analizado se desprende la idea de orbitas acotadas o orbitas estables. Se formalizará esta noción con la siguiente definición.
+
+\begin{dfn}[Estabilidad de la iteraciones] Es cuando la distancia entre un par de funciones, durante el proceso de iteraciones, puede decrecer
+ pero jamás aumentar.
+\end{dfn}
+
+\begin{dfn}[Soporte de una función g(x),$\so g(x)$] Son todos los x del dominio donde g(x) no se anula.
+\end{dfn}
+
+\subparagraph{Observación} Esta no es la definición usual de soporte de una función, normalmente se define como
+$$\so g=clausura\{x:g(x)\neq 0 \}$$
+No obstante, debido a que requiere conceptos topológicos se prefirió usar esta definición no tan común.
+
+
+\begin{pro} Sea $||\Pm f||=|| f||$ sii $\Pm f^+$ y $\Pm f^-$ son soportes disjuntos
+\end{pro}\label{teopro}
+
+\begin{proof} Notemos que si $x\geq0$ e $y\geq0$
+\begin{align*}
+    -x&\leq x & -y&\leq y                                              \\
+    -y-x&\leq x-y & x-y&\leq x+y                                         \\
+    -(x+y)&\leq x-y \leq x+y &  &  \\
+    |x-y|&\leq x+y   & &\\
+    |x-y|&\leq|x+y|   &\hbox{Ya que $x>0\; \& \; y>0$} &                \\
+\end{align*}
+
+
+Por lo tanto podemos afirmar
+\begin{align*}
+    |\Pm f^+-\Pm f^-|&\leq|\Pm f^++\Pm f^-|                                 \\
+                     &\leq|\Pm f^-|+|\Pm f^-|   && \hbox{desigualdad triangular}
+\end{align*}
+    La desigualdad estricta se cumple para cualquier $\Pm f^+>0$ y $\Pm f^->0$. La igualdad solo se garantiza cuando $\Pm f^+=0$ o $\Pm f^-=0$.
+     Supongase la igualdad (Osea $\Pm f^+=0$ o $\Pm f^-=0$) e integrando sobre el espacio tenemos
+\begin{equation}
+    \int_\X|\Pm f^+-\Pm f^-|\mu(dx)=\int_\X|\Pm f^+|+\int_\X|\Pm f^-|\mu(dx)
+\end{equation}
+por lo tanto se tiene que
+\begin{align*}
+    \nexists A\subset,&\; \mu(A)>0 \quad \hbox{tal que} \quad  \Pm f^+>0 \quad y\quad \Pm f^->0  \\
+\intertext{Como $\Pm f\geq0$, tenemos de la definición de soporte vista en OJO}
+    \nexists A\subset,&\; \mu(A)>0 \quad \hbox{tal que} \quad A\subset\so(\Pm f^+) \quad y\quad A\subset\so(\Pm f^-)  \\
+    \nexists A\subset,&\: \mu(A)>0 \quad \hbox{tal que} \quad A\subset\so(\Pm f^+)\cap\so(\Pm f^-)
+\end{align*}
+por lo tanto la ecuación en el lado izquierdo quedaria
+\begin{align*}
+    \int_\X|\Pm f^+-\Pm f^-|\mu(dx)&=\int_\X|\Pm (f^+- f^-)|\mu(dx) && \hbox{Agrupando}       \\
+                                   &=\int_\X|\Pm f|\mu(dx)          && \hbox{por col. de $f$} \\
+                                   &=||\Pm f||                      &&\hbox{por def. norma}
+\end{align*}
+mientras que por el lado derecho de
+\begin{align*}
+\int_\X|\Pm f^+|+\int_\X|\Pm f^-|\mu(dx)&=||\Pm f^+||+||\Pm f^-|| &&\hbox{por def. norma}      \\
+                                        &=||f^+||+||f^-||         &&\hbox{por def. de Markov}  \\
+                                        &=|(||f ||)|              &&\hbox{por col. de $f$}     \\
+                                        &=||f||                   &&\hbox{la norma es positiva}
+\end{align*}
+por último agrupando ambos lados de nos queda
+$$||\Pm f||=||f|| $$
+\end{proof}
+
+La definición de punto fijo  se considera en este contexto siendo $\Pm:L^1\cir$ la ley de evolución temporal.
+ Se presenta una caracterización para los puntos fijos del operador de Markov
+
+\begin{pro} Si $\Pm f=f$ entonces $\Pm f^+=f^+$ y $\Pm f^-=f^-$
+\end{pro}
+
+\begin{proof} Como $\Pm f=f$ entonces
+\begin{align*}
+f^+&=(\Pm f)^+\leq \Pm f^+                                                 \\
+f^-&=(\Pm f)^-\leq \Pm f^-                                                 \\
+\intertext{por lo tanto}
+   &(\Pm f)^+ - f^+\geq0                                                   \\
+   &(\Pm f)^- - f^-\geq0                                                   \\
+\intertext{sumando e integrando las desigualdades}
+   &\int_\X{[\Pm f^+ - f^+]\mu(dx)}+\int_\X{[\Pm f^- - f^-]\mu(dx)} \geq  0   \\
+   &\int_\X{[\Pm f^+ + \Pm f^-]\mu(dx)}-\int_\X{[ f^+ + f^-]\mu(dx)}  \geq  0 \\
+   &\int_\X{\Pm |f|\mu(dx)}-\int_\X{|f|\mu(dx)} \geq    0                     \\
+   &||\Pm\; |f|\;|| -||f|| \geq  0                                          \\
+\intertext{por otro lado. Gracias a la propiedad contractiva tenemos $||\Pm\; |f|\;|| -||f|| \leq  0 $
+en consecuencia se llega a una contradicción. Por lo tanto $||\Pm\; |f|\;|| -||f||=0$}
+\Pm f^+ - f^+&=0    &  \Pm f^- - f^-&=0 \\
+\Pm f^+      &=f^+  &   \Pm f^-     &=  f^-
+\end{align*}
+\end{proof}
+
+\begin{dfn}[Conjunto de densidades, $D(\X,\A,\mu)$] Es el conjunto
+definido como $\{f\in L^1(\X,\A,\mu):f\geq 0\; \& \; ||f||=1\}$ donde $(\X,\A,\mu)$ es un espacio de medida.
+Cualquier función $f\in D(\X,\A,\mu)$ es llamada \textbf{densidad}.
+\end{dfn}
+
+\begin{dfn}[Densidad $f$ de $\mu$, $\mu_f(A)$] Si se cumple que
+$$\mu_f(A)=\int_A{f(x)\mu(dx)}\qquad \text{para } A\in\A$$
+Donde $f\in D(\X,\A,\mu)$. También se dice que $f$ es \textbf{absolutamente continua} con respecto a $\mu$.
+\end{dfn}
+
+Usando la noción de densidades se puede extender el concepto de punto fijo a un operador de Markov con la siguiente definición.
+
+\begin{dfn}[Densidad estacionaria] Para cualquier $f\in D$ que satisfaga $\Pm f=f$ siendo $(\X,\A,\mu)$ un espacio de medida y $\Pm$
+ un operador de Markov.
+\end{dfn}
+
+\subparagraph{Observación} El concepto de densidad estacionaria de un operador jugara un papel fundamenta el los próximos capítulos.
+
+\input{markov/perron/perron}

@@ -1,0 +1,306 @@
+\section{El operador Perron-Frobenius}
+
+En el capítulo 1 se presento el operador de Perron-Frobenius para el estudiar la evolución de la densidad en el caso de la función logística.
+  Después de haber desarrollado el concepto de operador de Markov y algunas de sus propiedades; se está en posición de estudiar el operador
+  de Perron-Frobenius. En consecuencia, se fundamentará, se caracterizará e ilustrará dicho operador; así como se mostrará su relación con
+  el operador de Markov.
+
+\begin{lem}Sea $S:\cir$ una transformación no-singular sobre un espacio de medida dado. Sea $f\in L^1$ con $f\geq 0$ la siguiente expresión:
+    \begin{equation}
+        \int_{S^{-1}(A)}{f(x)\mu(dx)}
+    \end{equation}
+    es una medida y existe un unico elemento en $L^1$, que denotaremos por $\Pm f$, tal que:
+    $$\int_A{\Pm f(x)\mu(dx)}=\int_{S^{-1}(A)}{f(x)\mu(dx)} \qquad para \; A\in\A$$
+\end{lem}
+
+\begin{proof} Se procede a demostrar que %~\ref{lemPer}
+    es una medida. Observe que la imagen inversa del conjunto vacio es vacio por lo tanto
+    \begin{align*}
+        \int_{S^{-1}(\emptyset)}{f(x)\mu (dx)}&=\int_{\emptyset}{f(x)\mu (dx)} && \\
+                                              &=0
+    \end{align*}
+    Como S es no singular entonces $\mu(S^{-1}(A))\geq 0$ para $\mu(A)\geq 0$
+    Por lo tanto podemos garantizar que
+    $$\int_{S^{-1}(A)}{f(x)\mu(dx)}\geq 0 \qquad \int_{A}{f(x)\mu(dx)\geq 0}$$
+    \begin{align*}
+        \intertext{Por ultimo consideremos}
+            S^{-1}(\cup_i{A_i}) & =\cup_i S^{-1}{(A_i)}\\
+        \intertext{Siendo lo $A_i$ disjuntos se tiene}
+            \int_{S^{-1}(\cup_i{A_i})}{f(x)\mu(dx)} & ={\int_{\cup_i S^{-1}{(A_i)}}{f(x)\mu(dx)}}\\
+        \intertext{y por la propiedad L5}
+            \int_{S^{-1}(A)}{f(x)\mu(dx)} & =\sum_i{\int_{S^{-1}{(A_i)}}{f(x)\mu(dx)}}\\
+        \intertext{con los cual es una medida. Como $f\in L^1$ entonces tiene medida finita.}
+    \end{align*}
+    por lo tanto por el colorario X, existe un unico elemento $f\in L^1$ tal que
+    $$\nu(A)=\int_A{f(x)\mu(dx)} \qquad \text{para cada } a\in\A$$
+\end{proof}
+
+\begin{equation}
+    \int_{A}{\Pm f(x)\mu(dx)}=\int_{S^{-1}(A)}{f(x)\mu(dx)} \qquad para\; A\in\A\label{c2n00}
+\end{equation}
+
+\paragraph{Propiedades del Operador Perron-Frobenius} A partir de puede deducir las siguientes propiedades.
+    \begin{align}
+        \Pm(\lambda_1f_1+\lambda_2f_2)&= \lambda_1\Pm f_1+\lambda_2\Pm f_2 && f_i\in L^1\;y\;\lambda_i\in\R\;(i=1,2)\\
+        \Pm\geq 0 \quad &\hbox{si} \quad f\geq 0\\
+        \int_{\X}{\Pm f(x)\mu(dx)}&=\int_{\X}{f(x)\mu(dx)}
+    \end{align}
+    Si $S_n=S\circ\ldots^n\circ S$ y $\Pm_n$ es el operador de Forbenius-Perron correspondiente a $S_n$,
+    entonces $\Pm_n=\Pm^n$, donde $\Pm$ es el operador de Forbenius-Perron correspondiente para $S$.
+    Las demostraciones son directas de la definición en el caso de tenemos
+
+    \begin{align*}
+        \Pm(\lambda_1f_1+\lambda_2f_2) &= \int_{A}{\Pm (\lambda_1f_1+\lambda_2f_2)\mu(dx)} \\
+        \intertext{Consideremos $B=S^{-1}(A)$}
+                                       &= \int_{B}{(\lambda_1f_1+\lambda_2f_2)\mu(dx)}\\%&(\hbox{def. del Operador})\\
+                                       &=\lambda_1\int_{B}{f_1\mu(dx)}+\lambda_2\int_{B}{f_2\mu(dx)}\\%&(\hbox{linealidad de la Integral})\\
+                                       &= \lambda_1\int_{A}{\Pm f_1\mu(dx)}+\lambda_2\int_{A}{\Pm f_2\mu(dx)}\\% &(\hbox{def. del Operador})
+    \end{align*}
+
+La demostración que es una medida nos garantiza que se cumple ya que la medida es una función positiva. Por último observemos que $S:\X\rightarrow\X$ por lo tanto la imagen inversa de $\X$ esta contenida en $\X$.
+
+\subparagraph{Observación} Las propiedades nos garantizan que el operador de Perron-Frobenius es un operador de Markov y por lo tanto cumple con las propiedades vistas anteriormente.
+
+Para algunos casos especiales se tiene una forma explícita del operador de Perron-Frobenius.
+Si $\X=[a,b]$ es un intevalo real y $A=[a,x]$ entonces se escribe como
+
+\begin{equation*}
+    \int^x_a{\Pm f(s)ds}=\int_{S^{-1}([a,x])}{f(s)ds}
+\end{equation*}
+
+derivando respecto a x
+
+\begin{equation}
+    \Pm f(x)=\frac{d}{dx}\int_{S^{-1}([a,x])}{f(s)ds}\label{c2n0}
+\end{equation}
+
+es importante notar que este es un caso especial donde la transformación $S$ es diferenciable e invertible,
+en el cual la forma explícita de $\Pm f$ es posible. Si $S$ es diferenciable y invertible entonces es monótoma,
+adicionalmente, supongamos que es creciente y $S^{-1}$ tiene derivada continua. Entonces
+
+\begin{equation*}
+    S^{-1}([a,x])=[S^{-1}(a),S^{-1}(x)]
+\end{equation*}
+
+por lo tanto queda:
+
+\begin{align*}
+    \Pm f(x)&=\frac{d}{dx}\int_{S^{-1}(a)}^{S^{-1}(x)}{f(s)ds}    \\
+            &=f(S^{-1}(x))\frac{d}{dx}(S^{-1}(x))
+\end{align*}
+
+y si $S(X)$ es decreciente
+
+\begin{align*}
+    \Pm f(x)&=\frac{d}{dx}\int_{S^{-1}(x)}^{S^{-1}(a)}{f(s)ds}    \\
+            &=\frac{d}{dx}-\int_{S^{-1}(a)}^{S^{-1}(x)}{f(s)ds}   \\
+            &=-f(S^{-1}(x))\frac{d}{dx}(S^{-1}(x))
+\end{align*}
+
+\begin{pro} Sea $S\circ$ una una transformación real diferenciable e invertible, con derivada continua y creciente
+    entonces el operador de Perron-Frobenius se expresa como:
+    \begin{equation}
+         \Pm f(x)=f(S^{-1})|\frac{d}{dx}[S^{-1}(x)]|\label{c2n1}
+    \end{equation}
+\end{pro}
+
+\begin{ejm} Veamos como el operador de Perron-Frobenius trabaja. Sea $S(x)=\exp(x)$,
+    siendo $S^{-1}=\ln(x)$ y $(S^{-1})'=\frac{1}{x}$. Aplicando \eqref{c2n1} la propiedad tenemos
+    $$\Pm f(x)=f(\ln(x))(\frac{1}{x})$$
+    Consideremos que ocurre si se toma la densidad de probabilidad $f$ dada por
+    $$f(x)=\frac{1}{2}\car_{[-1,1]}(x)$$
+    Evaluando la densidad sobre $\Pm$ tenemos
+    \begin{figure}
+        \begin{center}
+            \includegraphics[angle=-90,scale=0.25]{graficas/car}
+        \end{center}
+        \caption{La gráfica de $f(x)=\frac{1}{2}\car_{[-1,1](x)}$. Observe que $\int_{-1}^1{f(x)dx=1}$ y por lo tanto $f(x)$ una densidad.}
+    \end{figure}
+
+    \begin{align*}
+        \frac{1}{2}\car_{[-1,1]}(\ln(x))&=\begin{cases}
+                                    \frac{1}{2}& \text{si $-1\leq\ln(x)\leq 1$}\\
+                                    0 & \text{en otro caso}
+                                \end{cases} \\
+                              &=\begin{cases}
+                                    \frac{1}{2}& \text{si $e^{-1}\leq x\leq e^{1}$}\\
+                                    0 & \text{en otro caso}
+                                \end{cases} \\
+                              &= \frac{1}{2}\car_{[e^{-1},e^1]}(x)
+    \end{align*}
+    \begin{figure}
+        \begin{center}
+            \includegraphics[angle=-90,scale=0.25]{graficas/exp}
+        \end{center}
+        \caption{La gráfica de $\Pm f(x)=\frac{1}{2}\car_{[e^{-1},e^1](x)}$.
+        Debido a $\int_{-1}^1{f(x)dx=1}$ y por lo tanto $\Pm f(x)$ una densidad. En otra palabra, el operador
+        $\Pm$ mapeo una densidad en otra densidad.}
+    \end{figure}
+\end{ejm}
+
+Nótese que el soporte de la función $f$ está contenido en el soporte de $\Pm f$. Esa observación la generaliza la siguiente proposición
+
+\begin{teo} Sea $S:\X\rightarrow\X$ una transformación no singular y $\Pm$ el operador de Perron-Frobenius.
+    Se asume $f\leq 0, f\in L^1$ es dado. Entonces
+    $$\so f\subset S^{-1}(\so \Pm f)$$
+    Y, más generalmente, para cada conjunto $A\in\A$ la siguiente equivalencia es cierta:
+    $\Pm f(x)=0$ para $x\in\A$ si y solo si $f(x)=0$ para $x\in S^{-1}(A)$.
+\end{teo}
+
+\begin{proof} Por la definición del operador de Perron-Frobenius, se tiene
+    \begin{align*}
+            \int_A\Pm f(x)\mu(dx)&=\int_{S^{-1}(A)}{f(x)\mu(dx)}\\
+        \intertext{Que es equivalente a}
+            \int_\X{1_A(x)\Pm f(x)\mu(dx)}&=\int_\X{1_{S^{-1}(A)}f(x)\mu(dx)}
+    \end{align*}
+    Así $\Pm f(x)=0$ sobre $A$ implica, por la propiedad ~\ref{L2} de la integral de Lebesgue, que $f(x)=0$ para
+    $x\in S^{-1}(A)$  y viceversa. Se toma $A=\X\backslash\so(\Pm f)$ y se tiene $\Pm f(x)=0$ para $x\in A$ y, en consecuencia,
+    $f(x)=0$ para $x\in S^{-1}(A)$ esto significa que $\so f\subset\X\backslash S^{-1}(A)$. Como $S^{-1}(A)=\X\backslash \so(\Pm f)$
+    esto completa la prueba.
+\end{proof}
+
+\subparagraph{Observación} En el caso de una función arbitraria $f\in L^1$, entonces, solo se tiene esta implicación:
+    Si $f(x)=0\;\forall x\in S^{-1}(A)$ entonces $\Pm f(x)=0\;\forall x\in A$. Falla la suficiencia; esto lo podemos ver en el siguiente ejemplo.
+    Se toma la transformación r-ardica para $r=2$, osea, $S(x)=2x\;(mod\;1)$ y sea $f$
+    \begin{equation*}
+        f(x)=
+        \begin{cases}
+              1 & 0\leq x\leq \frac{1}{2}\\
+             -1 & \frac{1}{2}\leq x\leq 1
+        \end{cases}
+    \end{equation*}
+    \begin{figure}
+        \begin{center}
+            \includegraphics[angle=-90,scale=0.25]{graficas/r-ar}
+        \end{center}
+        \caption{Gráfica de la transformacion 2-ardica, osea, $S(x)=2x (mod\;1)$}
+    \end{figure}
+    Se toma un intervalo $[0,x]\subset[0,1]$se calcula la imagen inversa de $[0,x]$ bajo $S$ la cual viene dada por:
+
+    $$S^{-1}([0,x])=\cup_{i=0}^{r-1}{\Big[\frac{i}{r},\frac{i}{r}+\frac{x}{r}\Big]}$$
+
+    Y calculando el Operador de Perron-Frobenius
+
+    \begin{equation}
+        \Pm f(x)=\frac{d}{dx}\sum_{i=0}^{r-1}{\int_{\frac{i}{r}}^{\frac{i}{x}+\frac{x}{r}}{f(u)du}}=
+        \frac{1}{r}\sum_{i=0}^{r-1}{f\Big(\frac{i}{r}+\frac{x}{r}\Big)}
+    \end{equation}
+    Ahora como $r=2$ entonces $i$ toma valores de 0 e 1. Observando la grafica podemos concluir que
+    $\frac{1}{2}\sum_{i=0}^2{f(\frac{i}{2}+\frac{x}{2})}=-\frac{1}{2}+\frac{1}{2}=0$ y por lo tanto
+    $\Pm f(x)=0\; \forall x\in [0,1)$ pero $f(x)\neq 0$ para ningun $x\in[0,1]$.
+
+La generalización inmediata de REFE se tiene al extender $\X$ al plano $R^2$. Sea $A=[a,x]\times[b,y]$ entonces de  REFE se tiene
+\begin{align*}
+	\int_a^x{ds\int_b^y{\Pm f(s,t)dt}}&=\iint_{S^{-1}([a,x]\times[b,y])}{f(s,t)ds dt}\\
+    \intertext{diferenciando con respecto a $x$ y luego con respecto a $y$, se tiene inmediatamente que}
+    \Pm f(x,y)&=\frac{\partial^2}{\partial y\partial x}\iint_{S^{-1}([a,x]\times[b,y])}{f(s,t)ds dt}\\
+    \intertext{y formulas análogas que pueden derivarse en el caso de $\X\subset\R^d$}
+\end{align*}
+
+En el caso general, donde $\X=R^d$ y $S:\X\cir$ invertible, se puede derivar una interesante y útil generalización de
+ la ecuación REFE. Para hacer esto primero se probará el teorema del cambio de variable basado en el teorema de Radon-Nikodym.
+
+\begin{dfn}(Función de integración acotada) Es una función $f\in L^1\cap L^\infty$.
+\end{dfn}
+
+\begin{teo} Sea $(\X,\A,\mu)$ un espacio de medida, f de integración acotada y una transformación $S:\X\cir$ entonces para cada $A\in\A$
+$$\int_{S^{-1}(A)}{f(S(x))\mu(dx)}=\int_{A}{f(x)\mu S^{-1}(dx)}=\int_A{f(x)J^{-1}(x)\mu(dx)}$$
+Donde $\mu S^{-1}$ denota la medida
+$$\mu S^{-1}(B)=\mu(S^{-1}(B))\qquad \text{B }\in\A$$
+Y $J^{-1}$ es la densidad de $\mu S^{-1}$ con respecto a $\mu$, esto es,
+$$\mu(S^{-1}(B))=\int_B{J^{-1}(x)\mu(dx)}\qquad \text{para } B\in\A $$
+\end{teo}
+
+\subparagraph{Observación} Se usará la notación $J^{-1}(x)$ para mostrar la conexión con las transformaciones invertibles y
+diferenciables de $\R^d$, en este sentido $J(x)$ es el determinante de la matriz del Jacobiano:
+$$J(x)=\Big|\frac{dS(x)}{dx}\Big|\qquad o \qquad  J^{-1}(x)=\Big|\frac{dS^{-1}(x)}{dx}\Big|$$
+
+\begin{proof}Obsérvese que si tomamos $f(x)=1_B(x)$ entonces
+\begin{align*}
+f(S(x))=1_B(S(x))&=\begin{cases}
+  				      1 & \text{si $B\in(S(x))$}\\
+				      0 & \text{en otro caso}
+                   \end{cases} \\
+                 &=\begin{cases}
+  					  1 & \text{si $S^{-1}(B)\in x$}\\
+					  0 & \text{en otro caso}
+                    \end{cases}\\
+                 &= 1_{S^{-1}(B)}(x)
+\intertext{y, por lo tanto}
+\int_{S^1(A)}{f(S(x))\mu(dx)}&=\int_\X{1_{S^{-1}(A)}(x)f(S(x))\mu(dx)}\\
+                             &=\int_\X{1_{S^{-1}(A)}(x)1_{S^{-1}(B)}(x)\mu(dx)}\\
+                             &=\mu(S^{-1}(A)\cap S^{-1}(B))\\
+                             &=\mu(S^{-1}(A\cap B))
+\intertext{para la segunda integral del teorema se tiene}
+\int_A{f(x)J^{-1}(x)\mu(dx)}&=\int_A{1_B(x)J^{-1}(x)\mu(dx)}\\
+                            &=\mu(S^{-1}(A\cap B))
+\intertext{la tercera integral toma la forma de}
+\int_A{f(x)J^{-1}(x)\mu(dx)}&=\int_A{1_B(x)J^{-1}(x)\mu(dx)}\\
+                            &=\int_{A\cap B}{J^{-1}(x)\mu(dx)}\\
+                            &=\mu(S^{-1}(A\cap B))
+\end{align*}
+
+Ahora, se procede a probar para una función simple $f(x)=\sum_{i=1}^{n}{\lambda_i 1_{B_i}(x)}$
+\begin{align*}
+f(S(x))=\sum_{i=1}^{n}{\lambda_i 1_{B_i}(S(x))}&=\begin{cases}
+  				                   \sum_{i=1}^{n}{\lambda_i} & \text{si $B_i\in(S(x))$}\\
+				                                           0 & \text{en otro caso}
+                                                 \end{cases} \\
+                                               &=\begin{cases}
+  					               \sum_{i=1}^{n}{\lambda_i} & \text{si $S^{-1}(B_i)\in x$}\\
+					                                       0 & \text{en otro caso}
+                                                 \end{cases}\\
+                 &= \sum_{i=1}^{n}{\lambda_i 1_{S^{-1}(B_i)}(x)}
+\intertext{y, por lo tanto}
+\int_{S^1(A)}{f(S(x))\mu(dx)}&=\int_\X{1_{S^{-1}(A)}(x)f(S(x))\mu(dx)}\\
+                             &=\int_\X{1_{S^{-1}(A)}(x)\sum_{i=1}^{n}{\lambda_i 1_{S^{-1}(B_i)}(x)}\mu(dx)}\\
+                             &=\sum_{i=1}^{n}{\lambda_i\int_\X{1_{S^{-1}(A)}(x) 1_{S^{-1}(B_i)}(x)}\mu(dx)}\\
+                             &=\sum_{i=1}^{n}{\mu(S^{-1}(A)\cap S^{-1}(B_i))}\\
+                             &=\mu(S^{-1}(A\cap B))
+\intertext{para la segunda integral del teorema se tiene}
+\int_A{f(x)J^{-1}(x)\mu(dx)}&=\int_A{\sum_{i=1}^{n}{\lambda_i 1_{B_i}(x)}J^{-1}(x)\mu(dx)}\\
+                            &=\sum_{i=1}^{n}{\lambda_i \int_A{1_{B_i}(x)}J^{-1}(x)\mu(dx)}\\
+                            &=\sum_{i=1}^{n}{\mu(S^{-1}(A)\cap S^{-1}(B_i))}\\
+                            &=\mu(S^{-1}(A\cap B))
+\intertext{la tercera integral toma la forma de}
+\int_A{f(x)J^{-1}(x)\mu(dx)}&=\int_A{\sum_{i=1}^{n}{\lambda_i 1_{B_i}(x)}J^{-1}(x)\mu(dx)}\\
+                            &=\sum_{i=1}^{n}{\int_{A}{\lambda_i 1_{B_i}J^{-1}(x)\mu(dx)}}\\
+                            &=\sum_{i=1}^{n}{\int_{A\cap B_i}{J^{-1}(x)\mu(dx)}}\\
+                            &=\sum_{i=1}^{n}{\mu(S^{-1}(A)\cap S^{-1}(B_i))}\\
+                            &=\mu(S^{-1}(A\cap B))
+\end{align*}
+Como $f$ es una función de integración acotada podemos suponer que existe una sucesión $\{g_n\}$ de funciones simples
+que convergen uniformemente a $f$. Por lo tanto, podemos evaluar los siguientes límites
+\begin{align*}
+\limi_{n\rightarrow\infty}\int_{S^1(A)}{g_n(S(x))\mu(dx)}&=\limi_{n\rightarrow\infty}\mu_n(S^{-1}(A\cap B))\\
+                             &=\mu(S^{-1}(A\cap B))\\
+\intertext{para la segunda integral del teorema se tiene}
+\limi_{n\rightarrow\infty}\int_A{g_n(x)J^{-1}(x)\mu(dx)}&=\limi_{n\rightarrow\infty}\mu_n(S^{-1}(A\cap B))\\
+                            &=\mu(S^{-1}(A\cap B))\\
+\intertext{la tercera integral toma la forma de}
+\limi_{n\rightarrow\infty}\int_A{g_n(x)J^{-1}(x)\mu(dx)}&=\limi_{n\rightarrow\infty}\mu_n(S^{-1}(A\cap B))\\
+                            &=\mu(S^{-1}(A\cap B))
+\end{align*}
+\end{proof}
+
+El teorema anterior es tomado por algunos autores como la definición del operador de Perron-Ruelle-Frobenius o operador de Transferencia.
+El siguiente resultado es una consecuencia directa del teo (ref) y extiende la ecuación (refe)
+
+\begin{col} Sea $(\X,\A,\mu)$ un espacio de medida $S:\cir$ una transformación no singular invertible y
+$\Pm$ el operador de Perron-Frobenius asociado. Entonces para cada función de integración acotada, se tiene
+$$\Pm f(x)=f(S^{-1}(x))J^{-1}$$
+\end{col}
+
+\begin{proof} Por la definición de $\Pm$, para $A\in\A$ se tiene
+\begin{align*}
+    \int_A{\Pm f(x)\mu(dx)}&=\int_{S^{-1}}{f(x)\mu(dx)}\\
+    \intertext{Haciendo el cambio de variable en la integral con $y=S(x)$, tal que}
+    \int_{S^{-1}(A)}{f(x)\mu(dx)}&=\int_A{f(S^{-1}(y))J^{-1}(y)\mu(dx)} \\
+    \intertext{Por el teoremas REFE}
+    \int_A{\Pm f(x)\mu(dx)}&=\int_A{f(S^{-1}(x))J^{-1}(x)\mu(dx)} \\
+    \intertext{Usando el resultado de la proposición REFE}
+    \Pm f(x)&=f(S^{-1}(x))J^{-1}
+\end{align*}
+\end{proof}
+
+\input{markov/koopman/koopman}

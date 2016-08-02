@@ -1,0 +1,46 @@
+\section{Convergencia de sucesiones de funciones}
+
+\begin{dfn}[Convergencia Cesaro] La sucesión de funciones $\{f_n\}\rightarrow f$ si
+    \begin{equation}
+        \limi_{n\rightarrow\infty}{\frac{1}{n}\sum_{k=1}^{n}{<f_k,g>}}=<f,g> \qquad \forall g\in L^p
+    \end{equation}
+    donde $f_n, f\in L^p$ y $1\leq p<\infty$.
+\end{dfn}
+
+\begin{dfn}[Convergencia Debil]La sucesión de funciones $\{f_n\}\rightarrow f$ si
+    \begin{equation}
+        \limi_{n\rightarrow\infty}{<f_n,g>}=<f,g> \qquad \forall g\in L^p
+    \end{equation}
+    donde $f_n, f\in L^p$ y $1\leq p<\infty$.
+\end{dfn}
+
+\begin{dfn}[Convergencia Fuerte]La sucesión de funciones $\{f_n\}\rightarrow f$ si
+    \begin{equation}
+        \limi_{n\rightarrow\infty}{||f_k-f||_{L^p}}=0
+    \end{equation}
+    donde $f_n, f\in L^p$ y $1\leq p<\infty$.
+\end{dfn}
+
+\begin{obs} De la inecuación de Cauchy-Hölder, se tiene
+    $$|<f_n-f,g>|\leq ||f_n-f||_{L^p}\cdot||g||_{L^p}$$
+    Y, asi, si $||f_n-f||_{L^p}$ converge a cero, entonces $<f_n-f,g>$ también. Entonces la convergencia fuerte implica convergencia débil.
+    Usualmente la convergencia fuerte es más sencillo de probar. Sin embargo, la convergencia débil requiere
+    la demonstración que asegure que para toda $g\in L^p$, que parece difícil de hacer en principio.
+    Para algunos caso especiales e importantes espacios, es suficiente verificar la convergencia débil para una clase restringida de funciones,
+    definidas como lo siguiente.
+\end{obs}
+
+\begin{pro} Si $(\X,\A,\mu)$ es un medida finita y $1\leq p_1<p_2\leq\infty$ entonces
+    \begin{equation}
+        ||f||_{L^{p_1}}\leq c||f||_{L^{p2}} \qquad \text{Para cada } f\in L^{p^2}
+    \end{equation}
+    donde $c$ depende de $\mu(\X)$. Asi cada elemento de $L^{p_2}$ pertenece a $L^{p_1}$, y la convergencia fuerte en $L^{p_2}$
+    implica convergencia fuerte en $L^{p_1}$
+\end{pro}
+
+\begin{proof} Sea $f\in L^{p_2}$ con $p_2<\infty$. Tomando $g=|f|^{p_1}$, se obtiene
+\end{proof}
+
+\begin{teo} Sea $(\X,\A,\mu)$ un espacio de medida y sea $\{f_n\}$ una sucesion de $f\in L^p(\X,\A,\mu)$
+\end{teo}
+

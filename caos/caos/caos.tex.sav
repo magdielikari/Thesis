@@ -1,0 +1,65 @@
+\chapter{Estudio el Caos con Densidades}
+
+Se introduce el concepto de medida invariantes por transformaciones, posteriormente, define e ilustra tres nivel de
+irregularidad en el comportamiento de las transformaciones. Estos tres nivel son conocidos como ergodicidad, mezclante
+(o mixing) y exactas. Asimismo, se presentan sus caracterizaciones. El objetivo central del capítulo es mostrar la utilidad
+de los operadores de Perron-Frobenius y Koopman en el estudio de de estos comportamientos.
+
+Para de densidad constante $f(x)=1$, preservar la medida es que sea una densidad estacionaria del operador de Perron-Frobenius,
+ósea, $\Pm 1=1$. Para la ergodicidad, la condición es que $f(x)=1$ sea la única densidad estacionaria para ese operador.
+Finalmente, mixing y exacta son condiciones sobre la estabilidad de la densidad estacionaria.
+
+\section{Medidas Invariantes}
+
+\begin{dfn}(Medidas Invariantes Sobre $S$) Si $\mu(S^{-1}(A))=\mu(A)$ donde $S:\X\cir$ es una transformación medible y $(\X,\A,\mu)$ un espacio de medida.
+\end{dfn}
+
+
+
+\begin{teo} Sea $(\X,\A,\mu)$ un espacio de medida, $S:\X\cir$ una transformación no singular, y $\Pm$ el operador de Frobenius-Perron asociado con $S$.
+Considere $f\in L^1$ entonces $\mu_f$ una medida dada por
+$$\mu_f=\int_A{f(x)\mu(dx)}$$
+Es invariante si y solo si es un punto fijo de $\Pm$
+\end{teo}
+
+\begin{proof} Probemos las suficiencia de la propocición. Se asume la invarianza de la medida $\mu_f$. Entonces, por la definición de medida invariante se tiene
+    \begin{align*}
+        \mu_f(A)&=\mu_f(S^{-1}(A))\qquad \forall A\in\A\\
+        \intertext{O, por la defe[??]}
+        \int_A{f(x)\mu(dx)}&=\int_{S^{-1}(A)}{f(x)\mu(dx)} \qquad \text{para } A\in\A\\
+        \intertext{Sin embargo, por la definición del operador de Perron-Frobenius, se tiene}
+        \int_{S^{-1}}{f(x)\mu(dx)}&=\int_A{\Pm f(x)\mu(dx)}\qquad \text{para } A\in\A\\
+        \intertext{Comparando ?? con ?? se tiene que}
+        \int_A{f(x)\mu(dx)}&=\int_A{\Pm f(x)\mu(dx)}\\
+        \intertext{por lo tanto}
+        f=\Pm f
+\end{align*}
+Si $\Pm f=f$ para algun $f\in L^1\;\geq 0$ entonces, se tiene
+\begin{align*}
+    f&=\int_A{f\mu(dx)}\\
+     &=\mu_f(A)        \\
+     &=\Pm f           \\
+     &=\int_{S^{-1}(A)}{f\mu(dx)}\\
+     &=\mu_f(S^{-1}(A)) \\
+\intertext{Por lo tanto, se tiene que}
+\mu_f(A)&=\mu_f(S^{-1}(A))
+\end{align*}
+Y por tanto, $S$ preserva la medida.
+\end{proof}
+
+\subparagraph{Observación} La medida  es invariante sii $\Pm1=1$
+
+\begin{ejm} Considere la transformación r-ardica, presentada en el ejemplo REFE
+$$S(x)=rx\qquad (mod 1)$$
+donde $r>1$ es un entero. Recordemos que para $[0,x]\subset[0,1]$ se tiene que
+    $$S^{-1}([0,x])=\cup_{i=0}^{r-1}{\Big[\frac{i}{r},\frac{i}{r}+\frac{x}{r}\Big]}$$
+El operador de Perron-Frobenius para esta transformación esta definido como
+        $$\Pm f(x)=\frac{1}{r}\sum_{i=0}^{r-1}{f\Big(\frac{i}{r}+\frac{x}{r}\Big)}$$
+asi
+$$\Pm 1=\frac{1}{r}\sum_{i=0}^{r-1}{1}=1$$
+Por la observación anterior se tiene que la transformación r-ardica es invariante.
+
+\end{ejm}
+
+
+\input{caos/ergodicas/ergodicas}

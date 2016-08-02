@@ -1,0 +1,342 @@
+\chapter{Sistemas Dinámicos}
+
+Los astros han sido del interés humano desde hace varios siglos. No obstante, La presencia de ecuaciones diferenciales no-lineales
+ha dificultado el estudio de los mismos. La dinámica, el movimiento, de 3 cuerpos celestes originado por la interacción de gravitatoria de los mismos;
+se le conoce como \textit{el problema de los 3 cuerpos}. A finales del siglo XIX, Henri Poicaré (1854-1912) desarrolló el análisis
+cualitativo de las ecuaciones diferenciales estudiando el problema de los 3 cuerpos. De esta forma surgen los Sistemas Dinámicos.
+
+El objetivo de los sistemas dinámicos es el estudio del comportamiento asintótico o a largo plazo de un sistema que depende del tiempo.
+Por ejemplo, si consideramos la cantidad de población de una especie su comportamiento asintótico nos proporciona información útil sobre la
+supervivencia o extinción de dicha especie. Como puede advertirse,  los Sistemas Dinámicos tiene asida la idea de movimiento o cambio con
+respecto al tiempo.
+
+Esta idea se representa con  la noción de grupo de acción; la cual será presentada en el apéndice~\ref{cha:ApeA}.
+Los grupos de acción aunque son amplios e interesante teóricamente hablando, aunque no responden al objetivo fundamental de los
+sistemas dinámicos anteriormente discutidos.Como consecuencia, se requiere tener cierta estructura sobre el conjunto $\X$, así como
+restricciones sobre $S$. Existe tres ramas principales:
+
+\begin{description}
+    \item[Dinámica Diferencial] $\X$ una variedad diferenciable y $S$ un difeomorfismo.
+    \item[Dinámica Topológica]  $\X$ un espacio topológico y $S$ un homeomorfismo.
+    \item[Teoría Ergódica] $\X$ un espacio de medida y una medida invariante sobre $S$.
+\end{description}
+
+El desarrollo de la investigación se fundamentará en el estudio de algunos elementos de la teoría ergódica. Especialmente, aquellos
+aspectos estrechamente vinculados al estudio de propiedades estadísticas \footnote{aleatorio o estocástico} de los sistemas dinámicos.
+
+Sin embargo, se comentó que los sistemas dinámicos surgen el estudio cualitativo de las ecuaciones diferenciales; área de
+investigación propiamente deterministica. Entonces, ¿Cómo se fundamentará la investigación  en algunos elementos de teoría ergódica
+vinculados con propiedades estocásticas?. La conexión entre sistemas determinísticos y estocásticos se analizará en la siguiente sección
+mediante un ejemplo.
+
+\section{Ejemplo ilustrativo}
+
+La tasa de crecimiento en la población de una especie es proporcional a la población  real en cualquier instante dado. Si $x$ representa
+la cantidad de especímenes en cualquier instante dado y $t$ las unidades de tiempo, entonces
+
+$$\frac{dx}{dt}=\alpha x$$
+
+representa la dinámica de una población. Donde $\alpha$ es una contante; si $\alpha>0$ se tiene una ley de crecimiento natural y si $\alpha<0$
+se tiene una ley de decrecimiento natural.
+
+Sin embargo, al comparar dicho modelo con la evidencia experimental se comprobó que no se ajustaba a la realidad. Ninguna población
+puede crecer indefinidamente a una tasa constante; ya sea por limitaciones de espacio, recursos, entre otros. Por lo tanto, es realista suponer
+que el medio solo puede sostener de manera estable un máximo $\alpha$ de población, de modo que si
+
+\begin{description}
+    \item[$x(t)>\alpha$,] la tasa sería negativa y la población decrecería acercandose a $\alpha$.
+    \item[$x(t)=\alpha$,] la tasa sería nula y, por lo tanto, la población constante.
+    \item[$x(t)<\alpha$,] la tasa sería positiva, creciendo entonces la población, aunque más lentamente cuando más proxima esté del valor de $\alpha$.
+\end{description}
+
+De lo dicho previamente se puede reformular la ecuación que representa la dinámica de una población, la ecuación logística, como
+
+$$x'=\alpha x(1-x)\;\footnote{donde x' representa clasicamente la derivada de x con respecto del tiempo}$$
+
+Por consiguiente, podemos considera la siguiente definición
+
+\begin{dfn}[Familia Logística] Es la transformación definida como:
+	\begin{equation}\label{logistica}
+        S(x)=\alpha x(1-x)\qquad para\; 0\leq x\leq 1
+	\end{equation}
+\end{dfn}
+
+Se supondra $\alpha=4$. La transformación está definida en $[0,1]$ en sí misma, dicho de otro modo, el  \emph{estado} o
+\emph{fase}  \emph{del espacio} es $[0,1]$. La gráfica de la transformación se muestra en la siguiente Figura \ref{Glogistica}
+
+\begin{figure}[ht!]
+    \begin{center}
+        \includegraphics[angle=-90,scale=0.4]{graficas/log}
+    \end{center}
+    \caption{Gráfica $S(x)=4x(1-x)$\quad para $0\leq x\leq 1$. Se observa como la población crece y decrece alrededor de $\alpha$}
+    \label{Glogistica}
+\end{figure}
+
+Al examinar  la población de una especie, se puede considerar  la variable t como las generaciones de la misma. La cantidad de población
+de la siguiente generación dependerá de la cantidad de población actual mediante la transformación $S$. Debido a lo anterior, el
+tiempo se considera discreto sobre las generaciones de la especie. Por lo tanto, para el estudio de la dinámica de la población se
+considera mediante la siguiente definición.
+
+\begin{dfn} (Trayectoria\footnote{tambien llamada orbita de $x^0$} de $x^0$) Es la sucesión de estado definidos como
+	\begin{equation}
+		x^0, S(x^0),\quad  S(S(x^0))=S^2(x^0),\quad S(S(S(x^0)))=S^3(x^0), \ldots
+    \end{equation}
+    donde $x^0\in[0,1]$  en los  tiempos $1,2,3,\ldots$
+\end{dfn}
+
+Al no existir población entonces la misma no podría variar, así se esperaría que al elegir $x^0=0$ la trayectoria no difieran de $0$.
+La primera parte de la Figura \ref{OFlogistica} se comprueba dicha observación con la grafica de la trayectoria en forma de serie de tiempo.
+Por otra parte, al elegir $x^1=\frac{3}{4}$ la población se mantiene con el paso del tiempo, como se muestra en la ultima Figura \ref{OFlogistica}.
+
+\begin{figure}
+    \begin{center}
+        \subfloat[xo]{%\label{f:xo}
+            \includegraphics{graficas/tesis.4}}\\
+        \subfloat[xm]{%\label{\f:xm}
+            \includegraphics{graficas/tesis.5}}
+    \end{center}
+    \caption{(Arriba) La trayectoria de $S(x)$ con condición inicial $x^0=0$.
+     (Abajo) Trayectoria de $S(x)$ con condición inicial $ x^1=\frac{3}{4}$ }
+     \label{OFlogistica}
+\end{figure}
+
+\begin{figure}
+    \begin{center}
+    \includegraphics[angle=-90,scale=0.4]{graficas/loi}
+    \end{center}
+    \caption{Gráfica $S(x)=4x(1-x)$ e $y=x$.Ambas se interceptan en los puntos $x=0$ y $x=\frac{3}{4}X$}
+    \label{OGlogistica}
+\end{figure}
+
+Ahora en ambos puntos $0$ y $\frac{3}{4}$ son interesantes para la función logística. En la Figura \ref{OGlogistica} se muestra
+la función logística y la identidad. Ambas funciones se cortan en $0$ y $\frac{3}{4}$; cuando se cortan la orbitas de
+estos puntos no varían. Esto motiva la siguiente definición
+
+\begin{dfn}[Puntos fijos] Son los puntos $x$ que cumple
+    \begin{equation}
+        T(x)=x
+    \end{equation}
+\end{dfn}
+
+Sin embargo, comportamientos interesantes ocurren alejándose de los números racionales entre $[0,1]$ como por ejemplo en $x^0=\pi/10$.
+Analizando otro valor inicial cercano a $x^0$ como por ejemplo, $x^1=\pi/10+0.001$. En la Figura \ref{OClogistica} se presenta las gráficas de
+la trayectorias. Para comprobar que las trayectorias han variado significativamente la evolución de la población.
+
+\begin{figure}[ht!]
+    \begin{center}
+    \includegraphics{graficas/tesis.2}\\
+    \includegraphics{graficas/tesis.3}
+        \begin{picture}(0,0)
+        \end{picture}
+    \end{center}
+    \caption{(Arriba) La trayectoria de $S(x)$ con condición inicial $x^0=\pi/10$.
+     (Abajo) Trayectoria de $S(x)$ con condición inicial $x^1=\pi/10+0.001$ }
+     \label{OClogistica}
+\end{figure}
+
+Se considera
+
+$$X^0=\{x^0(0), S(x^0)=x^0(1), S(S(x^0))=x^0(2),\ldots,x^0(n) \}$$
+$$X^1=\{x^1(0), S(x^1)=x^1(1), S(S(x^1))=x^1(2),\ldots,x^1(n) \}$$
+
+Y calculando la norma 2, osea
+
+\begin{align*}
+    ||x^0-x^1||&=\sqrt{\sum^{n}_{i=0}{x^0(i)-x^1(i)}}\\
+               &=35,909\\
+\end{align*}
+
+La norma $||x^0-x^1||$ es mayor que 1 y dado que la diferencia entre $x^0$ y $x^1$ es de una milésima.
+Lo anterior, indica que la solución es sensible a las condiciones iníciales. Se realiza un estudio estadístico de cada
+una de las trayectorias. Consideremos el histograma de frecuencia $f_i$; este se construye de la siguiente forma.
+Se toma una partición $\{I_k\}_k=1,\ldots,n$ del espacio de fases $[0,1]$ y para cada trayectoria definimos las frecuencias
+
+$$f_i=\frac{\sharp\{ x^0(j)\in I_k\}}{N}$$
+
+donde $\sum{f_i}=1$, $N>>n$ y $[\frac{\imath-1}{n},\frac{\imath}{n})\;
+\imath=1,\ldots,n$. Por ultimo, se grafica la partición $\{ I_k \}$ vs la frecuencia $f_i$.
+
+\begin{table}[ht!]
+    \begin{tabular}{cc}
+          \includegraphics[width=55mm]{graficas/Fig4.jpeg}
+          &
+          \includegraphics[width=55mm]{graficas/Fig5.jpeg}
+    \end{tabular}
+    \caption{ (Izquierda) Histograma de frecuencia para $S(x^0)$ con $x^0=\pi/2$.(Derecha)
+     Histograma de frecuencia para $S(x^0)$ con $x^0=\pi/2+0.001$.}
+    \label{histograma}
+\end{table}
+
+Se observa simetría en el resultado. Las frecuencia son mayores los extremos $0$ y $1$, pero menores próximos al centro en $\frac{1}{2}$.
+Repitiendo este proceso para distintos estados iníciales, o sea, para distintos valores de $x^0$ y $x^1$ se obtiene, en general, el mismo resultado.
+\textit{La trayectoria del sistema es sensible a pequeños cambios en el estado inicial, pero estos no producen cambios
+considerables en la distribución de estados}
+
+El estudio de orbitas particulares parece poco fructífero, no obstante el análisis de las densidades se observa más prometedor.
+Sin embargo, surgen la varias interrogantes: ¿Cómo podemos calcular la función de densidad? Y más importante aún, ¿Existe dicha función
+de densidad? ¿Para cuales condiciones?  En la siguiente sección se tratara estos temas.
+
+\section{La evolución de las densidades}
+
+Si considerando que las trayectorias son aleatorias, equidistribuidas e independientes;
+hipótesis de la Ley Fuerte de Grandes Números nos permite decir que:
+
+$$Lim_{N\rightarrow\infty}{\sum^{N}_{j=1}{\car_{\tri_0}(x^0_j)}}=\int_{\tri_0}{f_0(x)\mu(dx)}$$
+
+donde $f$ es una función de densidad de $\X$ y se define
+
+\begin{dfn}(Función Características, $\car_\tri (x)$)\label{caracte} Se define como:
+    \begin{equation}
+     \car_\tri (x)=
+	   \begin{cases}
+		  1 & Si\; x\in\tri\\	
+          0 & Si\; x \;not\in\tri
+        \end{cases}
+    \end{equation}
+\end{dfn}
+
+Sin embargo, debido a la forma como son generados las trayectorias estas no son independientes; por lo que se necesita recurrir a
+teoremas Ergódicos. Los teoremas Ergódicos pueden pensar se como generalizaciones de las Ley fuerte en caso que no se cumpla la hipostesis independencia.
+Se presentará el operador Perron-Frobenius de forma intuitiva, con la finalidad de poder conseguir la función de probabilidad para
+el ejemplo en estudio.
+
+Inicialmente, se supone que tenemos la transformación $S:[0,1]\cir$ (una forma abreviada de decir $S[0,1]$
+en sí misma). Se recoge un gran número $N$ de estados iníciales
+
+$$x_1^0, x_2^0, x_3^0,\ldots, x_N^0$$
+
+Para cada uno de los estados se le aplica la transformación  S, obteniendo  así $N$ nuevos estados denotados por
+
+$$x_1^1=S(x_1^0), x_2^1=S(x_2^0), \ldots, x_N^1=S(x_n^0)$$
+
+En términos generales, decimos que una función $f_0(x)$ es una función de densidad para el valor inicial
+$x_1^0, x_2^0, x_3^0,\ldots, x_N^0$ si, para cada intervalo (no tan pequeño) $\tri_0\subset[0,1]$ tenemos
+
+\begin{equation}
+    \int_{\tri_0}{f_0(\mu)d\mu}\simeq\frac{1}{N}\sum_{j=1}^{N}{\car_{\tri_0}(x_j^0)}\label{c1n1}
+\end{equation}
+
+Similarmente, la función densidad $f_1(x)$ para los estados $x_1^1, x_2^1, x_3^1,\ldots, x_N^1$ la satisface por $\tri\subset[0,1]$
+
+\begin{equation}
+    \int_{\tri}{f_1(\mu)d\mu}\simeq\frac{1}{N}\sum_{j=1}^{N}{\car_\tri(x_j^1)}\label{c1n2}
+\end{equation}
+
+Se quiere encontrar la relación entre $f_1$ y $f_2$. Para hacer esto es necesario introducir la noción de imagen inversa.
+
+\begin{dfn}(Imagen inversa de $S$, $S^{-1}(\tri)$) Es el conjunto de todos los puntos que estan en $\tri$ luego la aplicación de S, o
+$$S^{-1}(\tri)=\{x:S(x)\in\tri\}$$
+\end{dfn}
+
+Observe que para cualquier $\tri\subset[0,1]$ se tiene
+
+$$x^1_j\in\tri\qquad sii\quad x_1^0\in S^{-1}(\tri)$$
+
+En consecuencia, se deduce la útil relación
+
+\begin{equation}
+    \car_\tri(S(x))=\car_{S^{-1}(x)}(x)\label{c1n3}
+\end{equation}
+
+Con \ref{c1n3} ee puede reescribir la ecuación como
+
+\begin{equation}
+    \int_\tri{f_1(\mu)d\mu}\simeq\frac{1}{N}\sum_{j=1}^N{\car_{S^{-1}(\tri)}(x_j^0)}\label{c1n4}
+\end{equation}
+
+Siendo $\tri_0$ y $\tri$ ha sido arbitraria hasta este punto, simplemente, escogemos $\tri_0=S^{-1}(\tri)$. Con esta opción la
+ecuaciones \ref{c1n1} y \ref{c1n4} son iguales y por lo tanto
+
+\begin{equation}
+    \int_\tri{f_1(\mu)d\mu}=\int_{S^{-1}(\tri)}{f_0(\mu)d\mu}\label{c1n5}
+\end{equation}
+
+Esta ecuación nos entrega la relación que existe entre las funciones densidad $f_0$ y $f_1$ , y nos dice como
+cambia la densidad para los estados iniciales al aplicarles la transformacion $S$. Es decir , nos dice como la
+función densidad $f_0$ es cambiada a una nueva función $f_1$ al aplicar la transformacion $S$.
+Ahora bien: si $\tri$ es un intervalo , digamos $\tri=[a,x]$ , entonces podemos obtener una
+representacion explicita para $f_1$ .En este caso, la ecuación \ref{c1n5} se transforma en :
+
+$$\int_a^x{f_1(\mu)d\mu}=\int_{S^{-1}([a,x])}{f_0(\mu)d\mu}$$
+
+derivando con respecto a $x$ tenemos
+
+\begin{equation}
+    f_1(x)=\frac{d}{dx}\int_{S^{-1}([a,x])}{f_0(\mu)d\mu}\label{c1n6}
+\end{equation}
+
+Ahora es claro que $f_1$ dependerá de $f_0$.Esta dependencia se indica usualmente escribiendo $f_1=\Pm f_0$
+y entonces podemos escribir la ecuación  como :
+
+\begin{equation}
+    Pf(x)=\frac{d}{dx}\int_{S^{-1}([a,x])}{f(\mu)d\mu}\label{c1n7}
+\end{equation}
+
+Este operador \ref{c1n7} se le conoce como el nombre de Perron-Frobenius. Para ilustrar el uso de esta formula \ref{c1n7} el resultado en el ejemplo ya estudiado.
+Se procede a calcular la región de la inversa de S. Esto se puede hacer despejado la función con respecto a y
+
+\begin{align*}
+    4x(1-x)&=y         \\
+\intertext{Se despeja x. Operando la expresión resulta así}
+          x&=\frac{2\mp 2\sqrt{(1-y)}}{4}  \\%\text{elevando al cuadrado}\\
+\end{align*}
+
+Se obtiene la region de integración.
+
+$$S^{-1}([0,x])=[0,\frac{1}{2}-\frac{1}{2}\sqrt{1-x}]\cup[\frac{1}{2}+\frac{1}{2}\sqrt{1-x},1]$$
+
+Sustituyendo en  se obtiene
+
+\begin{align}
+    \Pm f(x)&=\frac{d}{dx}\int_{[0,\frac{1}{2}-\frac{1}{2}\sqrt{1-x}]\cup[\frac{1}{2}+\frac{1}{2}\sqrt{1-x},1]}{f(u)du} \nonumber\\
+            &=\frac{d}{dx}\int^{\frac{1}{2}-\frac{1}{2}\sqrt{1-x}}_0{f(u)du}+\frac{d}{du}\int^1_{\frac{1}{2}+\frac{1}{2}\sqrt{1-x}}{f(u)du}\nonumber\\
+%\intertext{Suponiendo que \frac{dF}{dx}=f}
+            &=\frac{d}{dx}F\Bigg(\frac{1}{2}-\frac{1}{2}\sqrt{1-x}\Bigg)
+            -\frac{d}{dx}F(0)+\frac{d}{dx}F(1)-\frac{d}{dx}F\Bigg(\frac{1}{2}+\frac{1}{2}\sqrt{1-x}\Bigg)\nonumber\\
+            &=\frac{1}{4\sqrt{1-x}}\Bigg\{f\Bigg(\frac{1}{2}-\frac{1}{2}\sqrt{1-x}\Bigg)+f\Bigg(\frac{1}{2}+\frac{1}{2}\sqrt{1-x}\Bigg)\Bigg\}\label{c1n8}
+\end{align}
+
+Supongamos que $f(x)=1$ para $x\in [0,1]$. Entonces la formula \ref{c1n8} se simplifica como
+
+\begin{equation}\label{c1n9}
+    \Pm f(x)=\frac{1}{2\sqrt{1-x}}
+\end{equation}
+
+Ahora se sustituye la expresión \ref{c1n8}, es decir $\Pm f$ por $f$ y podemos calcular nuevamente
+
+\begin{align}\label{c1n10}
+    \Pm(\Pm f(x))&=\Pm^2f(x) \nonumber\\
+                 &=\frac{1}{4\sqrt{1-x}}\Bigg\{\frac{1}{2\sqrt{1-\frac{1}{2}+\frac{1}{2}\sqrt{1-x}}}+
+                 \frac{1}{2\sqrt{1-\frac{1}{2}-\frac{1}{2}\sqrt{1-x}}}\Bigg\}\nonumber\\
+                 &=\frac{\sqrt{2}}{8\sqrt{1-x}}\Bigg\{\frac{1}{\sqrt{1+\sqrt{1-x}}}+\frac{1}{\sqrt{1-\sqrt{1-x}}}\Bigg\}
+\end{align}
+
+Se puede mostra que para este ejemplo en especifico la sucesión de orbitas converge a una densidad limite dada por:
+
+\begin{equation}\label{c1n12}
+    f_*(x)=\frac{1}{\pi \sqrt{x(1-x)}}
+\end{equation}
+
+\begin{figure}[ht!]
+    \begin{center}
+        \includegraphics[angle=-90,scale=0.4]{graficas/log2}
+    \end{center}
+    \caption{Gráfica $f_*(x)=\frac{1}{\pi \sqrt{x(1-x)}}$. Se observa como la función predice la probabilidad empírica conseguída en los histogramas \ref{histograma}}
+    \label{Glimite}
+\end{figure}
+
+En la Figura \ref{Glimite} se muestra la gráfica de la densidad límite. Comparando los histogramas \ref{histograma} con \ref{Glimite}
+se observa el operador de Perron-Frobenius Refe construye  la  densidad de probabilidad, aunque las condiciones para la
+existencia no han sido tratadas. El \emph{estudio de la existencia} será el tema a desarrollar en la presente investigación.
+Así mismo, como las razones que justifican el paso al límite de \eqref{c1n11} y en profundizar en las propiedades del
+operador de Perron-Frobenius.
+
+Recapitulando, debido a la sensibilidad a las condiciones iníciales de algunas funciones se opta en tratar un
+problema determinista como un problemaestocástico. Entiéndase como problema determinista hallar el comportamiento
+asintótico de la solución de una ecuación diferencial. Así mismo, como problema estocástico el de encontrar  la
+función de probabilidad que siguen las trayectorias. Se mostró como el operador de Perron-Frobenius colabora en
+proporcionado un método recursivo para encontrar una sucesión que converge a la función de probabilidad deseada. Aunque,
+no quedó claro el paso al límite de la sucesión anterior. Menos aun, las hipótesis y razonamiento que justifique el 
+procedimiento anterior. Estos temas serán tratado en del desarrollo de la investigación.
+
+

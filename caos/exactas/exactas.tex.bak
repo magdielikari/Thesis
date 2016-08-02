@@ -1,0 +1,66 @@
+\section{Transformaciones Mezclantes y Exactas}
+
+\begin{dfn}[Transformación Mezclante] Si $S$ cumple que
+\begin{equation}
+\limi_{n\rightarrow\infty}{\mu(A\cap S^{-n}(B))}=\mu(A)\mu(B)\qquad \text{para todo} A,B\in\A
+\end{equation}
+Siendo $(\X,\A,\R)$ es un espacio de medida probabilidad, y $S:\X\cir$ una transformación que preserva la medida.
+\end{dfn}
+
+La definición de mezclante puede ser interpretada de la siguiente forma.  Los puntos que partieron en A y finalizarón en B después de n iteraciones su medida está determinada por el producto de las medidas de A y de B. Adicionalmente, es independiente de la posición inicial de $A$ y de $B$ en $\X$.
+
+\subparagraph{Observación} Es fácil de ver cualquier transformación de mezclante esta deberá ser ergódica. Se asume que
+$B\in\A$ es un conjunto invariante, en que se cumple $B=S^{-1}(B)$ y,  aún más, $B=S^{-n}(B)$  por inducción. Se toma $A=\X  $
+para que $\mu(A\cap B)=\mu(A\cap S^{-b}(B))=0$. Sin embargo, de que debe tener
+y por lo tanto es o bien 0 o 1, lo que demuestra la ergodicidad
+
+\begin{dfn}[Transformación Exactas] Si $S$ cumple que
+\begin{equation}
+\limi_{n\rightarrow\infty}{\mu(S^n(A))}=1 \qquad \hbox{para cada $A\in\A, \mu(A)>0$}  
+\end{equation}
+Siendo $(\X,\A,\R)$ es un espacio de medida probabilidad, y $S:\X\cir$ una transformación que preserva la medida.
+\end{dfn}
+
+Para ejemplificar la diferencia entre los tipos de transformación se procede a mostra las seis primeras iteraciones de un 
+número aleatorio de 1000 puntos distribuidos en el conjunto de $\X=[0,1]\times[0,1]$ 
+
+{\bf Transformación Ergódica}
+\begin{equation}
+S(x,y)=(\sqrt{2}+x,\sqrt{3}+y)\quad (mod\; 1)\label{t.erg}
+\end{equation}
+{\bf Transformación Mezclante}
+\begin{equation}
+S(x,y)=(x+y,x+2y)\quad (mod \;1)\label{t.mez}
+\end{equation}
+{\bf Transformación Exacta}
+\begin{equation}
+S(x,y)=(3x+y,x+3y)\quad (mod \;1)\label{t.exa}
+\end{equation}
+
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=.65\textwidth, height=1\textwidth,scale=0.5]{graficas/erg}
+    \end{center}
+    \caption{Iteraciones sucesivas de la transformación \ref{t.erg}. Note como se mueve la distribucion de puntos en forma de cudrado sobre el espacio}
+
+\end{figure}
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=.65\textwidth, height=1\textwidth,scale=0.5]{graficas/mix}
+    \end{center}
+    \caption{Iteraciones sucesivas de la transformación \ref{t.mez}. Note como se esparce la distribucion de puntos sobre el espacio}
+
+\end{figure}
+
+
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=.65\textwidth, height=1\textwidth,scale=0.5]{graficas/exa}
+   \end{center}
+    \caption{Iteraciones sucesivas de la transformación \ref{t.exa}. Note como se esparce la distribucion de puntos sobre el espacio}
+
+\end{figure}
+
+\input{caos/usando/usando}
